@@ -1,10 +1,14 @@
 package com.example.chachacha_dory;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
@@ -23,11 +27,14 @@ public class MainActivity extends BaseActivity implements MainActivityView {
     SearchFragment searchFragment;
     MyChaFragment myChaFragment;
     StartChaFragment startChaFragment;
+    Context mContext;
+    TabLayout tabs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mContext = getApplicationContext();
         chaChaFragment = new ChaChaFragment();
         myPageFragment = new MyPageFragment();
         searchFragment = new SearchFragment();
@@ -35,11 +42,12 @@ public class MainActivity extends BaseActivity implements MainActivityView {
         startChaFragment = new StartChaFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.contaner, myPageFragment).commit();
 
-        TabLayout tabs = findViewById(R.id.tabLayout);
-        tabs.addTab(tabs.newTab().setText("하트"));
-        tabs.addTab(tabs.newTab().setText("차차차"));
-        tabs.addTab(tabs.newTab().setText("검색"));
-        tabs.addTab(tabs.newTab().setText("마이페이지"));
+        tabs = (TabLayout)findViewById(R.id.tabLayout);
+
+        tabs.addTab(tabs.newTab().setCustomView(createTabView(R.drawable.tab_heart)));
+        tabs.addTab(tabs.newTab().setCustomView(createTabView(R.drawable.tab_start)));
+        tabs.addTab(tabs.newTab().setCustomView(createTabView(R.drawable.tab_message)));
+        tabs.addTab(tabs.newTab().setCustomView(createTabView(R.drawable.tab_mypage)));
 
         tabs.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -52,6 +60,9 @@ public class MainActivity extends BaseActivity implements MainActivityView {
                         break;
                     case 1:
                         selected = startChaFragment;
+                        Intent intent = new Intent(MainActivity.this, StartChaActivity.class);
+                        startActivity(intent);
+                        finish();
                         break;
                     case 2:
                         selected = searchFragment;
@@ -75,6 +86,13 @@ public class MainActivity extends BaseActivity implements MainActivityView {
 
             }
         });
+    }
+
+    private View createTabView(int tabImage) {
+        View tabView = LayoutInflater.from(mContext).inflate(R.layout.custom_tab, null);
+        ImageView iconImage = (ImageView)tabView.findViewById(R.id.iconImage);
+        iconImage.setImageResource(tabImage);
+        return tabView;
     }
 
     private void tryGetTest() {

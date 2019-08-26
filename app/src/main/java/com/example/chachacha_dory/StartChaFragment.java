@@ -18,4 +18,6 @@ public class StartChaFragment extends Fragment {
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_startcha, container, false);
         return rootView;
     }
+
+
 }

@@ -18,4 +18,5 @@ public class MyChaFragment extends Fragment {
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_mycha, container, false);
         return rootView;
     }
+
 }

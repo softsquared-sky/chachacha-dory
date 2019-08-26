@@ -17,17 +17,14 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="n">
-        <activity android:name=".SignupActivity"></activity>
-        <activity android:name=".MyChaActivity" />
-        <activity android:name=".SearchActivity" />
-        <activity android:name=".ChaChaActivity" />
+        <activity android:name=".ReviewActivity"></activity>
+        <activity android:name=".StartChaActivity" />
+        <activity android:name=".SignupActivity" />
         <activity android:name=".Detail2Activity" />
         <activity android:name=".DetailActivity" />
-        <activity android:name=".StartChaActivity" />
         <activity android:name=".MyBarActivity" />
         <activity android:name=".MyReviewActivity" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".MyPageActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

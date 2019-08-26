@@ -22,7 +22,6 @@ import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends BaseActivity implements MainActivityView {
     private TextView mTvHelloWorld;
-    ChaChaFragment chaChaFragment;
     MyPageFragment myPageFragment;
     SearchFragment searchFragment;
     MyChaFragment myChaFragment;
@@ -35,7 +34,6 @@ public class MainActivity extends BaseActivity implements MainActivityView {
         setContentView(R.layout.activity_main);
 
         mContext = getApplicationContext();
-        chaChaFragment = new ChaChaFragment();
         myPageFragment = new MyPageFragment();
         searchFragment = new SearchFragment();
         myChaFragment = new MyChaFragment();
@@ -62,7 +60,6 @@ public class MainActivity extends BaseActivity implements MainActivityView {
                         selected = startChaFragment;
                         Intent intent = new Intent(MainActivity.this, StartChaActivity.class);
                         startActivity(intent);
-                        finish();
                         break;
                     case 2:
                         selected = searchFragment;

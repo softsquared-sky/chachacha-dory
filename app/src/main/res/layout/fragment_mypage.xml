@@ -19,6 +19,12 @@
         android:layout_height="wrap_content"
         android:text="마이 리뷰 보기" />
 
+    <Button
+        android:id="@+id/myBarBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="저장한 술집 보기" />
+
     <TextView
         android:id="@+id/textView24"
         android:layout_width="match_parent"

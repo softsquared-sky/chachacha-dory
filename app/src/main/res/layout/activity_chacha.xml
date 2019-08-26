@@ -12,21 +12,32 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/backBtn6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/btn_dialog" />
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            app:srcCompat="@drawable/leftbtn" />
 
         <TextView
             android:id="@+id/textView22"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentRight="false"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
             android:text="차차차" />
     </RelativeLayout>
 
     <ListView
         android:id="@+id/chachaList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="350dp"
+        android:layout_margin="20dp" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="제가 찾아볼래요!" />
 </LinearLayout>

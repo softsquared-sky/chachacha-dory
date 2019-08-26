@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 public class MyPageFragment extends Fragment {
-    Button reviewBtn;
+    Button reviewBtn, myBarBtn;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +24,7 @@ public class MyPageFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_mypage, container, false);
         reviewBtn = (Button)rootView.findViewById(R.id.myReviewBtn);
+        myBarBtn = (Button)rootView.findViewById(R.id.myBarBtn);
         reviewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -31,7 +32,13 @@ public class MyPageFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
+        myBarBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MyBarActivity.class);
+                startActivity(intent);
+            }
+        });
         return rootView;
     }
 }

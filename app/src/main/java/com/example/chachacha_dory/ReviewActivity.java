@@ -12,7 +12,7 @@ public class ReviewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review);
-
+        
         mReviewList = (ListView)findViewById(R.id.review2List);
         mAdapter = new Review2ListAdapter();
         mReviewList.setAdapter(mAdapter);

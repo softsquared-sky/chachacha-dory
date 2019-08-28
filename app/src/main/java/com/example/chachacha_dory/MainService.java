@@ -28,20 +28,44 @@ class MainService {
             public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
                 final DefaultResponse defaultResponse = response.body();
                 if (defaultResponse == null) {
-                    mMainActivityView.validateFailure(null);
+                    mMainActivityView.validateFailure(defaultResponse.getMessage());
                     Log.d("못가져옴", "null");
                     return;
                 }
-                Log.d("결과 발표", String.valueOf(defaultResponse));
+                Log.d("결과 발표", String.valueOf(defaultResponse.getMessage()));
                 mMainActivityView.validateSuccess(defaultResponse.getMessage());
             }
 
             @Override
             public void onFailure(Call<DefaultResponse> call, Throwable t) {
-                mMainActivityView.validateFailure(null);
+                mMainActivityView.validateFailure("연결실패");
             }
         });
     }
+
+//    void postSignUp(String id, String pw, String pw2, String name, int age, int gender, String email){
+    void postSignUp(HashMap<String, Object> hashMap){
+        final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
+        mainRetrofitInterface.postSignUp(hashMap).enqueue(new Callback<DefaultResponse>() {
+            @Override
+            public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
+                final DefaultResponse defaultResponse = response.body();
+                if (defaultResponse == null) {
+                    mMainActivityView.validateFailure(defaultResponse.getMessage());
+                    Log.d("못가져옴", "null");
+                    return;
+                }
+                Log.d("결과 발표", String.valueOf(defaultResponse.getMessage()));
+                mMainActivityView.validateSuccess(defaultResponse.getMessage());
+            }
+
+            @Override
+            public void onFailure(Call<DefaultResponse> call, Throwable t) {
+                mMainActivityView.validateFailure("연결 실패");
+            }
+        });
+    }
+
 //    void getTest() {
 //        final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
 //        mainRetrofitInterface.getTest().enqueue(new Callback<DefaultResponse>() {

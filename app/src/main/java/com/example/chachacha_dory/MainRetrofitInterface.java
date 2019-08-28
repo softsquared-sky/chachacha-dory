@@ -2,10 +2,13 @@ package com.example.chachacha_dory;
 
 import com.example.chachacha_dory.DefaultResponse;
 
+import java.util.HashMap;
+
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
+import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.HTTP;
@@ -28,20 +31,25 @@ public interface MainRetrofitInterface {
 //
 //    @POST("/test")
 //    Call<DefaultResponse> postTest(@Body RequestBody params);
-    @FormUrlEncoded
-    @HTTP(method = "GET", path = "/user/{userid}", hasBody = true)
-    Call<DefaultResponse> getLogin(@Field("userid") String userId,
-                                   @Field("userpw") String userPw);
 
-//    @GET("/user/{userid}")
+//    @FormUrlEncoded
+//    @HTTP(method = "GET", path = "/user/{userid}", hasBody = true)
 //    Call<DefaultResponse> getLogin(
-//            @Path("userId") String userId,
-//            @Path("userPw") String userPw
+//            @Field("userid") String userId,
+//                                   @Field("userpw") String userPw
 //    );
 
-    @POST("/quest")
+    @FormUrlEncoded
+    @GET("/user/{userid}")
+    Call<DefaultResponse> getLogin(
+            @Field("userid") String userId,
+            @Field("userpw") String userPw
+    );
+
+//    @FormUrlEncoded
+    @POST("/guest")
     Call<DefaultResponse> postSignUp(
-            @Body UserClass params
+            @Body HashMap<String, Object> params
     );
 }
 

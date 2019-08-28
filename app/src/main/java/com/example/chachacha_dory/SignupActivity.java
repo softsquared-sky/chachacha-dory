@@ -64,7 +64,7 @@ public class SignUpActivity extends BaseActivity implements MainActivityView {
     public void validateSuccess(String text, int code) {
         hideProgressDialog();
         if(code == 100) {
-            Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+            Intent intent = new Intent(SignUpActivity.this, WelcomeActivity.class);
             startActivity(intent);
         }else {
             Toast.makeText(this, text, Toast.LENGTH_LONG);

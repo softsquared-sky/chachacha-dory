@@ -77,7 +77,7 @@ class MainService {
 //                    return;
 //                }
 //
-//                mMainActivityView.validateSuccess(defaultResponse.getMessage());
+//                mMainActivityView.validateSuccess(defaultResponse.getMessage(), defaultResponse.getCode());
 //            }
 //
 //            @Override

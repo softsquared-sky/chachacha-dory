@@ -21,9 +21,9 @@ class MainService {
         this.mMainActivityView = mainActivityView;
     }
 
-    void getLogin(String id, String pw){
+    void getLogin(HashMap<String, Object> hashMap){
         final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
-        mainRetrofitInterface.getLogin(id, pw).enqueue(new Callback<DefaultResponse>() {
+        mainRetrofitInterface.getLogin(hashMap).enqueue(new Callback<DefaultResponse>() {
             @Override
             public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
                 final DefaultResponse defaultResponse = response.body();
@@ -33,7 +33,7 @@ class MainService {
                     return;
                 }
                 Log.d("결과 발표", String.valueOf(defaultResponse.getMessage()));
-                mMainActivityView.validateSuccess(defaultResponse.getMessage());
+                mMainActivityView.validateSuccess(defaultResponse.getMessage(), defaultResponse.getCode());
             }
 
             @Override
@@ -56,7 +56,7 @@ class MainService {
                     return;
                 }
                 Log.d("결과 발표", String.valueOf(defaultResponse.getMessage()));
-                mMainActivityView.validateSuccess(defaultResponse.getMessage());
+                mMainActivityView.validateSuccess(defaultResponse.getMessage(), defaultResponse.getCode());
             }
 
             @Override

@@ -61,17 +61,21 @@ public class SignUpActivity extends BaseActivity implements MainActivityView {
     }
 
     @Override
-    public void validateSuccess(String text) {
+    public void validateSuccess(String text, int code) {
         hideProgressDialog();
-        Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
-        startActivity(intent);
+        if(code == 100) {
+            Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+            startActivity(intent);
+        }else {
+            Toast.makeText(this, text, Toast.LENGTH_LONG);
+        }
 //        mTvHelloWorld.setText(text);
     }
 
     @Override
     public void validateFailure(@Nullable String message) {
         hideProgressDialog();
-        Toast.makeText(this, message, Toast.LENGTH_LONG);
+//        Toast.makeText(this, message, Toast.LENGTH_LONG);
         Log.d("메시지내용", message);
 //        showCustomToast(message == null || message.isEmpty() ? getString(R.string.network_error) : message);
     }

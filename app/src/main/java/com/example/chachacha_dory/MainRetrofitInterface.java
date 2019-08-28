@@ -33,17 +33,16 @@ public interface MainRetrofitInterface {
 //    Call<DefaultResponse> postTest(@Body RequestBody params);
 
 //    @FormUrlEncoded
-//    @HTTP(method = "GET", path = "/user/{userid}", hasBody = true)
+//    @HTTP(method = "GET", path = "/user/{userid}", hasBody = false)
 //    Call<DefaultResponse> getLogin(
-//            @Field("userid") String userId,
-//                                   @Field("userpw") String userPw
+//            @Field("userid") String userid,
+//            @Field("userpw") String userpw
 //    );
 
-    @FormUrlEncoded
-    @GET("/user/{userid}")
+//    @FormUrlEncoded
+    @POST("/user/{userid}")
     Call<DefaultResponse> getLogin(
-            @Field("userid") String userId,
-            @Field("userpw") String userPw
+            @Body HashMap<String, Object> params
     );
 
 //    @FormUrlEncoded

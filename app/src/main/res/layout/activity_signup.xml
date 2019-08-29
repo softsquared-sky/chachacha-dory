@@ -128,7 +128,7 @@
                 android:textSize="12sp" />
 
             <EditText
-                android:id="@+id/editText4"
+                android:id="@+id/signUpPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/round_border"
@@ -150,14 +150,14 @@
                 android:textSize="12sp" />
 
             <EditText
-                android:id="@+id/editText5"
+                android:id="@+id/signUpEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/round_border"
                 android:ems="10"
+                android:hint="email형식에 맞추어 입력"
                 android:inputType="textPersonName"
                 android:padding="14dp"
-                android:hint="email형식에 맞추어 입력"
                 android:textSize="12sp" />
 
             <TextView
@@ -259,6 +259,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="30dp"
+                android:layout_marginBottom="50dp"
                 android:background="@drawable/roundback_border"
                 android:paddingLeft="50dp"
                 android:paddingTop="10dp"

@@ -17,7 +17,8 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="n">
-        <activity android:name=".WelcomeActivity"></activity>
+        <activity android:name=".MakeReviewActivity"></activity>
+        <activity android:name=".WelcomeActivity" />
         <activity
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
@@ -35,7 +36,7 @@
         <activity android:name=".MyBarActivity" />
         <activity android:name=".MyReviewActivity" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".LoginActivity" />
         <activity android:name=".ChaChaActivity" />
         <activity android:name=".MainActivity" />
     </application>

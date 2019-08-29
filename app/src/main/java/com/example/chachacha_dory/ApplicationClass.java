@@ -21,8 +21,9 @@ public class ApplicationClass extends Application {
 
     // 테스트 서버 주소
     public static String BASE_URL = "http://106.10.50.207";
+
     // 실서버 주소
-//    public static String BASE_URL = "https://template.softsquared.com/";
+//    public static String BASE_URL = "www.so-yo.info";
 
     public static SharedPreferences sSharedPreferences = null;
 

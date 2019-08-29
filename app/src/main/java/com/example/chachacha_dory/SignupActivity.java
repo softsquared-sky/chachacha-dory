@@ -14,9 +14,9 @@ import android.widget.Toast;
 import java.util.HashMap;
 
 public class SignUpActivity extends BaseActivity implements MainActivityView {
-    EditText mEditId, mEditPw, mEditPw2, mEditName;
+    EditText mEditId, mEditPw, mEditPw2, mEditName, mEditPhone, mEditEmail;
     Button mNextBtn;
-    String mId, mPw, mPw2, mName;
+    String mId, mPw, mPw2, mName, mPhone, mEmail;
     HashMap<String, Object> mHashMap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +28,8 @@ public class SignUpActivity extends BaseActivity implements MainActivityView {
         mEditPw2 = findViewById(R.id.signUpPw2);
         mEditName = findViewById(R.id.signUpName);
         mNextBtn = findViewById(R.id.signupNextBtn);
+        mEditPhone = findViewById(R.id.signUpPhone);
+        mEditEmail = findViewById(R.id.signUpEmail);
         mHashMap = new HashMap<>();
 
         mNextBtn.setOnClickListener(new View.OnClickListener() {
@@ -37,6 +39,8 @@ public class SignUpActivity extends BaseActivity implements MainActivityView {
                 mPw = mEditPw.getText().toString();
                 mPw2 = mEditPw2.getText().toString();
                 mName = mEditName.getText().toString();
+                mPhone = mEditPhone.getText().toString();
+                mEmail = mEditEmail.getText().toString();
 
                 mHashMap.put("userid", mId);
                 mHashMap.put("userpw", mPw);
@@ -44,7 +48,8 @@ public class SignUpActivity extends BaseActivity implements MainActivityView {
                 mHashMap.put("name", mName);
                 mHashMap.put("age", 0);
                 mHashMap.put("gender", 0);
-                mHashMap.put("email", "dory@gmail.com");
+                mHashMap.put("phone", mPhone);
+                mHashMap.put("email", mEmail);
 
                 tryPostSignUp();
             }

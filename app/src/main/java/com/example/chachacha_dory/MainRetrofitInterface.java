@@ -18,7 +18,7 @@ import retrofit2.http.Query;
 
 public interface MainRetrofitInterface {
     //    @GET("/test")
-    String URL = "http://106.10.50.207";
+//    String URL = "http://106.10.50.207";
 
     @GET("/jwt")
     Call<DefaultResponse> getTest();

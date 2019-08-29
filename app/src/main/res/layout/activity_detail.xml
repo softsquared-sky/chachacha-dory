@@ -15,7 +15,7 @@
             android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/btn_dialog" />
+            app:srcCompat="@drawable/leftbtn" />
 
         <TextView
             android:id="@+id/textView17"
@@ -29,12 +29,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            app:srcCompat="@android:drawable/btn_star_big_off" />
+            app:srcCompat="@drawable/star2" />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/imageView22"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/imageView23"
+            android:layout_alignParentTop="true"
+            android:background="#d8d8d8" />
+
+        <View
+            android:id="@+id/imageView23"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_alignParentBottom="true"
+            android:background=" #fff1f3" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,50 +61,129 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/round_white"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="10dp">
 
                     <TextView
-                        android:id="@+id/textView18"
+                        android:id="@+id/detailName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="가게 이름" />
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="가게 이름"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/textView19"
+                        android:id="@+id/detailMood"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="#분위기" />
+                        android:layout_below="@+id/detailName"
+                        android:layout_marginBottom="5dp"
+                        android:text="#분위기"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="12sp" />
 
                     <TextView
-                        android:id="@+id/textView21"
+                        android:id="@+id/detailDesc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="시간" />
+                        android:layout_below="@+id/detailMood"
+                        android:layout_marginBottom="15dp"
+                        android:text="상세 설명입니다."
+                        android:textColor="#000000"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:id="@+id/Imageaddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/detailDesc"
+                        android:layout_marginTop="3dp"
+                        app:srcCompat="@drawable/address2" />
+
+                    <ImageView
+                        android:id="@+id/imageView25"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/detailAddress"
+                        android:layout_centerVertical="false"
+                        android:layout_marginTop="5dp"
+                        app:srcCompat="@drawable/time" />
 
                     <TextView
-                        android:id="@+id/textView20"
+                        android:id="@+id/detailAddress"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="위치" />
+                        android:layout_below="@+id/detailDesc"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_toRightOf="@+id/Imageaddress"
+                        android:text="주소 위치 텍스트"
+                        android:textSize="12sp" />
 
-                </LinearLayout>
+                    <TextView
+                        android:id="@+id/detailTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/detailAddress"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/imageView25"
+                        android:text="영업시간 적는 칸입니다."
+                        android:textSize="12sp" />
+
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/imageView26"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="30dp"
+                    app:srcCompat="@drawable/calling" />
 
             </FrameLayout>
 
-            <Button
-                android:id="@+id/button29"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="메뉴 보기" />
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="25dp"
+                android:background="@drawable/round_white"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp">
 
-            <Button
-                android:id="@+id/button30"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="리뷰 보기" />
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="더 많은 정보 보기"
+                    android:textColor="#000000"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:id="@+id/imageView27"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/textView19"
+                    app:srcCompat="@drawable/down" />
+
+            </RelativeLayout>
 
         </LinearLayout>
 
@@ -99,6 +193,12 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:text="여기로 차차차!" />
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/roundback_border"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:text="여기로 차차차!"
+            android:textColor="#ffff"
+            android:textSize="12sp" />
     </RelativeLayout>
 </LinearLayout>

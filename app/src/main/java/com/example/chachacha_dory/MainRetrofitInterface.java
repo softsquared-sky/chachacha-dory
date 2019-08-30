@@ -12,6 +12,8 @@ import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.HTTP;
+import retrofit2.http.Headers;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -39,13 +41,24 @@ public interface MainRetrofitInterface {
 //            @Field("userpw") String userpw
 //    );
 
-//    @FormUrlEncoded
-    @POST("/user/{userid}")
+//      마이페이지
+    @GET("/user/{userid}")
+    Call<DefaultResponse> getMyPage(@Path("userid") String userid);
+
+    //마이페이지 수정
+    @PATCH("/user/{userid}")
+    Call<DefaultResponse> patchMyPage(
+            @Path("userid") String userid,
+            @Body HashMap<String, Object> params
+    );
+
+//    로그인
+    @POST("/token")
     Call<DefaultResponse> getLogin(
             @Body HashMap<String, Object> params
     );
 
-//    @FormUrlEncoded
+//    회원가입
     @POST("/guest")
     Call<DefaultResponse> postSignUp(
             @Body HashMap<String, Object> params

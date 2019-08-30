@@ -6,12 +6,19 @@ import com.example.chachacha_dory.MainRetrofitInterface;
 import com.example.chachacha_dory.DefaultResponse;
 import com.example.chachacha_dory.MainActivityView;
 
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.HashMap;
 
+import okhttp3.Interceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.example.chachacha_dory.ApplicationClass.USER_ID;
+import static com.example.chachacha_dory.ApplicationClass.X_ACCESS_TOKEN;
 import static com.example.chachacha_dory.ApplicationClass.getRetrofit;
 
 class MainService {
@@ -21,18 +28,21 @@ class MainService {
         this.mMainActivityView = mainActivityView;
     }
 
-    void getLogin(HashMap<String, Object> hashMap){
+    void getLogin(final HashMap<String, Object> hashMap){
         final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
         mainRetrofitInterface.getLogin(hashMap).enqueue(new Callback<DefaultResponse>() {
             @Override
             public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
                 final DefaultResponse defaultResponse = response.body();
+
                 if (defaultResponse == null) {
                     mMainActivityView.validateFailure(defaultResponse.getMessage());
                     Log.d("못가져옴", "null");
                     return;
                 }
                 Log.d("결과 발표", String.valueOf(defaultResponse.getMessage()));
+                USER_ID = (String) hashMap.get("userid");
+                X_ACCESS_TOKEN = defaultResponse.getResult().getJwt();
                 mMainActivityView.validateSuccess(defaultResponse.getMessage(), defaultResponse.getCode());
             }
 
@@ -62,6 +72,56 @@ class MainService {
             @Override
             public void onFailure(Call<DefaultResponse> call, Throwable t) {
                 mMainActivityView.validateFailure("연결 실패");
+            }
+        });
+    }
+
+    void getMyPage(){
+        final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
+        mainRetrofitInterface.getMyPage(USER_ID).enqueue(new Callback<DefaultResponse>() {
+            @Override
+            public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
+                final DefaultResponse defaultResponse = response.body();
+                if (defaultResponse == null) {
+                    mMainActivityView.validateFailure(defaultResponse.getMessage());
+                    Log.d("못가져옴", "null");
+                    return;
+                }
+                Log.d("결과 발표", String.valueOf(defaultResponse.getMessage()));
+                if(defaultResponse.getResult().getWriting()==null){
+                    defaultResponse.getResult().setWriting(".");
+                }
+                mMainActivityView.validateSuccessMyPage(defaultResponse.getResult());
+                mMainActivityView.validateSuccess(defaultResponse.getMessage(), defaultResponse.getCode());
+            }
+
+            @Override
+            public void onFailure(Call<DefaultResponse> call, Throwable t) {
+                mMainActivityView.validateFailure("연결실패");
+            }
+        });
+    }
+
+    void patchMyPage(HashMap<String, Object> hashMap){
+        final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
+        mainRetrofitInterface.patchMyPage(USER_ID, hashMap).enqueue(new Callback<DefaultResponse>() {
+            @Override
+            public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
+                final DefaultResponse defaultResponse = response.body();
+                if (defaultResponse == null) {
+                    mMainActivityView.validateFailure(defaultResponse.getMessage());
+                    Log.d("못가져옴", "null");
+                    return;
+                }
+                Log.d("결과 발표", String.valueOf(defaultResponse.getMessage()));
+
+//                mMainActivityView.validateSuccessMyPage(defaultResponse.getResult());
+                mMainActivityView.validateSuccess(defaultResponse.getMessage(), defaultResponse.getCode());
+            }
+
+            @Override
+            public void onFailure(Call<DefaultResponse> call, Throwable t) {
+                mMainActivityView.validateFailure("연결실패");
             }
         });
     }

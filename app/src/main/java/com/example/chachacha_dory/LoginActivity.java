@@ -43,6 +43,7 @@ public class LoginActivity extends BaseActivity implements MainActivityView {
             public void onClick(View v) {
                 mId = mIdEdit.getText().toString();
                 mPw = mPwEdit.getText().toString();
+
                 mHashMap.put("userid", mId);
                 mHashMap.put("userpw", mPw);
                 tryGetLogin();
@@ -65,13 +66,18 @@ public class LoginActivity extends BaseActivity implements MainActivityView {
     @Override
     public void validateSuccess(String text, int code) {
         hideProgressDialog();
-        if(code==115){
+        if(code==113){
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
         }else
             Toast.makeText(this, text, Toast.LENGTH_LONG);
 
 //        mTvHelloWorld.setText(text);
+    }
+
+    @Override
+    public void validateSuccessMyPage(DefaultResponse.Result result) {
+
     }
 
     @Override

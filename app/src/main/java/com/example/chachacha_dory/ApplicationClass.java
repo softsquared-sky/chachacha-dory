@@ -20,16 +20,18 @@ public class ApplicationClass extends Application {
     public static MediaType MEDIA_TYPE_JPEG = MediaType.parse("image/jpeg");
 
     // 테스트 서버 주소
-    public static String BASE_URL = "http://106.10.50.207";
+//    public static String BASE_URL = "http://106.10.50.207";
 
     // 실서버 주소
-//    public static String BASE_URL = "www.so-yo.info";
+    public static String BASE_URL = "http://www.so-yo.info";
 
     public static SharedPreferences sSharedPreferences = null;
 
     // SharedPreferences 키 값
     public static String TAG = "TEMPLATE_APP";
 
+    //userid값
+    public static String USER_ID = "userid";
     // JWT Token 값
     public static String X_ACCESS_TOKEN = "X-ACCESS-TOKEN";
 

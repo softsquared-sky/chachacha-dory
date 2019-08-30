@@ -78,6 +78,11 @@ public class SignUpActivity extends BaseActivity implements MainActivityView {
     }
 
     @Override
+    public void validateSuccessMyPage(DefaultResponse.Result result) {
+
+    }
+
+    @Override
     public void validateFailure(@Nullable String message) {
         hideProgressDialog();
 //        Toast.makeText(this, message, Toast.LENGTH_LONG);

@@ -54,7 +54,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/profileName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
@@ -73,7 +73,7 @@
             android:textSize="12sp" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/profileWriting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/border_bottoml"
@@ -95,7 +95,7 @@
             android:textSize="12sp" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/profileEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/border_bottoml"
@@ -116,7 +116,7 @@
             android:textSize="12sp" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/profilePhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/border_bottoml"

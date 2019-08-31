@@ -57,6 +57,7 @@ public class ProfileActivity extends BaseActivity implements MainActivityView {
                 mainService.patchMyPage(hashMap);
 
                 Intent intent1 = new Intent(ProfileActivity.this, MainActivity.class);
+                intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent1);
             }
         });

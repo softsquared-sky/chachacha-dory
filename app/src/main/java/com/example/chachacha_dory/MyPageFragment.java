@@ -5,8 +5,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import static com.example.chachacha_dory.ApplicationClass.sSharedPreferences;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,7 +24,7 @@ public class MyPageFragment extends Fragment implements MainActivityView{
     boolean mPageSuccess;
 //    DefaultResponse.Result mResult;
     String mName, mWriting, mEmail, mPhone, mSignUp;
-    TextView mNameView, mWritingView, mEmailView, mPhoneView, mSignUpView, mReplaceBtn;
+    TextView mNameView, mWritingView, mEmailView, mPhoneView, mSignUpView, mReplaceBtn, mLogOutBtn;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ public class MyPageFragment extends Fragment implements MainActivityView{
         mPhoneView = mRootView.findViewById(R.id.myPagePhone);
         mSignUpView = mRootView.findViewById(R.id.myPageJoinDate);
         mReplaceBtn = mRootView.findViewById(R.id.replaceBtn);
+        mLogOutBtn = mRootView.findViewById(R.id.logOutBtn);
 
         return mRootView;
     }
@@ -109,6 +112,19 @@ public class MyPageFragment extends Fragment implements MainActivityView{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MyBarActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mLogOutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor editor = sSharedPreferences.edit();
+                editor.putBoolean("isSaved", false);
+                editor.commit();
+
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });

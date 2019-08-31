@@ -44,23 +44,6 @@ public class MainActivity extends BaseActivity {
         tabs.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-
-        tabs.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
                 Fragment selected = null;
                 switch (position){
@@ -96,6 +79,45 @@ public class MainActivity extends BaseActivity {
 
             }
         });
+
+//        tabs.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+//            @Override
+//            public void onTabSelected(TabLayout.Tab tab) {
+//                int position = tab.getPosition();
+//                Fragment selected = null;
+//                switch (position){
+//                    case 0:
+//                        selected = myChaFragment;
+//                        break;
+//                    case 1:
+//                        selected = startChaFragment;
+//                        Intent intent = new Intent(MainActivity.this, StartChaActivity.class);
+//                        startActivity(intent);
+//                        break;
+//                    case 2:
+//                        selected = searchFragment;
+//                        break;
+//                    case 3:
+//                        selected = myPageFragment;
+//                        break;
+//                    default:
+//
+//                        break;
+//                }
+//
+//                MainActivity.this.getSupportFragmentManager().beginTransaction().replace(R.id.contaner, selected).commit();
+//            }
+//
+//            @Override
+//            public void onTabUnselected(TabLayout.Tab tab) {
+//
+//            }
+//
+//            @Override
+//            public void onTabReselected(TabLayout.Tab tab) {
+//
+//            }
+//        });
     }
 
     private View createTabView(int tabImage) {

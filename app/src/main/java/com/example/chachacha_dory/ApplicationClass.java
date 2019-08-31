@@ -31,7 +31,8 @@ public class ApplicationClass extends Application {
     public static String TAG = "TEMPLATE_APP";
 
     //userid값
-    public static String USER_ID = "userid";
+    public static String USER_ID = "USER_ID";
+
     // JWT Token 값
     public static String X_ACCESS_TOKEN = "X-ACCESS-TOKEN";
 

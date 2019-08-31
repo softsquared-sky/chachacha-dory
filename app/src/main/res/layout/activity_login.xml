@@ -37,12 +37,12 @@
         android:layout_marginBottom="10dp"
         android:ems="12"
         android:hint="비밀번호"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:textColor="@color/btncolor"
         android:textSize="14sp" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/saveLoginSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

@@ -1,5 +1,6 @@
 package com.example.chachacha_dory;
 
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.example.chachacha_dory.MainRetrofitInterface;
@@ -20,6 +21,7 @@ import retrofit2.Response;
 import static com.example.chachacha_dory.ApplicationClass.USER_ID;
 import static com.example.chachacha_dory.ApplicationClass.X_ACCESS_TOKEN;
 import static com.example.chachacha_dory.ApplicationClass.getRetrofit;
+import static com.example.chachacha_dory.ApplicationClass.sSharedPreferences;
 
 class MainService {
     private final MainActivityView mMainActivityView;
@@ -41,8 +43,14 @@ class MainService {
                     return;
                 }
                 Log.d("결과 발표", String.valueOf(defaultResponse.getMessage()));
-                USER_ID = (String) hashMap.get("userid");
-                X_ACCESS_TOKEN = defaultResponse.getResult().getJwt();
+//                USER_ID = (String) hashMap.get("userid");
+                if(defaultResponse.getCode()==113) {
+                    SharedPreferences.Editor editor = sSharedPreferences.edit();
+                    editor.putString(X_ACCESS_TOKEN, defaultResponse.getResult().getJwt());
+                    editor.putString(USER_ID, (String) hashMap.get("userid"));
+                    editor.commit();
+//                    X_ACCESS_TOKEN = defaultResponse.getResult().getJwt();
+                }
                 mMainActivityView.validateSuccess(defaultResponse.getMessage(), defaultResponse.getCode());
             }
 
@@ -53,7 +61,6 @@ class MainService {
         });
     }
 
-//    void postSignUp(String id, String pw, String pw2, String name, int age, int gender, String email){
     void postSignUp(HashMap<String, Object> hashMap){
         final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
         mainRetrofitInterface.postSignUp(hashMap).enqueue(new Callback<DefaultResponse>() {
@@ -78,7 +85,7 @@ class MainService {
 
     void getMyPage(){
         final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
-        mainRetrofitInterface.getMyPage(USER_ID).enqueue(new Callback<DefaultResponse>() {
+        mainRetrofitInterface.getMyPage(sSharedPreferences.getString(USER_ID, "")).enqueue(new Callback<DefaultResponse>() {
             @Override
             public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
                 final DefaultResponse defaultResponse = response.body();
@@ -104,7 +111,7 @@ class MainService {
 
     void patchMyPage(HashMap<String, Object> hashMap){
         final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
-        mainRetrofitInterface.patchMyPage(USER_ID, hashMap).enqueue(new Callback<DefaultResponse>() {
+        mainRetrofitInterface.patchMyPage(sSharedPreferences.getString(USER_ID, ""), hashMap).enqueue(new Callback<DefaultResponse>() {
             @Override
             public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
                 final DefaultResponse defaultResponse = response.body();

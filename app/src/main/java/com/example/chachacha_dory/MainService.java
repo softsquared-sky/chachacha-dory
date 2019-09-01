@@ -30,6 +30,7 @@ class MainService {
         this.mMainActivityView = mainActivityView;
     }
 
+    //로그인
     void getLogin(final HashMap<String, Object> hashMap){
         final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
         mainRetrofitInterface.getLogin(hashMap).enqueue(new Callback<DefaultResponse>() {
@@ -61,6 +62,7 @@ class MainService {
         });
     }
 
+    //회원가입
     void postSignUp(HashMap<String, Object> hashMap){
         final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
         mainRetrofitInterface.postSignUp(hashMap).enqueue(new Callback<DefaultResponse>() {
@@ -83,6 +85,7 @@ class MainService {
         });
     }
 
+    //마이페이지
     void getMyPage(){
         final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
         mainRetrofitInterface.getMyPage(sSharedPreferences.getString(USER_ID, "")).enqueue(new Callback<DefaultResponse>() {
@@ -109,6 +112,7 @@ class MainService {
         });
     }
 
+    //5. 마이페이지 수정
     void patchMyPage(HashMap<String, Object> hashMap){
         final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
         mainRetrofitInterface.patchMyPage(sSharedPreferences.getString(USER_ID, ""), hashMap).enqueue(new Callback<DefaultResponse>() {
@@ -132,6 +136,7 @@ class MainService {
             }
         });
     }
+
 
 //    void getTest() {
 //        final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);

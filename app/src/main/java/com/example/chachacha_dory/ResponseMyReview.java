@@ -2,8 +2,9 @@ package com.example.chachacha_dory;
 
 import com.google.gson.annotations.SerializedName;
 
-public class MyPageResponse {
+import java.util.ArrayList;
 
+public class ResponseMyReview {
     @SerializedName("code")
     private int code;
 
@@ -13,7 +14,8 @@ public class MyPageResponse {
     @SerializedName("isSuccess")
     private boolean isSuccess;
 
-
+    @SerializedName("result")
+    ArrayList<ResponseReview.ReviewResult.Review> reviews;
 
     public int getCode() {
         return code;
@@ -23,6 +25,11 @@ public class MyPageResponse {
         return message;
     }
 
-    public boolean getIsSuccess() { return isSuccess; }
+    public boolean isSuccess() {
+        return isSuccess;
+    }
 
+    public ArrayList<ResponseReview.ReviewResult.Review> getReviews() {
+        return reviews;
+    }
 }

@@ -34,7 +34,6 @@
         <activity android:name=".Detail2Activity" />
         <activity android:name=".DetailActivity" />
         <activity android:name=".MyBarActivity" />
-        <activity android:name=".MyReviewActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".ChaChaActivity" />

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import static com.example.chachacha_dory.ApplicationClass.sSharedPreferences;
 import android.app.Activity;
@@ -25,6 +26,7 @@ public class MyPageFragment extends Fragment implements MainActivityView{
 //    DefaultResponse.Result mResult;
     String mName, mWriting, mEmail, mPhone, mSignUp;
     TextView mNameView, mWritingView, mEmailView, mPhoneView, mSignUpView, mReplaceBtn, mLogOutBtn;
+    MyReviewFragment myReviewFragment;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,6 +51,8 @@ public class MyPageFragment extends Fragment implements MainActivityView{
         mReplaceBtn = mRootView.findViewById(R.id.replaceBtn);
         mLogOutBtn = mRootView.findViewById(R.id.logOutBtn);
 
+        myReviewFragment = new MyReviewFragment();
+
         return mRootView;
     }
 
@@ -62,7 +66,7 @@ public class MyPageFragment extends Fragment implements MainActivityView{
 
     @Override
     public void validateSuccessMyPage(DefaultResponse.Result result) {
-        Log.d("결과네임1", result.getName());
+//        Log.d("결과네임1", result.getName());
 //        mResult = result;
         mName = result.getName();
         mWriting = result.getWriting();
@@ -103,16 +107,15 @@ public class MyPageFragment extends Fragment implements MainActivityView{
         reviewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MyReviewActivity.class);
-                startActivity(intent);
+                ((MainActivity)getActivity()).replaceFragment(myReviewFragment);
             }
         });
 
         myBarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MyBarActivity.class);
-                startActivity(intent);
+                MyBarFragment myBarFragment = new MyBarFragment();
+                ((MainActivity)getActivity()).replaceFragment(myBarFragment);
             }
         });
 
@@ -129,4 +132,6 @@ public class MyPageFragment extends Fragment implements MainActivityView{
             }
         });
     }
+
+
 }

@@ -1,20 +1,17 @@
 package com.example.chachacha_dory;
 
 import android.content.Context;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.OvalShape;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class ReviewListAdapter extends BaseAdapter {
-    private ArrayList<ReviewClass> reviewList = new ArrayList<ReviewClass>();
+    private ArrayList<ResponseReview.ReviewResult.Review> reviewList = new ArrayList<>();
     ReviewListAdapter(){}
 
     @Override
@@ -39,33 +36,25 @@ public class ReviewListAdapter extends BaseAdapter {
 
         if(convertView==null){
             LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.item_review, parent,false);
+            convertView = inflater.inflate(R.layout.item_review2, parent,false);
         }
-        ImageView image = convertView.findViewById(R.id.reviewImage);
-        TextView name = convertView.findViewById(R.id.reviewName);
-        TextView addr = convertView.findViewById(R.id.reviewAddr);
-        TextView review = convertView.findViewById(R.id.reviewText);
-        RatingBar ratingBar = convertView.findViewById(R.id.reviewStar);
+        TextView pName = convertView.findViewById(R.id.review2Name);
+        TextView review = convertView.findViewById(R.id.review2Text);
+        RatingBar ratingBar = convertView.findViewById(R.id.review2Star);
 
-        ReviewClass reviewClass = reviewList.get(position);
+        ResponseReview.ReviewResult.Review reviews = reviewList.get(position);
 
-        image.setImageResource(reviewClass.getImage());
-        image.setBackground(new ShapeDrawable(new OvalShape()));
-        image.setClipToOutline(true);
-        name.setText(reviewClass.getName());
-        addr.setText(reviewClass.getAddress());
-        review.setText(reviewClass.getReview());
-        ratingBar.setRating(reviewClass.getStarRating());
+        pName.setText(reviews.getName());
+        review.setText(reviews.getText());
+        ratingBar.setRating(reviews.getStar());
         return convertView;
     }
 
-    public void addReview(int icon, String name, String addr, String review, int star){
-        ReviewClass item = new ReviewClass();
-        item.setImage(icon);
-        item.setName(name);
-        item.setAddress(addr);
-        item.setReview(review);
-        item.setStarRating(star);
+    public void addReview(String pName, String review, int star){
+        ResponseReview.ReviewResult.Review item = new ResponseReview.ReviewResult.Review();
+        item.setName(pName);
+        item.setText(review);
+        item.setStar(star);
 
         reviewList.add(item);
     }

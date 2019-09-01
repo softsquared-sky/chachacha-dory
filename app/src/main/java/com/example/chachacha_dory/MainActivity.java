@@ -13,13 +13,16 @@ import com.google.android.material.tabs.TabLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 public class MainActivity extends BaseActivity {
-    private TextView mTvHelloWorld;
+//    private TextView mTvHelloWorld;
     MyPageFragment myPageFragment;
     SearchFragment searchFragment;
     MyChaFragment myChaFragment;
     StartChaFragment startChaFragment;
+    MyReviewFragment mMyReviewFragment;
     Context mContext;
     TabLayout tabs;
     @Override
@@ -32,7 +35,11 @@ public class MainActivity extends BaseActivity {
         searchFragment = new SearchFragment();
         myChaFragment = new MyChaFragment();
         startChaFragment = new StartChaFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.contaner, myPageFragment).commit();
+        mMyReviewFragment = new MyReviewFragment();
+//        getSupportFragmentManager().beginTransaction().replace(R.id.contaner, myPageFragment).commit();
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.contaner, myPageFragment).commit();
 
         tabs = findViewById(R.id.tabLayout);
 
@@ -46,7 +53,7 @@ public class MainActivity extends BaseActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
                 Fragment selected = null;
-                switch (position){
+                switch (position) {
                     case 0:
                         selected = myChaFragment;
                         break;
@@ -62,10 +69,8 @@ public class MainActivity extends BaseActivity {
                         selected = myPageFragment;
                         break;
                     default:
-
                         break;
                 }
-
                 MainActivity.this.getSupportFragmentManager().beginTransaction().replace(R.id.contaner, selected).commit();
             }
 
@@ -79,7 +84,7 @@ public class MainActivity extends BaseActivity {
 
             }
         });
-
+    }
 //        tabs.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 //            @Override
 //            public void onTabSelected(TabLayout.Tab tab) {
@@ -118,6 +123,11 @@ public class MainActivity extends BaseActivity {
 //
 //            }
 //        });
+
+    public void replaceFragment(Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.contaner, fragment).commit();
     }
 
     private View createTabView(int tabImage) {
@@ -127,4 +137,8 @@ public class MainActivity extends BaseActivity {
         return tabView;
     }
 
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+    }
 }

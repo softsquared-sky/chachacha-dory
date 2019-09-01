@@ -85,6 +85,7 @@ public class LoginActivity extends BaseActivity implements MainActivityView {
         final MainService mainService = new MainService(this);
         mainService.getLogin(mHashMap);
     }
+
     @Override
     public void validateSuccess(String text, int code) {
         hideProgressDialog();

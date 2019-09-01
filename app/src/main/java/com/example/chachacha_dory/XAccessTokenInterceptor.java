@@ -1,5 +1,7 @@
 package com.example.chachacha_dory;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import java.io.IOException;

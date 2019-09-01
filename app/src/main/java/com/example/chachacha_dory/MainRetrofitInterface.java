@@ -41,27 +41,60 @@ public interface MainRetrofitInterface {
 //            @Field("userpw") String userpw
 //    );
 
-//      마이페이지
+    //    1. 회원가입
+    @POST("/guest")
+    Call<DefaultResponse> postSignUp(
+            @Body HashMap<String, Object> params
+    );
+
+    //    3. 로그인
+    @POST("/token")
+    Call<DefaultResponse> getLogin(
+            @Body HashMap<String, Object> params
+    );
+
+    //      4. 마이페이지
     @GET("/user/{userid}")
     Call<DefaultResponse> getMyPage(@Path("userid") String userid);
 
-    //마이페이지 수정
+    //      5. 마이페이지 수정
     @PATCH("/user/{userid}")
     Call<DefaultResponse> patchMyPage(
             @Path("userid") String userid,
             @Body HashMap<String, Object> params
     );
 
-//    로그인
-    @POST("/token")
-    Call<DefaultResponse> getLogin(
-            @Body HashMap<String, Object> params
+    //      6. 손님 마이페이지 리뷰
+    @GET("/user/{userid}/reView")
+    Call<ResponseMyReview> getMyReview(
+            @Path("userid") String userid
     );
 
-//    회원가입
-    @POST("/guest")
-    Call<DefaultResponse> postSignUp(
-            @Body HashMap<String, Object> params
+    //      7. 손님 마이페이지 즐겨찾기
+    @GET("/user/{userid}/bookMark")
+    Call<ResponseStore> getBookMark(
+            @Path("userid") String userid
+    );
+
+    //      8. 손님 차차차 start
+
+
+    //      9. 음식점 상세조회
+    @POST("/store/{storenum}")
+    Call<ResponseStore> getStoreDetail(
+            @Path("storenum") int storenum
+    );
+
+    //      10. 음식점 리뷰 조회
+    @GET("/store/{storenum}/reView")
+    Call<ResponseReview> getStoreReview(
+            @Path("storenum") int storenum
+    );
+
+    //      11. 음식점 메뉴 조회
+    @GET("/store/{storenum}/meNu")
+    Call<DefaultResponse> getStoreMenu(
+            @Path("storenum") int storenum
     );
 }
 

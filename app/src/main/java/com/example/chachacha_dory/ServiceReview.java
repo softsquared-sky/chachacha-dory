@@ -30,12 +30,34 @@ class ServiceReview {
                     return;
                 }
                 Log.d("결과 발표", String.valueOf(reviewResponse.getMessage()));
-                mReviewInterface.validateReview(reviewResponse.getReviews());
-                mReviewInterface.validateSuccess(reviewResponse.getMessage(), reviewResponse.getCode());
+                mReviewInterface.validateSuccess(reviewResponse.getMessage(), reviewResponse.getCode(), reviewResponse.getReviews());
             }
 
             @Override
             public void onFailure(Call<ResponseMyReview> call, Throwable t) {
+                mReviewInterface.validateFailure("연결실패");
+                Log.d("결과 왜 실패하니", t.toString()+" ");
+            }
+        });
+    }
+
+    void getReview(){
+        final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
+        mainRetrofitInterface.getStoreReview(1).enqueue(new Callback<ResponseReview>() {
+            @Override
+            public void onResponse(Call<ResponseReview> call, Response<ResponseReview> response) {
+                final ResponseReview reviewResponse = response.body();
+                if (reviewResponse == null) {
+                    mReviewInterface.validateFailure(reviewResponse.getMessage());
+                    Log.d("결과 : 못가져옴", "null");
+                    return;
+                }
+                Log.d("결과 발표", String.valueOf(reviewResponse.getMessage()));
+                mReviewInterface.validateSuccess(reviewResponse.getMessage(), reviewResponse.getCode(), reviewResponse.getResult().getReviews());
+            }
+
+            @Override
+            public void onFailure(Call<ResponseReview> call, Throwable t) {
                 mReviewInterface.validateFailure("연결실패");
                 Log.d("결과 왜 실패하니", t.toString()+" ");
             }

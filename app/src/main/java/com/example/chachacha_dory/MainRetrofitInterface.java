@@ -93,7 +93,7 @@ public interface MainRetrofitInterface {
 
     //      11. 음식점 메뉴 조회
     @GET("/store/{storenum}/meNu")
-    Call<DefaultResponse> getStoreMenu(
+    Call<ResponseMenu> getStoreMenu(
             @Path("storenum") int storenum
     );
 }

@@ -11,8 +11,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class ReviewListAdapter extends BaseAdapter {
-    private ArrayList<ResponseReview.ReviewResult.Review> reviewList = new ArrayList<>();
-    ReviewListAdapter(){}
+    private ArrayList<ResponseReview.ReviewResult.Review> reviewList;
+    ReviewListAdapter(ArrayList<ResponseReview.ReviewResult.Review> reviews){
+        reviewList= reviews;
+    }
 
     @Override
     public int getCount() {

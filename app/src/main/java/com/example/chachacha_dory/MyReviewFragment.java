@@ -34,7 +34,6 @@ public class MyReviewFragment extends Fragment implements ReviewInterface{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mRootView = (ViewGroup)inflater.inflate(R.layout.fragment_my_review, container, false);
         myReviewList = mRootView.findViewById(R.id.myReviewList);
-//        mAdapter.addMyReview(R.drawable.start_chicken, "교촌치킨", "서울시 관악구", "맛있어요", 4);
         backBtn = mRootView.findViewById(R.id.backBtn2);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,14 +46,13 @@ public class MyReviewFragment extends Fragment implements ReviewInterface{
     }
 
     @Override
-    public void validateSuccess(String text, int code) {
+    public void validateSuccess(String text, int code, ArrayList<ResponseReview.ReviewResult.Review> reviews) {
         Log.d("결과", text);
-    }
+        if(code==202) {
+            mAdapter = new MyReviewListAdapter(reviews);
+            myReviewList.setAdapter(mAdapter);
+        }
 
-    @Override
-    public void validateReview(ArrayList<ResponseReview.ReviewResult.Review> reviews) {
-        mAdapter = new MyReviewListAdapter(reviews);
-        myReviewList.setAdapter(mAdapter);
     }
 
     @Override

@@ -18,7 +18,7 @@ public class ResponseReview {
     ReviewResult result;
 
     public static class ReviewResult{
-        @SerializedName("reviewcount") int count;
+//        @SerializedName("reviewcount") int count;
         @SerializedName("review")
         ArrayList<Review> reviews;
 
@@ -73,9 +73,9 @@ public class ResponseReview {
             }
         }
 
-        public int getCount() {
-            return count;
-        }
+//        public int getCount() {
+//            return count;
+//        }
 
         public ArrayList<Review> getReviews() {
             return reviews;

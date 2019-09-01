@@ -83,6 +83,12 @@
                         android:layout_marginTop="20dp"
                         android:text="메뉴"
                         android:textSize="12sp" />
+
+                    <ListView
+                        android:id="@+id/menuList"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="15dp" />
                 </LinearLayout>
 
                 <LinearLayout

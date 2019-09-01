@@ -12,19 +12,22 @@ import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 
-public class ReviewActivity extends BaseActivity implements ReviewInterface{
-    private ListView mReviewList;
+public class ReviewActivity extends BaseActivity implements ReviewInterface, StoreMenuInterface{
+    private ListView mReviewList, mMenuList;
     private ReviewListAdapter mAdapter;
+    private MenuListAdapter mMenuAdapter;
+    TextView mReviewCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review);
 
-        TextView reviewCount = findViewById(R.id.reviewCount);
+        final ServiceReview serviceReview = new ServiceReview(this);
+        serviceReview.getReview();
 
-        ServiceReview serviceReview = new ServiceReview(this);
-        serviceReview.getMyReview();
+        final ServiceMenu serviceMenu = new ServiceMenu(this);
+        serviceMenu.getStoreMenu();
 
         TabHost host = findViewById(R.id.host);
         host.setup();
@@ -38,31 +41,39 @@ public class ReviewActivity extends BaseActivity implements ReviewInterface{
         spec.setContent(R.id.reviewTab);
         host.addTab(spec);
 
+        mMenuList = findViewById(R.id.menuList);
         mReviewList = findViewById(R.id.reviewList);
-        mAdapter = new ReviewListAdapter();
-        mReviewList.setAdapter(mAdapter);
+        mReviewCount = findViewById(R.id.reviewCount);
 
-//        mAdapter.addReview("김다정", "맛있어요", 3);
-
-        reviewCount.setText("리뷰 "+mAdapter.getCount());
     }
 
     @Override
-    public void validateSuccess(String text, int code) {
-        showCustomToast(text);
-        if(code==202){
-
-        }
-    }
-
-    @Override
-    public void validateReview(ArrayList<ResponseReview.ReviewResult.Review> reviews) {
-
+    public void validateSuccess(String text, int code, ArrayList<ResponseReview.ReviewResult.Review> reviews) {
+        if(code==209){
+            mAdapter = new ReviewListAdapter(reviews);
+            mReviewList.setAdapter(mAdapter);
+            mReviewCount.setText("리뷰 "+mAdapter.getCount());
+        } else
+            showCustomToast(text);
     }
 
     @Override
     public void validateFailure(String message) {
         Log.d("결과", message);
+        showCustomToast(message);
+    }
+
+    @Override
+    public void validateSuccessMenu(String text, int code, ArrayList<ResponseMenu.MenuClass.FoodClass> menus) {
+        if(code==211){
+            mMenuAdapter = new MenuListAdapter(menus);
+            mMenuList.setAdapter(mMenuAdapter);
+        } else
+            showCustomToast(text);
+    }
+
+    @Override
+    public void validateFailureMenu(String message) {
         showCustomToast(message);
     }
 }

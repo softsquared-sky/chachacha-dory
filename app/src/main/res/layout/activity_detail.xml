@@ -12,20 +12,21 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/detailBackBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="onClickBtn"
             app:srcCompat="@drawable/leftbtn" />
 
         <TextView
-            android:id="@+id/textView17"
+            android:id="@+id/detailStoreName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="가게 이름" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/detailSaveStoreBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -37,7 +38,7 @@
         android:layout_height="match_parent">
 
         <View
-            android:id="@+id/imageView22"
+            android:id="@+id/detailStoreImg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/imageView23"
@@ -145,16 +146,18 @@
                 </RelativeLayout>
 
                 <ImageView
-                    android:id="@+id/imageView26"
+                    android:id="@+id/detailPhone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:layout_marginRight="30dp"
+                    android:onClick="onClickBtn"
                     app:srcCompat="@drawable/calling" />
 
             </FrameLayout>
 
             <RelativeLayout
+                android:id="@+id/detailMoreInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -162,6 +165,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="25dp"
                 android:background="@drawable/round_white"
+                android:onClick="onClickBtn"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp">
 

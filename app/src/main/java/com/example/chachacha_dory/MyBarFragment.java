@@ -2,7 +2,6 @@ package com.example.chachacha_dory;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
@@ -12,11 +11,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 
-public class MyBarFragment extends Fragment implements StoreInstance{
+public class MyBarFragment extends Fragment implements StoreInterface {
     private ListView mListView;
     private BarListAdapter mAdapter;
     ViewGroup mRootView;
@@ -45,14 +42,12 @@ public class MyBarFragment extends Fragment implements StoreInstance{
     }
 
     @Override
-    public void validateSuccess(String text, int code) {
+    public void validateSuccess(String text, int code, ArrayList<ResponseStore.StoreResult> stores) {
+        if(code==204){
+            mAdapter = new BarListAdapter(stores);
+            mListView.setAdapter(mAdapter);
+        }
 
-    }
-
-    @Override
-    public void validateStore(ArrayList<ResponseStore.StoreResult> stores) {
-        mAdapter = new BarListAdapter(stores);
-        mListView.setAdapter(mAdapter);
     }
 
     @Override

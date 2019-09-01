@@ -2,15 +2,30 @@ package com.example.chachacha_dory;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.graphics.drawable.Drawable;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.chachacha_dory.R;
 
+import java.io.InputStream;
+import java.net.URL;
+
 @SuppressLint("Registered")
 public class BaseActivity extends AppCompatActivity {
     public ProgressDialog mProgressDialog;
+
+    public Drawable LoadImageFromWebOperations(String url) {
+        try {
+            InputStream is = (InputStream) new URL(url).getContent();
+            Drawable d = Drawable.createFromStream(is, "src name");
+            return d;
+        }catch (Exception e) {
+            System.out.println("Exc="+e);
+            return null;
+        }
+    }
 
     public void showCustomToast(final String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();

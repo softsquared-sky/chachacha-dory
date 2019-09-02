@@ -72,7 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="아직 아이디가 없으신가요?"
-            android:textSize="8sp" />
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/signupTextview"
@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:text="회원가입 하기"
             android:textColor="@color/colorAccent"
-            android:textSize="8sp" />
+            android:textSize="10sp" />
     </LinearLayout>
 
 </LinearLayout>

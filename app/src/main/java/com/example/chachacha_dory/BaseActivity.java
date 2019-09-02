@@ -5,12 +5,10 @@ import android.app.ProgressDialog;
 import android.graphics.drawable.Drawable;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.chachacha_dory.R;
-
 import java.io.InputStream;
 import java.net.URL;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 @SuppressLint("Registered")
 public class BaseActivity extends AppCompatActivity {

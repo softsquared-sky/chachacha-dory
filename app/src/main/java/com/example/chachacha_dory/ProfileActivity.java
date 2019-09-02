@@ -1,7 +1,5 @@
 package com.example.chachacha_dory;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,7 +9,7 @@ import android.widget.TextView;
 
 import java.util.HashMap;
 
-public class ProfileActivity extends BaseActivity implements MainActivityView {
+public class ProfileActivity extends BaseActivity implements MainInterface {
     TextView mNameView, mFinishBtn;
     EditText mWritingView, mEmailView, mPhoneView;
     String mName, mWriting, mEmail, mPhone;
@@ -69,7 +67,7 @@ public class ProfileActivity extends BaseActivity implements MainActivityView {
     }
 
     @Override
-    public void validateSuccessMyPage(DefaultResponse.Result result) {
+    public void validateSuccessMyPage(MainResponse.Result result) {
 
     }
 

@@ -10,8 +10,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_margin="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:text="조수진"
+        android:textColor="@color/black"
         android:textSize="11sp" />
 
     <RatingBar
@@ -36,5 +40,6 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:text="호랑이 막걸리 진짜 짱맛있습니다. 막걸리 종류도 많아서 다양하게 즐길 수 있어요~"
+        android:textColor="@color/black"
         android:textSize="8sp" />
 </RelativeLayout>

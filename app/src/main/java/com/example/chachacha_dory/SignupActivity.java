@@ -1,7 +1,6 @@
 package com.example.chachacha_dory;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,15 +9,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import java.util.HashMap;
 
-public class SignUpActivity extends BaseActivity implements MainActivityView {
+public class SignUpActivity extends BaseActivity implements MainInterface {
     EditText mEditId, mEditPw, mEditPw2, mEditName, mEditPhone, mEditEmail;
     Button mNextBtn, mGender0Btn, mGender1Btn, mAge0Btn, mAge1Btn, mAge2Btn, mAge3Btn;
     String mId, mPw, mPw2, mName, mPhone, mEmail;
     HashMap<String, Object> mHashMap;
     int mSelectedAge, mSelectedGender;
+    ImageView mBackBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class SignUpActivity extends BaseActivity implements MainActivityView {
         mAge1Btn = findViewById(R.id.signUpAge1);
         mAge2Btn = findViewById(R.id.signUpAge2);
         mAge3Btn = findViewById(R.id.signUpAge3);
+        mBackBtn = findViewById(R.id.signUpBackBtn);
 
         mHashMap = new HashMap<>();
 
@@ -60,6 +62,13 @@ public class SignUpActivity extends BaseActivity implements MainActivityView {
                 mHashMap.put("email", mEmail);
 
                 tryPostSignUp();
+            }
+        });
+
+        mBackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
             }
         });
 
@@ -148,7 +157,7 @@ public class SignUpActivity extends BaseActivity implements MainActivityView {
     }
 
     @Override
-    public void validateSuccessMyPage(DefaultResponse.Result result) {
+    public void validateSuccessMyPage(MainResponse.Result result) {
 
     }
 

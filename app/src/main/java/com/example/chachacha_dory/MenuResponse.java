@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-public class ResponseMenu {
+public class MenuResponse {
     @SerializedName("code")
     private int code;
 

@@ -17,7 +17,8 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="n">
-        <activity android:name=".MakeReviewActivity"></activity>
+        <activity android:name=".BeforeSignUpActivity"></activity>
+        <activity android:name=".MakeReviewActivity" />
         <activity android:name=".WelcomeActivity" />
         <activity
             android:name=".SplashActivity"

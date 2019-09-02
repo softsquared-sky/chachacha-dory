@@ -32,6 +32,7 @@
         android:layout_marginBottom="5dp"
         android:layout_toRightOf="@+id/reviewImage"
         android:text="김다정"
+        android:textColor="@color/black"
         android:textSize="11sp" />
 
     <TextView
@@ -42,6 +43,7 @@
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/reviewImage"
         android:text="경기도 성남시 수정구 태평동"
+        android:textColor="@color/black"
         android:textSize="8sp" />
 
     <TextView
@@ -55,6 +57,7 @@
         android:layout_marginBottom="10dp"
         android:layout_toRightOf="@+id/reviewImage"
         android:text="맛도 맛이지만 사장님이 너무 친절하셨어요 콜라서비스도 정말 잘먹었습니다! 앞으로 단골 예약!"
+        android:textColor="@color/black"
         android:textSize="8sp" />
 
     <RatingBar

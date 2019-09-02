@@ -13,8 +13,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class BarListAdapter extends BaseAdapter {
-    private ArrayList<ResponseStore.StoreResult> barList;
-    BarListAdapter(ArrayList<ResponseStore.StoreResult> arrayList){
+    private ArrayList<StoreResponse.StoreResult> barList;
+    BarListAdapter(ArrayList<StoreResponse.StoreResult> arrayList){
         barList = arrayList;
     }
 
@@ -47,7 +47,7 @@ public class BarListAdapter extends BaseAdapter {
         TextView desc =  convertView.findViewById(R.id.descCha);
         RelativeLayout layout = convertView.findViewById(R.id.chaLayout);
         ImageView imageView = convertView.findViewById(R.id.myBarStar);
-        ResponseStore.StoreResult chaClass = barList.get(position);
+        StoreResponse.StoreResult chaClass = barList.get(position);
 
         name.setText(chaClass.getStorename());
         mood.setText(chaClass.getMood());
@@ -58,7 +58,7 @@ public class BarListAdapter extends BaseAdapter {
     }
 
     public void addBar(String name, String mood, String desc, String back){
-        ResponseStore.StoreResult item = new ResponseStore.StoreResult();
+        StoreResponse.StoreResult item = new StoreResponse.StoreResult();
         item.setStorename(name);
         item.setMood(mood);
         item.setWriting(desc);

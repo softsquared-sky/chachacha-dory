@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-public class ResponseReview {
+public class ReviewResponse {
     @SerializedName("code")
     private int code;
 

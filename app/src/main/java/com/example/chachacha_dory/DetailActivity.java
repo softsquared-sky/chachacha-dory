@@ -4,34 +4,41 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
-public class DetailActivity extends BaseActivity implements StoreInterface {
+public class DetailActivity extends BaseActivity implements StoreInterface, MainInterface {
     TextView mStoreName, mStoreNameMain, mStoreMood, mStoreAddr, mStoreTime;
-    ResponseStore.StoreResult detailStore;
+    StoreResponse.StoreResult detailStore;
     View mStoreImage;
     String mStorePhone;
+    ImageView mSelectStar;
+    boolean mSelected;
+    HashMap<String, Object> mHashMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        mHashMap = new HashMap<>();
         mStoreNameMain = findViewById(R.id.detailStoreName);
         mStoreName = findViewById(R.id.detailName);
         mStoreMood = findViewById(R.id.detailMood);
         mStoreAddr = findViewById(R.id.detailAddress);
         mStoreTime = findViewById(R.id.detailTime);
         mStoreImage = findViewById(R.id.detailStoreImg);
+        mSelectStar = findViewById(R.id.detailSaveStoreBtn);
 
-        final ServiceStore serviceStore = new ServiceStore(DetailActivity.this);
-        serviceStore.getStoreDetail();
+        final StoreService storeService = new StoreService(DetailActivity.this);
+        storeService.getStoreDetail();
     }
 
     @Override
-    public void validateSuccess(String text, int code, ArrayList<ResponseStore.StoreResult> stores) {
+    public void validateSuccess(String text, int code, ArrayList<StoreResponse.StoreResult> stores) {
         if(code==207){
             detailStore = stores.get(0);
             mStoreNameMain.setText(detailStore.getStorename());
@@ -43,6 +50,16 @@ public class DetailActivity extends BaseActivity implements StoreInterface {
             mStorePhone = detailStore.getPhone();
         }else
             showCustomToast(text);
+    }
+
+    @Override
+    public void validateSuccess(String text, int code) {
+        showCustomToast(text);
+    }
+
+    @Override
+    public void validateSuccessMyPage(MainResponse.Result result) {
+
     }
 
     @Override
@@ -59,8 +76,25 @@ public class DetailActivity extends BaseActivity implements StoreInterface {
             case R.id.detailPhone:
                 Intent intent2 = new Intent(Intent.ACTION_DIAL, Uri.parse(mStorePhone));
                 startActivity(intent2);
+                break;
             case R.id.detailBackBtn:
                 onBackPressed();
+                break;
+            case R.id.detailSaveStoreBtn:
+                if(mSelected) {
+                    mSelectStar.setImageResource(R.drawable.star2);
+                    mSelected = false;
+                }else {
+                    mSelectStar.setImageResource(R.drawable.ic_select_star);
+                    mSelected = true;
+                }
+                break;
+            case R.id.chaBtn:
+                mHashMap.put("storenum", 1);
+                mHashMap.put("storename", mStoreName.getText().toString());
+                MainService mainService = new MainService(DetailActivity.this);
+                mainService.postMyCha(mHashMap);
+                break;
         }
     }
 

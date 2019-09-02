@@ -10,7 +10,11 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp">
 
         <ImageView
             android:id="@+id/backBtn"
@@ -26,7 +30,8 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_weight="1"
-            android:text="프로필 수정" />
+            android:text="프로필 수정"
+            android:textColor="@color/appbarColor" />
 
         <TextView
             android:id="@+id/finishBtn"
@@ -34,7 +39,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_weight="1"
-            android:text="완료" />
+            android:text="완료"
+            android:textColor="@color/black" />
     </RelativeLayout>
 
     <LinearLayout

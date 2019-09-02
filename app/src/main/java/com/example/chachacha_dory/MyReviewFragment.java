@@ -2,7 +2,6 @@ package com.example.chachacha_dory;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
@@ -35,6 +34,7 @@ public class MyReviewFragment extends Fragment implements ReviewInterface{
         mRootView = (ViewGroup)inflater.inflate(R.layout.fragment_my_review, container, false);
         myReviewList = mRootView.findViewById(R.id.myReviewList);
         backBtn = mRootView.findViewById(R.id.backBtn2);
+
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,11 +42,12 @@ public class MyReviewFragment extends Fragment implements ReviewInterface{
                 ((MainActivity)getActivity()).replaceFragment(myPageFragment);
             }
         });
+
         return mRootView;
     }
 
     @Override
-    public void validateSuccess(String text, int code, ArrayList<ResponseReview.ReviewResult.Review> reviews) {
+    public void validateSuccess(String text, int code, ArrayList<ReviewResponse.ReviewResult.Review> reviews) {
         Log.d("결과", text);
         if(code==202) {
             mAdapter = new MyReviewListAdapter(reviews);

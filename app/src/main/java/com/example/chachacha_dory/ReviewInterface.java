@@ -4,6 +4,6 @@ import java.util.ArrayList;
 
 public interface ReviewInterface {
 
-    void validateSuccess(String text, int code, ArrayList<ResponseReview.ReviewResult.Review> reviews);
+    void validateSuccess(String text, int code, ArrayList<ReviewResponse.ReviewResult.Review> reviews);
     void validateFailure(String message);
 }

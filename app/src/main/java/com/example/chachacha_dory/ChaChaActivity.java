@@ -1,22 +1,32 @@
 package com.example.chachacha_dory;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 
-public class ChaChaActivity extends Activity {
+public class ChaChaActivity extends BaseActivity {
     private ListView mListview;
     private ChaListAdapter mAdapter;
+    ImageView mBackBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chacha);
 
-        mListview = (ListView)findViewById(R.id.chachaList);
+        mListview = findViewById(R.id.chachaList);
+        mBackBtn = findViewById(R.id.chachaBackBtn);
+
         mAdapter = new ChaListAdapter();
         mListview.setAdapter(mAdapter);
 
-//        mAdapter.addCha("교촌치킨", "#활기찬, #자유로운", "시끌벅적한 분위기의 치킨집, 치킨은 교촌치킨이지!", R.drawable.cha_background);
+        mBackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
+
 }

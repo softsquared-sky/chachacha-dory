@@ -27,14 +27,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="가게 이름" />
+            android:text="가게 이름"
+            android:textColor="@color/appbarColor" />
 
         <TextView
             android:id="@+id/makeReviewOk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="작성" />
+            android:text="작성"
+            android:textColor="@color/black" />
     </RelativeLayout>
 
     <LinearLayout

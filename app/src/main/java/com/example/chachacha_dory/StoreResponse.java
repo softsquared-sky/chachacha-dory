@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-public class ResponseStore {
+public class StoreResponse {
     @SerializedName("code")
     private int code;
 
@@ -26,6 +26,7 @@ public class ResponseStore {
         @SerializedName("closstime") String close;
         @SerializedName("imageurl") String img;
         @SerializedName("phone") String phone;
+        @SerializedName("chanum") int num;
 
         public String getStorename() {
             return storename;
@@ -89,6 +90,14 @@ public class ResponseStore {
 
         public void setPhone(String phone) {
             this.phone = phone;
+        }
+
+        public int getNum() {
+            return num;
+        }
+
+        public void setNum(int num) {
+            this.num = num;
         }
     }
 

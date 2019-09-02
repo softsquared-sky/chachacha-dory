@@ -2,20 +2,17 @@ package com.example.chachacha_dory;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class ChaListAdapter extends BaseAdapter {
-    private ArrayList<ResponseStore.StoreResult> chaList = new ArrayList<>();
+    private ArrayList<StoreResponse.StoreResult> chaList = new ArrayList<>();
     ChaListAdapter(){}
 
     @Override
@@ -47,7 +44,7 @@ public class ChaListAdapter extends BaseAdapter {
         TextView desc = convertView.findViewById(R.id.descCha);
         RelativeLayout layout = convertView.findViewById(R.id.chaLayout);
 
-        ResponseStore.StoreResult chaClass = chaList.get(position);
+        StoreResponse.StoreResult chaClass = chaList.get(position);
 
         name.setText(chaClass.getStorename());
         mood.setText(chaClass.getMood());
@@ -58,7 +55,7 @@ public class ChaListAdapter extends BaseAdapter {
     }
 
     public void addCha(String name, String mood, String desc, String back){
-        ResponseStore.StoreResult item = new ResponseStore.StoreResult();
+        StoreResponse.StoreResult item = new StoreResponse.StoreResult();
         item.setStorename(name);
         item.setMood(mood);
         item.setWriting(desc);

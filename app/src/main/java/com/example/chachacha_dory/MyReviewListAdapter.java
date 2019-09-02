@@ -1,8 +1,6 @@
 package com.example.chachacha_dory;
 
 import android.content.Context;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.OvalShape;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +12,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class MyReviewListAdapter extends BaseAdapter {
-    private ArrayList<ResponseReview.ReviewResult.Review> reviewList;
-    MyReviewListAdapter(ArrayList<ResponseReview.ReviewResult.Review> arrayList){
+    private ArrayList<ReviewResponse.ReviewResult.Review> reviewList;
+    MyReviewListAdapter(ArrayList<ReviewResponse.ReviewResult.Review> arrayList){
         reviewList = arrayList;
     }
 
@@ -49,7 +47,7 @@ public class MyReviewListAdapter extends BaseAdapter {
         TextView review = convertView.findViewById(R.id.reviewText);
         RatingBar ratingBar = convertView.findViewById(R.id.reviewStar);
 
-        ResponseReview.ReviewResult.Review reviewClass = reviewList.get(position);
+        ReviewResponse.ReviewResult.Review reviewClass = reviewList.get(position);
 
 //        image.setImageResource(reviewClass.getImage());
 //        image.setBackground(new ShapeDrawable(new OvalShape()));
@@ -62,7 +60,7 @@ public class MyReviewListAdapter extends BaseAdapter {
     }
 
     public void addMyReview(int icon, String name, String addr, String review, int star){
-         ResponseReview.ReviewResult.Review item = new ResponseReview.ReviewResult.Review();
+         ReviewResponse.ReviewResult.Review item = new ReviewResponse.ReviewResult.Review();
 //        item.setImage(icon);
         item.setName(name);
         item.setAddress(addr);

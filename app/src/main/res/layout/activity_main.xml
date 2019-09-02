@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     tools:context=".MainActivity">
 
     <FrameLayout
@@ -20,28 +21,28 @@
         android:layout_alignParentBottom="true">
 
         <!--<com.google.android.material.tabs.TabItem-->
-            <!--android:id="@+id/heartab"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="하트" />-->
+        <!--android:id="@+id/heartab"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="하트" />-->
 
         <!--<com.google.android.material.tabs.TabItem-->
-            <!--android:id="@+id/chatab"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="차차차" />-->
+        <!--android:id="@+id/chatab"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="차차차" />-->
 
         <!--<com.google.android.material.tabs.TabItem-->
-            <!--android:id="@+id/searchtab"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="검색" />-->
+        <!--android:id="@+id/searchtab"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="검색" />-->
 
         <!--<com.google.android.material.tabs.TabItem-->
-            <!--android:id="@+id/mypagetab"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="마이페이지" />-->
+        <!--android:id="@+id/mypagetab"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="마이페이지" />-->
     </com.google.android.material.tabs.TabLayout>
 
 </RelativeLayout>

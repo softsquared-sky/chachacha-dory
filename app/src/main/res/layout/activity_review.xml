@@ -13,7 +13,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/imageView17"
+            android:id="@+id/reviewBack"
             android:layout_width="16dp"
             android:layout_height="16dp"
             android:layout_alignParentLeft="true"
@@ -21,6 +21,7 @@
             android:layout_marginLeft="13dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
+            android:onClick="onClickReview"
             app:srcCompat="@drawable/leftbtn" />
 
         <TextView
@@ -28,12 +29,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:text="식당 이름"
-            android:textSize="12sp" />
+            android:textColor="@color/appbarColor"
+            android:textSize="14sp" />
 
         <ImageView
-            android:id="@+id/imageView18"
+            android:id="@+id/reviewSelected"
             android:layout_width="16dp"
             android:layout_height="16dp"
             android:layout_alignParentRight="true"
@@ -41,7 +46,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="13dp"
             android:layout_marginBottom="10dp"
-            app:srcCompat="@drawable/select" />
+            android:onClick="onClickReview"
+            app:srcCompat="@drawable/ic_select_star" />
     </RelativeLayout>
 
     <TabHost
@@ -136,6 +142,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/roundback_border"
+        android:onClick="onClickReview"
         android:paddingLeft="30dp"
         android:paddingTop="15dp"
         android:paddingRight="30dp"

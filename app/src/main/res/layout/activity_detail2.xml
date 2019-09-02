@@ -4,17 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     android:orientation="vertical"
     tools:context=".DetailActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp">
 
         <ImageView
             android:id="@+id/detail2Back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="onClickBtn"
             app:srcCompat="@drawable/leftbtn" />
 
         <TextView
@@ -22,13 +28,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="가게 이름" />
+            android:text="가게 이름"
+            android:textColor="@color/appbarColor" />
 
         <ImageView
             android:id="@+id/detail2SaveBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:onClick="onClickBtn"
             app:srcCompat="@drawable/star2" />
     </RelativeLayout>
 

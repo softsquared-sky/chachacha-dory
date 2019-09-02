@@ -1,6 +1,7 @@
 package com.example.chachacha_dory;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.view.LayoutInflater;
@@ -11,11 +12,15 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class MyChaListAdapter extends BaseAdapter {
-    private ArrayList<MyChaClass> mChaList = new ArrayList<>();
-    MyChaListAdapter(){}
+    private ArrayList<StoreResponse.StoreResult> mChaList;
+    MyChaListAdapter(ArrayList<StoreResponse.StoreResult> stores){
+        mChaList = stores;
+    }
 
     @Override
     public int getCount() {
@@ -45,19 +50,30 @@ public class MyChaListAdapter extends BaseAdapter {
         ImageView image = convertView.findViewById(R.id.mychaImage);
         TextView name = convertView.findViewById(R.id.mychaName);
 
-        MyChaClass myChaClass = mChaList.get(position);
+        StoreResponse.StoreResult myChaClass = mChaList.get(position);
 
-        image.setImageResource(myChaClass.getImg());
-        name.setText(myChaClass.getName());
+        image.setImageDrawable(LoadImageFromWebOperations(myChaClass.getImg()));
+        name.setText(myChaClass.getStorename());
 
         return convertView;
     }
 
-    public void addMyCha(int icon, String name){
-        MyChaClass item = new MyChaClass();
+    public void addMyCha(String icon, String name){
+        StoreResponse.StoreResult item = new StoreResponse.StoreResult();
         item.setImg(icon);
-        item.setName(name);
+        item.setStorename(name);
 
         mChaList.add(item);
+    }
+
+    public Drawable LoadImageFromWebOperations(String url) {
+        try {
+            InputStream is = (InputStream) new URL(url).getContent();
+            Drawable d = Drawable.createFromStream(is, "src name");
+            return d;
+        }catch (Exception e) {
+            System.out.println("Exc="+e);
+            return null;
+        }
     }
 }

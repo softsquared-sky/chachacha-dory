@@ -2,12 +2,10 @@ package com.example.chachacha_dory;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import static com.example.chachacha_dory.ApplicationClass.sSharedPreferences;
-import android.app.Activity;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -17,13 +15,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class MyPageFragment extends Fragment implements MainActivityView{
+public class MyPageFragment extends Fragment implements MainInterface {
     Button reviewBtn, myBarBtn;
     ViewGroup mRootView;
     boolean mPageSuccess;
-//    DefaultResponse.Result mResult;
+//    MainResponse.Result mResult;
     String mName, mWriting, mEmail, mPhone, mSignUp;
     TextView mNameView, mWritingView, mEmailView, mPhoneView, mSignUpView, mReplaceBtn, mLogOutBtn;
     MyReviewFragment myReviewFragment;
@@ -65,7 +62,7 @@ public class MyPageFragment extends Fragment implements MainActivityView{
     }
 
     @Override
-    public void validateSuccessMyPage(DefaultResponse.Result result) {
+    public void validateSuccessMyPage(MainResponse.Result result) {
 //        Log.d("결과네임1", result.getName());
 //        mResult = result;
         mName = result.getName();

@@ -5,15 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class MenuListAdapter extends BaseAdapter {
-    private ArrayList<ResponseMenu.MenuClass.FoodClass> foodList;
-    MenuListAdapter(ArrayList<ResponseMenu.MenuClass.FoodClass> foods){
-        foodList= foods;
+    private ArrayList<MenuResponse.MenuClass.FoodClass> foodList;
+
+    MenuListAdapter(ArrayList<MenuResponse.MenuClass.FoodClass> foods) {
+        foodList = foods;
     }
 
     @Override
@@ -36,15 +36,15 @@ public class MenuListAdapter extends BaseAdapter {
         final int pos = position;
         final Context context = parent.getContext();
 
-        if(convertView==null){
-            LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.item_menu, parent,false);
+        if (convertView == null) {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.item_menu, parent, false);
         }
 
         TextView menuName = convertView.findViewById(R.id.menuNameText);
         TextView menuPrice = convertView.findViewById(R.id.menuPriceText);
 
-        ResponseMenu.MenuClass.FoodClass foods = foodList.get(position);
+        MenuResponse.MenuClass.FoodClass foods = foodList.get(position);
 
         menuName.setText(foods.getMenuName());
         menuPrice.setText(foods.getMenuPrice());
@@ -52,8 +52,8 @@ public class MenuListAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public void addMenu(String name, String price){
-        ResponseMenu.MenuClass.FoodClass item = new ResponseMenu.MenuClass.FoodClass();
+    public void addMenu(String name, String price) {
+        MenuResponse.MenuClass.FoodClass item = new MenuResponse.MenuClass.FoodClass();
         item.setMenuName(name);
         item.setMenuPrice(price);
 

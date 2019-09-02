@@ -2,7 +2,7 @@ package com.example.chachacha_dory;
 
 import com.google.gson.annotations.SerializedName;
 
-public class DefaultResponse {
+public class MainResponse {
     @SerializedName("code")
     private int code;
 

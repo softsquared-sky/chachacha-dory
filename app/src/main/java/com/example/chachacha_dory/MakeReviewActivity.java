@@ -2,7 +2,6 @@ package com.example.chachacha_dory;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -16,7 +15,7 @@ public class MakeReviewActivity extends AppCompatActivity {
     RatingBar mStar;
     TextView mOkText;
     String mReview;
-    int starNum;
+    int mStarNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +31,7 @@ public class MakeReviewActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mReview = mEditReview.getText().toString();
-                starNum = mStar.getNumStars();
+                mStarNum = mStar.getNumStars();
 
             }
         });

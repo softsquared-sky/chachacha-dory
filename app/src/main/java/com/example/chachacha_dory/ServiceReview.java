@@ -20,10 +20,10 @@ class ServiceReview {
     //6. 마이페이지 리뷰
     void getMyReview(){
         final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
-        mainRetrofitInterface.getMyReview(sSharedPreferences.getString(USER_ID, "")).enqueue(new Callback<ResponseMyReview>() {
+        mainRetrofitInterface.getMyReview(sSharedPreferences.getString(USER_ID, "")).enqueue(new Callback<MyReviewResponse>() {
             @Override
-            public void onResponse(Call<ResponseMyReview> call, Response<ResponseMyReview> response) {
-                final ResponseMyReview reviewResponse = response.body();
+            public void onResponse(Call<MyReviewResponse> call, Response<MyReviewResponse> response) {
+                final MyReviewResponse reviewResponse = response.body();
                 if (reviewResponse == null) {
                     mReviewInterface.validateFailure(reviewResponse.getMessage());
                     Log.d("결과 : 못가져옴", "null");
@@ -34,7 +34,7 @@ class ServiceReview {
             }
 
             @Override
-            public void onFailure(Call<ResponseMyReview> call, Throwable t) {
+            public void onFailure(Call<MyReviewResponse> call, Throwable t) {
                 mReviewInterface.validateFailure("연결실패");
                 Log.d("결과 왜 실패하니", t.toString()+" ");
             }
@@ -43,10 +43,10 @@ class ServiceReview {
 
     void getReview(){
         final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
-        mainRetrofitInterface.getStoreReview(1).enqueue(new Callback<ResponseReview>() {
+        mainRetrofitInterface.getStoreReview(1).enqueue(new Callback<ReviewResponse>() {
             @Override
-            public void onResponse(Call<ResponseReview> call, Response<ResponseReview> response) {
-                final ResponseReview reviewResponse = response.body();
+            public void onResponse(Call<ReviewResponse> call, Response<ReviewResponse> response) {
+                final ReviewResponse reviewResponse = response.body();
                 if (reviewResponse == null) {
                     mReviewInterface.validateFailure(reviewResponse.getMessage());
                     Log.d("결과 : 못가져옴", "null");
@@ -57,7 +57,7 @@ class ServiceReview {
             }
 
             @Override
-            public void onFailure(Call<ResponseReview> call, Throwable t) {
+            public void onFailure(Call<ReviewResponse> call, Throwable t) {
                 mReviewInterface.validateFailure("연결실패");
                 Log.d("결과 왜 실패하니", t.toString()+" ");
             }

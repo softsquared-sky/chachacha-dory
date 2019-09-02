@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-public class ResponseMyReview {
+public class MyReviewResponse {
     @SerializedName("code")
     private int code;
 
@@ -15,7 +15,7 @@ public class ResponseMyReview {
     private boolean isSuccess;
 
     @SerializedName("result")
-    ArrayList<ResponseReview.ReviewResult.Review> reviews;
+    ArrayList<ReviewResponse.ReviewResult.Review> reviews;
 
     public int getCode() {
         return code;
@@ -29,7 +29,7 @@ public class ResponseMyReview {
         return isSuccess;
     }
 
-    public ArrayList<ResponseReview.ReviewResult.Review> getReviews() {
+    public ArrayList<ReviewResponse.ReviewResult.Review> getReviews() {
         return reviews;
     }
 }

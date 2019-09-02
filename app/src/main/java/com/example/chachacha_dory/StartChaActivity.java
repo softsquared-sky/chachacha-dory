@@ -13,7 +13,7 @@ public class StartChaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_cha);
-        nextBtn = (Button)findViewById(R.id.startNextBtn);
+        nextBtn = findViewById(R.id.startNextBtn);
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -21,5 +21,13 @@ public class StartChaActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void onStartChaClick(View v){
+        switch (v.getId()){
+            case R.id.backBtn4:
+                onBackPressed();
+                break;
+        }
     }
 }

@@ -4,15 +4,18 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class Detail2Activity extends BaseActivity implements StoreInterface {
     TextView mStoreName, mStoreNameMain, mStoreMood, mStoreAddr, mStoreTime;
-    ResponseStore.StoreResult detailStore;
+    StoreResponse.StoreResult detailStore;
     View mStoreImage;
     String mStorePhone;
+    boolean mSelected;
+    ImageView mSelectStar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,13 +28,14 @@ public class Detail2Activity extends BaseActivity implements StoreInterface {
         mStoreAddr = findViewById(R.id.detail2Address);
         mStoreTime = findViewById(R.id.detail2Time);
         mStoreImage = findViewById(R.id.detail2Image);
+        mSelectStar = findViewById(R.id.detail2SaveBtn);
 
-        final ServiceStore serviceStore = new ServiceStore(Detail2Activity.this);
-        serviceStore.getStoreDetail();
+        final StoreService storeService = new StoreService(Detail2Activity.this);
+        storeService.getStoreDetail();
     }
 
     @Override
-    public void validateSuccess(String text, int code, ArrayList<ResponseStore.StoreResult> stores) {
+    public void validateSuccess(String text, int code, ArrayList<StoreResponse.StoreResult> stores) {
         if(code==207){
             detailStore = stores.get(0);
             mStoreNameMain.setText(detailStore.getStorename());
@@ -59,8 +63,19 @@ public class Detail2Activity extends BaseActivity implements StoreInterface {
             case R.id.detail2Phone:
                 Intent intent2 = new Intent(Intent.ACTION_DIAL, Uri.parse(mStorePhone));
                 startActivity(intent2);
+                break;
             case R.id.detail2Back:
                 onBackPressed();
+                break;
+            case R.id.detail2SaveBtn:
+                if(mSelected) {
+                    mSelectStar.setImageResource(R.drawable.star2);
+                    mSelected = false;
+                }else {
+                    mSelectStar.setImageResource(R.drawable.ic_select_star);
+                    mSelected = true;
+                }
+                break;
         }
     }
 }

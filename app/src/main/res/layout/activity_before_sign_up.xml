@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     android:orientation="vertical"
-    tools:context=".MyBarActivity">
+    tools:context=".BeforeSignUpActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,26 +17,36 @@
         android:layout_marginBottom="10dp">
 
         <ImageView
-            android:id="@+id/backBtn3"
+            android:id="@+id/beforeSignUpBackBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
+            android:onClick="onClickImageSignUp"
             app:srcCompat="@drawable/leftbtn" />
 
         <TextView
-            android:id="@+id/textView12"
+            android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="저장한 술집"
+            android:layout_centerHorizontal="true"
+            android:text="회원가입"
             android:textColor="@color/appbarColor" />
     </RelativeLayout>
 
-    <ListView
-        android:id="@+id/mybarListView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="20dp" />
+    <ImageView
+        android:id="@+id/signUpBoss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:onClick="onClickImageSignUp"
+        app:srcCompat="@drawable/ic_signup_boss" />
 
+    <ImageView
+        android:id="@+id/signUpGuest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:onClick="onClickImageSignUp"
+        app:srcCompat="@drawable/ic_signup_guest" />
 </LinearLayout>

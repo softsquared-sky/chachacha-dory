@@ -13,12 +13,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:text="치즈 감자전" />
+        android:text="치즈 감자전"
+        android:textColor="@color/black" />
 
     <TextView
         android:id="@+id/menuPriceText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:text="18,000원" />
+        android:text="18,000원"
+        android:textColor="@color/black" />
 </RelativeLayout>

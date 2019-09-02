@@ -22,36 +22,38 @@ public class MyBarFragment extends Fragment implements StoreInterface {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final ServiceStore serviceStore = new ServiceStore(MyBarFragment.this);
-        serviceStore.getBookMark();
+        final StoreService storeService = new StoreService(MyBarFragment.this);
+        storeService.getBookMark();
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mRootView = (ViewGroup)inflater.inflate(R.layout.fragment_my_bar, container, false);
+        mRootView = (ViewGroup) inflater.inflate(R.layout.fragment_my_bar, container, false);
         mListView = mRootView.findViewById(R.id.mybarListView);
         ImageView backBtn = mRootView.findViewById(R.id.backBtn3);
+
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)getActivity()).replaceFragment(new MyPageFragment());
+                ((MainActivity) getActivity()).replaceFragment(new MyPageFragment());
             }
         });
+
         return mRootView;
     }
 
     @Override
-    public void validateSuccess(String text, int code, ArrayList<ResponseStore.StoreResult> stores) {
-        if(code==204){
+    public void validateSuccess(String text, int code, ArrayList<StoreResponse.StoreResult> stores) {
+        if (code == 204) {
             mAdapter = new BarListAdapter(stores);
             mListView.setAdapter(mAdapter);
         }
-
     }
 
     @Override
     public void validateFailure(String message) {
 
     }
+
 }

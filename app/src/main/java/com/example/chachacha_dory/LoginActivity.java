@@ -14,7 +14,7 @@ import android.widget.TextView;
 import java.util.HashMap;
 import static com.example.chachacha_dory.ApplicationClass.sSharedPreferences;
 
-public class LoginActivity extends BaseActivity implements MainActivityView {
+public class LoginActivity extends BaseActivity implements MainInterface {
     EditText mIdEdit, mPwEdit;
     String mId, mPw;
     Button mLoginBtn;
@@ -50,7 +50,7 @@ public class LoginActivity extends BaseActivity implements MainActivityView {
         mSignUpText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+                Intent intent = new Intent(LoginActivity.this, BeforeSignUpActivity.class);
                 startActivity(intent);
             }
         });
@@ -98,7 +98,7 @@ public class LoginActivity extends BaseActivity implements MainActivityView {
     }
 
     @Override
-    public void validateSuccessMyPage(DefaultResponse.Result result) {
+    public void validateSuccessMyPage(MainResponse.Result result) {
 
     }
 

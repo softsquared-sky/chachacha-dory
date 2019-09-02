@@ -1,22 +1,22 @@
 package com.example.chachacha_dory;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.google.android.material.tabs.TabLayout;
-
 import java.util.ArrayList;
 
-public class ReviewActivity extends BaseActivity implements ReviewInterface, StoreMenuInterface{
+public class ReviewActivity extends BaseActivity implements ReviewInterface, MenuInterface {
     private ListView mReviewList, mMenuList;
     private ReviewListAdapter mAdapter;
     private MenuListAdapter mMenuAdapter;
     TextView mReviewCount;
+    ImageView mSelectImage;
+    boolean mSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +26,8 @@ public class ReviewActivity extends BaseActivity implements ReviewInterface, Sto
         final ServiceReview serviceReview = new ServiceReview(this);
         serviceReview.getReview();
 
-        final ServiceMenu serviceMenu = new ServiceMenu(this);
-        serviceMenu.getStoreMenu();
+        final MenuService menuService = new MenuService(this);
+        menuService.getStoreMenu();
 
         TabHost host = findViewById(R.id.host);
         host.setup();
@@ -44,15 +44,16 @@ public class ReviewActivity extends BaseActivity implements ReviewInterface, Sto
         mMenuList = findViewById(R.id.menuList);
         mReviewList = findViewById(R.id.reviewList);
         mReviewCount = findViewById(R.id.reviewCount);
+        mSelectImage = findViewById(R.id.reviewSelected);
 
     }
 
     @Override
-    public void validateSuccess(String text, int code, ArrayList<ResponseReview.ReviewResult.Review> reviews) {
-        if(code==209){
+    public void validateSuccess(String text, int code, ArrayList<ReviewResponse.ReviewResult.Review> reviews) {
+        if (code == 209) {
             mAdapter = new ReviewListAdapter(reviews);
             mReviewList.setAdapter(mAdapter);
-            mReviewCount.setText("리뷰 "+mAdapter.getCount());
+            mReviewCount.setText("리뷰 " + mAdapter.getCount());
         } else
             showCustomToast(text);
     }
@@ -64,8 +65,8 @@ public class ReviewActivity extends BaseActivity implements ReviewInterface, Sto
     }
 
     @Override
-    public void validateSuccessMenu(String text, int code, ArrayList<ResponseMenu.MenuClass.FoodClass> menus) {
-        if(code==211){
+    public void validateSuccessMenu(String text, int code, ArrayList<MenuResponse.MenuClass.FoodClass> menus) {
+        if (code == 211) {
             mMenuAdapter = new MenuListAdapter(menus);
             mMenuList.setAdapter(mMenuAdapter);
         } else
@@ -75,5 +76,24 @@ public class ReviewActivity extends BaseActivity implements ReviewInterface, Sto
     @Override
     public void validateFailureMenu(String message) {
         showCustomToast(message);
+    }
+
+    public void onClickReview(View v) {
+        switch (v.getId()) {
+            case R.id.reviewBack:
+                onBackPressed();
+                break;
+            case R.id.reviewSelected:
+                if (mSelected) {
+                    mSelectImage.setImageResource(R.drawable.star2);
+                    mSelected = false;
+                } else {
+                    mSelectImage.setImageResource(R.drawable.ic_select_star);
+                    mSelected = true;
+                }
+                break;
+            case R.id.chachachaBtn:
+                break;
+        }
     }
 }

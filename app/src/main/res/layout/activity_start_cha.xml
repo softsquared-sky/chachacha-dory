@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
     android:orientation="vertical"
-    tools:context=".StartChaActivity">
+    tools:context=".src.chachacha.StartChaActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

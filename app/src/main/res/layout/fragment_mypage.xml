@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#fff1f3"
     android:orientation="vertical"
-    tools:context=".MyPageFragment">
+    tools:context=".src.mypage.MyPageFragment">
 
     <TextView
         android:id="@+id/textView23"

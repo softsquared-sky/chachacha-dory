@@ -4,9 +4,11 @@
     package="com.example.chachacha_dory">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.DIAL_PHONE" />
 
     <application
-        android:name=".ApplicationClass"
+        android:name=".config.ApplicationClass"
         android:allowBackup="false"
         android:fullBackupContent="false"
         android:icon="@mipmap/ic_launcher"
@@ -17,11 +19,11 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="n">
-        <activity android:name=".BeforeSignUpActivity"></activity>
-        <activity android:name=".MakeReviewActivity" />
-        <activity android:name=".WelcomeActivity" />
+        <activity android:name=".src.signup.BeforeSignUpActivity"/>
+        <activity android:name=".src.detail.MakeReviewActivity" />
+        <activity android:name=".src.signup.WelcomeActivity" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".src.splash.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,16 +31,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ReviewActivity" />
-        <activity android:name=".StartChaActivity" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".Detail2Activity" />
-        <activity android:name=".DetailActivity" />
-        <activity android:name=".MyBarActivity" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".ChaChaActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".src.review.ReviewActivity" />
+        <activity android:name=".src.chachacha.StartChaActivity" />
+        <activity android:name=".src.signup.SignUpActivity" />
+        <activity android:name=".src.detail.Detail2Activity" />
+        <activity android:name=".src.detail.DetailActivity" />
+        <activity android:name=".src.mypage.MyPagePatchActivity" />
+        <activity android:name=".src.login.LoginActivity" />
+        <activity android:name=".src.chachacha.ChaChaActivity" />
+        <activity android:name=".src.mypage.MainActivity" />
     </application>
 
 </manifest>

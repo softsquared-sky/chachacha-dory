@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context=".ReviewActivity">
+    tools:context=".src.review.ReviewActivity">
 
     <RelativeLayout
         android:id="@+id/relayout"
@@ -47,7 +47,7 @@
             android:layout_marginRight="13dp"
             android:layout_marginBottom="10dp"
             android:onClick="onClickReview"
-            app:srcCompat="@drawable/ic_select_star" />
+            app:srcCompat="@drawable/star2" />
     </RelativeLayout>
 
     <TabHost

@@ -26,7 +26,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <LinearLayout
@@ -35,142 +35,157 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginBottom="15dp"
-                android:orientation="vertical">
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/round_border"
-                    android:padding="20dp">
+                    android:paddingLeft="15dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="15dp">
 
-                    <TextView
-                        android:id="@+id/myPageName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="3dp"
-                        android:paddingRight="3dp"
-                        android:text="도리"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textView39"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/myPageName"
-                        android:text="님"
-                        android:textColor="@android:color/black" />
-
-                    <TextView
-                        android:id="@+id/statusMessage"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/myPageName"
-                        android:paddingLeft="3dp"
-                        android:paddingTop="8dp"
-                        android:paddingBottom="8dp"
-                        android:text="상태메세지 적는 칸입니다."
-                        android:textColor="@android:color/black"
-                        android:textSize="10sp" />
-
-                    <TableLayout
-                        android:id="@+id/myPageTable"
+                    <RelativeLayout
                         android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="10dp">
+
+                        <TextView
+                            android:id="@+id/myPageName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="3dp"
+                            android:paddingRight="3dp"
+                            android:text="도리"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textView39"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/myPageName"
+                            android:text="님"
+                            android:textColor="@android:color/black" />
+
+                        <TextView
+                            android:id="@+id/statusMessage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/myPageName"
+                            android:paddingLeft="3dp"
+                            android:paddingTop="2dp"
+                            android:paddingBottom="8dp"
+                            android:text="상태메세지 적는 칸입니다."
+                            android:textColor="@android:color/black"
+                            android:textSize="11sp" />
+
+                        <TableLayout
+                            android:id="@+id/myPageTable"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/statusMessage"
+                            android:layout_marginLeft="3dp">
+
+                            <TableRow
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/textView41"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="10dp"
+                                    android:text="이메일"
+                                    android:textSize="10sp" />
+
+                                <TextView
+                                    android:id="@+id/myPageEmail"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="dory@gmail.com"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="10sp" />
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp">
+
+                                <TextView
+                                    android:id="@+id/textView43"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="10dp"
+                                    android:text="연락처"
+                                    android:textSize="10sp" />
+
+                                <TextView
+                                    android:id="@+id/myPagePhone"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="000-0000-0000"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="10sp" />
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/textView45"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="10dp"
+                                    android:text="가입 일자"
+                                    android:textSize="10sp" />
+
+                                <TextView
+                                    android:id="@+id/myPageJoinDate"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="2019.08.28"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="10sp" />
+                            </TableRow>
+
+                        </TableLayout>
+
+
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:id="@+id/imageView20"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/statusMessage"
-                        android:layout_marginLeft="3dp">
-
-                        <TableRow
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <TextView
-                                android:id="@+id/textView41"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="10dp"
-                                android:text="이메일"
-                                android:textSize="10sp" />
-
-                            <TextView
-                                android:id="@+id/myPageEmail"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:text="dory@gmail.com"
-                                android:textColor="@android:color/black"
-                                android:textSize="10sp" />
-                        </TableRow>
-
-                        <TableRow
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginBottom="5dp">
-
-                            <TextView
-                                android:id="@+id/textView43"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="10dp"
-                                android:text="연락처"
-                                android:textSize="10sp" />
-
-                            <TextView
-                                android:id="@+id/myPagePhone"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:text="000-0000-0000"
-                                android:textColor="@android:color/black"
-                                android:textSize="10sp" />
-                        </TableRow>
-
-                        <TableRow
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <TextView
-                                android:id="@+id/textView45"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="10dp"
-                                android:text="가입 일자"
-                                android:textSize="10sp" />
-
-                            <TextView
-                                android:id="@+id/myPageJoinDate"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:text="2019.08.28"
-                                android:textColor="@android:color/black"
-                                android:textSize="10sp" />
-                        </TableRow>
-
-                    </TableLayout>
+                        android:layout_alignParentEnd="false"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:adjustViewBounds="false"
+                        android:src="@drawable/chachacha_beer" />
 
                     <TextView
                         android:id="@+id/replaceBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
+                        android:layout_marginTop="2dp"
+                        android:paddingRight="2dp"
                         android:text="수정하기"
                         android:textColor="@color/colorAccent"
-                        android:textSize="12sp" />
-
-                    <ImageView
-                        android:id="@+id/imageView20"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignRight="@+id/replaceBtn"
-                        android:layout_alignBottom="@+id/myPageTable"
-                        android:layout_alignParentEnd="false"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentBottom="false"
-                        android:adjustViewBounds="false"
-                        android:src="@drawable/chachacha_beer" />
+                        android:textSize="11sp" />
 
 
                 </RelativeLayout>
@@ -179,16 +194,17 @@
                     android:id="@+id/myReviewBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
                     android:background="@drawable/round_border"
                     android:drawableRight="@drawable/pink_left"
                     android:gravity="left|center_vertical"
-                    android:paddingLeft="20dp"
-                    android:paddingTop="8dp"
-                    android:paddingRight="20dp"
-                    android:paddingBottom="8dp"
-                    android:text="마이 리뷰 보기" />
+                    android:minHeight="0dp"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="25dp"
+                    android:paddingRight="17dp"
+                    android:paddingBottom="25dp"
+                    android:text="마이 리뷰보기" />
 
                 <Button
                     android:id="@+id/myBarBtn"
@@ -197,11 +213,12 @@
                     android:background="@drawable/round_border"
                     android:drawableRight="@drawable/pink_left"
                     android:gravity="left|center_vertical"
-                    android:paddingLeft="20dp"
-                    android:paddingTop="8dp"
-                    android:paddingRight="20dp"
-                    android:paddingBottom="8dp"
-                    android:text="저장한 술집 보기" />
+                    android:minHeight="0dp"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="25dp"
+                    android:paddingRight="17dp"
+                    android:paddingBottom="25dp"
+                    android:text="저장한 술집보기" />
             </LinearLayout>
 
             <TextView
@@ -210,9 +227,9 @@
                 android:layout_height="wrap_content"
                 android:background="#ffff"
                 android:paddingLeft="40dp"
-                android:paddingTop="10dp"
+                android:paddingTop="15dp"
                 android:paddingRight="20dp"
-                android:paddingBottom="10dp"
+                android:paddingBottom="15dp"
                 android:text="About 차차차"
                 android:textColor="@android:color/black" />
 
@@ -220,13 +237,13 @@
                 android:id="@+id/textView26"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:layout_marginBottom="7dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="#ffff"
                 android:paddingLeft="40dp"
-                android:paddingTop="10dp"
+                android:paddingTop="15dp"
                 android:paddingRight="20dp"
-                android:paddingBottom="10dp"
+                android:paddingBottom="15dp"
                 android:text="공지사항"
                 android:textColor="@android:color/black" />
 
@@ -236,9 +253,9 @@
                 android:layout_height="wrap_content"
                 android:background="#ffff"
                 android:paddingLeft="40dp"
-                android:paddingTop="10dp"
+                android:paddingTop="15dp"
                 android:paddingRight="20dp"
-                android:paddingBottom="10dp"
+                android:paddingBottom="15dp"
                 android:text="광고 문의"
                 android:textColor="@android:color/black" />
 
@@ -246,9 +263,10 @@
                 android:id="@+id/logOutBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="5dp"
                 android:gravity="center_horizontal"
-                android:padding="10dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
                 android:text="로그아웃 할게요!"
                 android:textColor="@android:color/black" />
         </LinearLayout>>

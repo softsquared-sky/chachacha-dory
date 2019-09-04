@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.example.chachacha_dory.R;
@@ -20,6 +21,7 @@ public class SearchFragment extends Fragment implements TextWatcher{
     EditText mSearchEdit;
     ListView mSearchList;
     ArrayAdapter<String> mArrayAdapter;
+    LinearLayout mNoSearch;
 
     @Nullable
     @Override
@@ -27,6 +29,8 @@ public class SearchFragment extends Fragment implements TextWatcher{
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_search, container, false);
         mSearchEdit = rootView.findViewById(R.id.searchName);
         mSearchList = rootView.findViewById(R.id.searchList);
+        mNoSearch = rootView.findViewById(R.id.noSearch);
+
         mArrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1);
         return rootView;
     }
@@ -38,6 +42,8 @@ public class SearchFragment extends Fragment implements TextWatcher{
         mSearchList.setAdapter(mArrayAdapter);
         mSearchEdit.addTextChangedListener(this);
         mSearchList.setTextFilterEnabled(true);
+
+
     }
 
     @Override
@@ -48,6 +54,11 @@ public class SearchFragment extends Fragment implements TextWatcher{
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
         mSearchList.setFilterText(mSearchEdit.getText().toString());
+        if(s==null||s.length()==0||s.equals("")){
+            mNoSearch.setVisibility(View.VISIBLE);
+        }else{
+            mNoSearch.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override

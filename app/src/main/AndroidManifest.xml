@@ -36,7 +36,7 @@
         <activity android:name=".src.signup.SignUpActivity" />
         <activity android:name=".src.detail.Detail2Activity" />
         <activity android:name=".src.detail.DetailActivity" />
-        <activity android:name=".src.mypage.MyPagePatchActivity" />
+        <activity android:name=".src.mypage.MyPagePatchFragment" />
         <activity android:name=".src.login.LoginActivity" />
         <activity android:name=".src.chachacha.ChaChaActivity" />
         <activity android:name=".src.mypage.MainActivity" />

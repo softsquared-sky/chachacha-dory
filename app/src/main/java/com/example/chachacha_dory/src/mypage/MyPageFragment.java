@@ -27,11 +27,6 @@ public class MyPageFragment extends BaseFragment implements MyPageActivityView {
     TextView mNameView, mWritingView, mEmailView, mPhoneView, mSignUpView, mReplaceBtn, mLogOutBtn;
     MyPageReviewFragment myPageReviewFragment;
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -93,12 +88,9 @@ public class MyPageFragment extends BaseFragment implements MyPageActivityView {
         mReplaceBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MyPagePatchActivity.class);
-                intent.putExtra("name", mName);
-                intent.putExtra("writing", mWriting);
-                intent.putExtra("email", mEmail);
-                intent.putExtra("phone", mPhone);
-                startActivity(intent);
+
+                MyPagePatchFragment myPagePatchFragment = new MyPagePatchFragment();
+                ((MainActivity)getActivity()).replaceFragment(myPagePatchFragment);
             }
         });
 

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 
 import com.example.chachacha_dory.R;
 import com.example.chachacha_dory.config.BaseFragment;
@@ -22,6 +23,7 @@ public class MyChaFragment extends BaseFragment implements MyChaActivityView {
     GridView mListView;
     MyChaListAdapter mAdapter;
     ArrayList<MyChaResponse.MyChaResult> mMyChaList;
+    LinearLayout mNoMyCha;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class MyChaFragment extends BaseFragment implements MyChaActivityView {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_mycha, container, false);
 
+        mNoMyCha = rootView.findViewById(R.id.noMyCha);
         mListView = rootView.findViewById(R.id.mychaList);
         mMyChaList = new ArrayList<>();
 
@@ -66,6 +69,9 @@ public class MyChaFragment extends BaseFragment implements MyChaActivityView {
             mMyChaList = stores;
             mAdapter = new MyChaListAdapter(mMyChaList);
             mListView.setAdapter(mAdapter);
+            if(mAdapter.getCount()==0){
+                mNoMyCha.setVisibility(View.VISIBLE);
+            }
         }else{
             showCustomToast(text);
         }

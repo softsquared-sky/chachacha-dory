@@ -44,20 +44,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <View
-            android:id="@+id/detail2Image"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/imageView43"
-            android:layout_alignParentTop="true"
-            android:background="#d8d8d8" />
+            android:orientation="vertical">
 
-        <View
-            android:id="@+id/imageView43"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_alignParentBottom="true"
-            android:background="#fff1f3" />
+            <View
+                android:id="@+id/detail2Image"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:background="#d8d8d8" />
+
+            <View
+                android:id="@+id/imageView43"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="#fff1f3" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -73,7 +78,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/round_white"
                     android:paddingLeft="20dp"
@@ -85,11 +90,11 @@
                         android:id="@+id/detail2Name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="7dp"
                         android:text="가게 이름"
                         android:textColor="#000000"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -100,25 +105,24 @@
                         android:layout_marginBottom="5dp"
                         android:text="#분위기"
                         android:textColor="@color/colorAccent"
-                        android:textSize="12sp" />
+                        android:textSize="10sp" />
 
                     <TextView
                         android:id="@+id/detail2Desc"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/detail2Mood"
                         android:layout_marginBottom="15dp"
                         android:text="상세 설명입니다."
                         android:textColor="#000000"
-                        android:textSize="12sp" />
+                        android:textSize="10sp" />
 
                     <ImageView
                         android:id="@+id/Imageaddress2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/detail2Desc"
-                        android:layout_marginTop="3dp"
-                        app:srcCompat="@drawable/address2" />
+                        app:srcCompat="@drawable/address" />
 
                     <ImageView
                         android:id="@+id/imageView47"
@@ -126,7 +130,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/detail2Address"
                         android:layout_centerVertical="false"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="1dp"
                         app:srcCompat="@drawable/time" />
 
                     <TextView
@@ -138,7 +142,7 @@
                         android:layout_marginBottom="10dp"
                         android:layout_toRightOf="@+id/Imageaddress2"
                         android:text="주소 위치 텍스트"
-                        android:textSize="12sp" />
+                        android:textSize="10sp" />
 
                     <TextView
                         android:id="@+id/detail2Time"
@@ -146,9 +150,10 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/detail2Address"
                         android:layout_marginLeft="5dp"
+                        android:layout_marginBottom="6dp"
                         android:layout_toRightOf="@+id/imageView47"
                         android:text="영업시간 적는 칸입니다."
-                        android:textSize="12sp" />
+                        android:textSize="10sp" />
 
                 </RelativeLayout>
 
@@ -157,8 +162,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
-                    android:layout_marginRight="30dp"
-                    app:srcCompat="@drawable/calling" />
+                    android:layout_marginRight="37dp"
+                    app:srcCompat="@drawable/calling2" />
 
             </FrameLayout>
 
@@ -167,30 +172,35 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="7dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="25dp"
                 android:background="@drawable/round_white"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp">
 
-                <TextView
-                    android:id="@+id/textView44"
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="더 많은 정보 보기"
-                    android:textColor="#000000"
-                    android:textSize="12sp" />
+                    android:layout_centerHorizontal="true">
 
-                <ImageView
-                    android:id="@+id/imageView46"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/textView44"
-                    app:srcCompat="@drawable/down" />
+                    <TextView
+                        android:id="@+id/textView44"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="더 많은 정보 보기"
+                        android:textColor="#000000"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:id="@+id/imageView46"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@+id/textView44"
+                        app:srcCompat="@drawable/down" />
+                </RelativeLayout>
 
             </RelativeLayout>
 
@@ -202,7 +212,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="40dp"
             android:background="@drawable/roundback_border"
             android:paddingLeft="40dp"
             android:paddingRight="40dp"

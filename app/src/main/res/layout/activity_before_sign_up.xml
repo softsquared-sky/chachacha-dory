@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    android:orientation="vertical"
     tools:context=".src.signup.BeforeSignUpActivity">
 
     <RelativeLayout
@@ -32,24 +31,33 @@
             android:textColor="@color/appbarColor" />
     </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/signUpBoss"
-        android:layout_width="150dp"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="20dp"
-        android:onClick="onClickImageSignUp"
-        app:srcCompat="@drawable/ic_signup_boss" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="60dp"
+        android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/signUpGuest"
-        android:layout_width="150dp"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="40dp"
-        android:onClick="onClickImageSignUp"
-        app:srcCompat="@drawable/ic_signup_guest" />
-</LinearLayout>
+        <ImageView
+            android:id="@+id/signUpBoss"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="1dp"
+            android:layout_marginBottom="25dp"
+            android:layout_weight="1"
+            android:onClick="onClickImageSignUp"
+            app:srcCompat="@drawable/ic_signup_boss" />
+
+        <ImageView
+            android:id="@+id/signUpGuest"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="1dp"
+            android:layout_weight="1"
+            android:onClick="onClickImageSignUp"
+            app:srcCompat="@drawable/ic_signup_guest" />
+    </LinearLayout>
+
+</RelativeLayout>

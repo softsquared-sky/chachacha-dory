@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.example.chachacha_dory.config.BaseFragment;
@@ -21,11 +22,7 @@ public class MyPageReviewFragment extends BaseFragment implements MyPageReviewAc
     private MyPageReviewListAdapter mAdapter;
     ViewGroup mRootView;
     ImageView backBtn;
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+    LinearLayout mNoReviewLayout;
 
     @Nullable
     @Override
@@ -33,6 +30,7 @@ public class MyPageReviewFragment extends BaseFragment implements MyPageReviewAc
         mRootView = (ViewGroup)inflater.inflate(R.layout.fragment_my_review, container, false);
         myReviewList = mRootView.findViewById(R.id.myReviewList);
         backBtn = mRootView.findViewById(R.id.backBtn2);
+        mNoReviewLayout = mRootView.findViewById(R.id.noReview);
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +57,9 @@ public class MyPageReviewFragment extends BaseFragment implements MyPageReviewAc
         if(isSuccess) {
             mAdapter = new MyPageReviewListAdapter(reviews);
             myReviewList.setAdapter(mAdapter);
+            if(mAdapter.getCount()==0){
+                mNoReviewLayout.setVisibility(View.VISIBLE);
+            }
         }else {
             showCustomToast(text);
         }

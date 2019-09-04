@@ -14,7 +14,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="10dp"
         android:layout_marginRight="16dp"
-        app:srcCompat="@drawable/select" />
+        app:srcCompat="@drawable/ic_select_star" />
 
     <TextView
         android:id="@+id/nameCha"

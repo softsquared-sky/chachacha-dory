@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.example.chachacha_dory.src.mypage.MainActivity;
@@ -21,12 +22,14 @@ public class MyBarFragment extends BaseFragment implements MyBarFragmentView {
     private ListView mListView;
     private MyBarListAdapter mAdapter;
     ViewGroup mRootView;
+    LinearLayout mNoMyBar;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mRootView = (ViewGroup) inflater.inflate(R.layout.fragment_my_bar, container, false);
         mListView = mRootView.findViewById(R.id.mybarListView);
+        mNoMyBar = mRootView.findViewById(R.id.noMyBar);
         ImageView backBtn = mRootView.findViewById(R.id.backBtn3);
 
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -42,6 +45,7 @@ public class MyBarFragment extends BaseFragment implements MyBarFragmentView {
     }
 
     public void tryGetBookMark(){
+        showProgressDialog();
         final MyBarService myChaService = new MyBarService(this);
         myChaService.getBookMark();
     }
@@ -52,6 +56,9 @@ public class MyBarFragment extends BaseFragment implements MyBarFragmentView {
         if(isSuccess){
             mAdapter = new MyBarListAdapter(stores);
             mListView.setAdapter(mAdapter);
+            if(mAdapter.getCount()==0){
+                mNoMyBar.setVisibility(View.VISIBLE);
+            }
         }else{
             showCustomToast(text);
         }

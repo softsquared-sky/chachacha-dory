@@ -1,92 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    android:orientation="vertical"
     tools:context=".src.login.LoginActivity">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="90dp"
-        android:layout_marginBottom="80dp"
-        app:srcCompat="@drawable/chachachalogo" />
-
-    <EditText
-        android:id="@+id/idEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/border_bottoml"
-        android:ems="12"
-        android:hint="아이디"
-        android:inputType="textPersonName"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/btncolor"
-        android:textSize="14sp" />
-
-    <EditText
-        android:id="@+id/pwEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/border_bottoml"
-        android:ems="12"
-        android:hint="비밀번호"
-        android:inputType="textPassword"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/btncolor"
-        android:textSize="14sp" />
-
-    <Switch
-        android:id="@+id/saveLoginSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="로그인 상태를 유지하시겠습니까?    "
-        android:textColor="@color/btncolor"
-        android:textSize="8sp" />
-
-    <Button
-        android:id="@+id/loginBtn"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="15dp"
-        android:background="@color/colorAccent"
-        android:text="로그인"
-        android:textColor="#ffff" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView2"
+        <ImageView
+            android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="아직 아이디가 없으신가요?"
-            android:textSize="10sp" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="60dp"
+            app:srcCompat="@drawable/chachachalogo" />
 
-        <TextView
-            android:id="@+id/signupTextview"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/idEditText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="회원가입 하기"
-            android:textColor="@color/colorAccent"
-            android:textSize="10sp" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/border_bottoml"
+            android:ems="11"
+            android:hint="아이디"
+            android:inputType="textPersonName"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            android:textColor="@color/btncolor"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/pwEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/border_bottoml"
+            android:ems="11"
+            android:hint="비밀번호"
+            android:inputType="textPassword"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            android:textColor="@color/btncolor"
+            android:textSize="14sp" />
+
+        <Switch
+            android:id="@+id/saveLoginSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="1dp"
+            android:text="로그인 상태를 유지하시겠습니까?"
+            android:textColor="@color/btncolor"
+            android:textSize="10sp"
+            android:thumb="@drawable/switch_thumb" />
+
+        <Button
+            android:id="@+id/loginBtn"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/btn_pink_round"
+            android:minHeight="0dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="로그인"
+            android:textColor="#ffff" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="3dp"
+                android:text="아직 아이디가 없으신가요?"
+                android:textColor="@color/btncolor"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/signupTextview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="회원가입 하기"
+                android:textColor="@color/colorAccent"
+                android:textSize="10sp" />
+        </LinearLayout>
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

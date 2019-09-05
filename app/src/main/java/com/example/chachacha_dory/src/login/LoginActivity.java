@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -42,13 +44,19 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
             startActivity(intent);
             finish();
         }
-
+        RelativeLayout loginLayout = findViewById(R.id.loginLayout);
+        LinearLayout loginView = findViewById(R.id.loginView);
         mSaveLoginSwitch = findViewById(R.id.saveLoginSwitch);
         mIdEdit = findViewById(R.id.idEditText);
         mPwEdit = findViewById(R.id.pwEditText);
         mLoginBtn = findViewById(R.id.loginBtn);
         mSignUpText = findViewById(R.id.signupTextview);
 
+        loginLayout.setOnClickListener(keyboardClick);
+        loginView.setOnClickListener(keyboardClick);
+        mLoginBtn.setOnClickListener(keyboardClick);
+        mSaveLoginSwitch.setOnClickListener(keyboardClick);
+        mSignUpText.setOnClickListener(keyboardClick);
 
         mSignUpText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,4 +112,12 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
         Log.d("결과", message);
         showCustomToast(message);
     }
+
+    View.OnClickListener keyboardClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            hideKeyboard(mIdEdit);
+            hideKeyboard(mPwEdit);
+        }
+    };
 }

@@ -5,13 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.chachacha_dory.R;
 import com.example.chachacha_dory.config.BaseActivity;
+import com.example.chachacha_dory.src.MapFragment;
 import com.example.chachacha_dory.src.mychachacha.MyChaFragment;
 import com.example.chachacha_dory.src.chachacha.StartChaActivity;
-import com.example.chachacha_dory.src.chachacha.StartChaFragment;
 import com.example.chachacha_dory.src.search.SearchFragment;
 import com.google.android.material.tabs.TabLayout;
 
@@ -20,13 +22,14 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 public class MainActivity extends BaseActivity {
-    MyPageFragment myPageFragment;
-    SearchFragment searchFragment;
-    MyChaFragment myChaFragment;
-    StartChaFragment startChaFragment;
+    MyPageFragment mMyPageFragment;
+    SearchFragment mSearchFragment;
+    MyChaFragment mMyChaFragment;
+    MapFragment mMapFragment;
     MyPageReviewFragment mMyPageReviewFragment;
     Context mContext;
-    TabLayout tabs;
+    TabLayout mTabs;
+    Fragment mSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,52 +37,83 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         mContext = getApplicationContext();
-        myPageFragment = new MyPageFragment();
-        searchFragment = new SearchFragment();
-        myChaFragment = new MyChaFragment();
-        startChaFragment = new StartChaFragment();
+        mMapFragment = new MapFragment();
+        mMyPageFragment = new MyPageFragment();
+        mSearchFragment = new SearchFragment();
+        mMyChaFragment = new MyChaFragment();
         mMyPageReviewFragment = new MyPageReviewFragment();
-//        getSupportFragmentManager().beginTransaction().replace(R.id.contaner, myPageFragment).commit();
+//        getSupportFragmentManager().beginTransaction().replace(R.id.contaner, mMyPageFragment).commit();
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.contaner, myPageFragment).commit();
+//        fragmentTransaction.add(R.id.contaner, mMyPageFragment).commit();
+        fragmentTransaction.replace(R.id.container, mMyPageFragment).commit();
 
-        tabs = findViewById(R.id.tabLayout);
+        mTabs = findViewById(R.id.tabLayout);
 
-        tabs.addTab(tabs.newTab().setCustomView(createTabView(R.drawable.tab_heart)));
-        tabs.addTab(tabs.newTab().setCustomView(createTabView(R.drawable.tab_start)));
-        tabs.addTab(tabs.newTab().setCustomView(createTabView(R.drawable.tab_message)));
-        tabs.addTab(tabs.newTab().setCustomView(createTabView(R.drawable.tab_mypage)));
+        mTabs.addTab(mTabs.newTab().setIcon(R.drawable.tab_map));
+        mTabs.addTab(mTabs.newTab().setIcon(R.drawable.tab_heart));
+        mTabs.addTab(mTabs.newTab().setIcon(R.drawable.tab_start));
+        mTabs.addTab(mTabs.newTab().setIcon(R.drawable.tab_message));
+        mTabs.addTab(mTabs.newTab().setIcon(R.drawable.tab_mypage));
 
-        tabs.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
+        mSelected = mMyPageFragment;
+        mTabs.getTabAt(4).setIcon(R.drawable.tab_mypage_selected);
+
+        mTabs.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+                mTabs.getTabAt(4).setIcon(R.drawable.tab_mypage);
                 int position = tab.getPosition();
-                Fragment selected = null;
                 switch (position) {
                     case 0:
-                        selected = myChaFragment;
+                        mSelected = mMapFragment;
+                        mTabs.getTabAt(0).setIcon(R.drawable.tab_map_selected);
                         break;
                     case 1:
-                        selected = startChaFragment;
+                        mSelected = mMyChaFragment;
+                        mTabs.getTabAt(1).setIcon(R.drawable.tab_heart_select);
+                        break;
+                    case 2:
                         Intent intent = new Intent(MainActivity.this, StartChaActivity.class);
                         startActivity(intent);
                         break;
-                    case 2:
-                        selected = searchFragment;
-                        break;
                     case 3:
-                        selected = myPageFragment;
+                        mSelected = mSearchFragment;
+                        mTabs.getTabAt(3).setIcon(R.drawable.tab_search_selected);
+                        break;
+                    case 4:
+                        mSelected = mMyPageFragment;
+                        mTabs.getTabAt(4).setIcon(R.drawable.tab_mypage_selected);
                         break;
                     default:
                         break;
                 }
-                MainActivity.this.getSupportFragmentManager().beginTransaction().replace(R.id.contaner, selected).commit();
+                MainActivity.this.getSupportFragmentManager().beginTransaction().replace(R.id.container, mSelected).commit();
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
+                int position = tab.getPosition();
+                switch (position) {
+                    case 0:
+                        mTabs.getTabAt(0).setIcon(R.drawable.tab_map);
+                        break;
+                    case 1:
+                        mTabs.getTabAt(1).setIcon(R.drawable.tab_heart);
+                        break;
+                    case 2:
+                        Intent intent = new Intent(MainActivity.this, StartChaActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 3:
+                        mTabs.getTabAt(3).setIcon(R.drawable.tab_message);
+                        break;
+                    case 4:
+                        mTabs.getTabAt(4).setIcon(R.drawable.tab_mypage);
+                        break;
+                    default:
+                        break;
+                }
             }
 
             @Override
@@ -92,7 +126,7 @@ public class MainActivity extends BaseActivity {
     public void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.contaner, fragment).commit();
+        fragmentTransaction.replace(R.id.container, fragment).commit();
     }
 
     private View createTabView(int tabImage) {
@@ -100,6 +134,12 @@ public class MainActivity extends BaseActivity {
         ImageView iconImage = tabView.findViewById(R.id.iconImage);
         iconImage.setImageResource(tabImage);
         return tabView;
+    }
+
+    public void hideKeyboard(EditText et)
+    {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(et.getWindowToken(), 0);
     }
 
     @Override

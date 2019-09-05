@@ -3,11 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorPrimaryDark"
     tools:context=".src.mypage.MainActivity">
 
     <FrameLayout
-        android:id="@+id/contaner"
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/tabLayout">
@@ -18,7 +19,14 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:tabIndicatorColor="@color/colorPrimaryDark"
         android:layout_alignParentBottom="true">
+
+        <!--<com.google.android.material.tabs.TabItem-->
+        <!--android:id="@+id/maptab"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="맵" />-->
 
         <!--<com.google.android.material.tabs.TabItem-->
         <!--android:id="@+id/heartab"-->

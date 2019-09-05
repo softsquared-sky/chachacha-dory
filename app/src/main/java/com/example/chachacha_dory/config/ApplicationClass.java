@@ -54,8 +54,8 @@ public class ApplicationClass extends Application {
     public static Retrofit getRetrofit() {
         if (retrofit == null) {
             OkHttpClient client = new OkHttpClient.Builder()
-                    .readTimeout(5000, TimeUnit.MILLISECONDS)
-                    .connectTimeout(5000, TimeUnit.MILLISECONDS)
+                    .readTimeout(30, TimeUnit.SECONDS)
+                    .connectTimeout(30, TimeUnit.SECONDS)
                     .addNetworkInterceptor(new XAccessTokenInterceptor()) // JWT 자동 헤더 전송
                     .build();
 

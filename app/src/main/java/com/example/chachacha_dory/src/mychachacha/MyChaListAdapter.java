@@ -27,7 +27,7 @@ public class MyChaListAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public MyChaResponse.MyChaResult getItem(int position) {
         return mChaList.get(position);
     }
 

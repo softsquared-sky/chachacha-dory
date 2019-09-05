@@ -20,7 +20,7 @@ public class MyChaResponse {
     public static class MyChaResult{
         @SerializedName("storename") String storename;
         @SerializedName("imageurl") String img;
-        @SerializedName("phone") String phone;
+        @SerializedName("chanum") int chaNum;
 
         public String getStorename() {
             return storename;
@@ -30,8 +30,8 @@ public class MyChaResponse {
             return img;
         }
 
-        public String getPhone() {
-            return phone;
+        public int getChaNum() {
+            return chaNum;
         }
 
         public void setStorename(String storename) {
@@ -42,8 +42,8 @@ public class MyChaResponse {
             this.img = img;
         }
 
-        public void setPhone(String phone) {
-            this.phone = phone;
+        public void setChaNum(int chaNum) {
+            this.chaNum = chaNum;
         }
 
     }

@@ -222,7 +222,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView24"
+                android:id="@+id/aboutCha"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#ffff"
@@ -234,7 +234,7 @@
                 android:textColor="@android:color/black" />
 
             <TextView
-                android:id="@+id/textView26"
+                android:id="@+id/notice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -248,7 +248,7 @@
                 android:textColor="@android:color/black" />
 
             <TextView
-                android:id="@+id/textView27"
+                android:id="@+id/advertisement"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#ffff"

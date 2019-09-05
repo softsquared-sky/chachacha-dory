@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.example.chachacha_dory.config.BaseActivity;
 import com.example.chachacha_dory.R;
@@ -38,7 +39,8 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
         mAge2Btn = findViewById(R.id.signUpAge2);
         mAge3Btn = findViewById(R.id.signUpAge3);
         mBackBtn = findViewById(R.id.signUpBackBtn);
-
+        LinearLayout signUpLayout = findViewById(R.id.signUpLayout);
+        LinearLayout signUpView = findViewById(R.id.signUpView);
 
         Button nextBtn = findViewById(R.id.signupNextBtn);
         nextBtn.setOnClickListener(new View.OnClickListener() {
@@ -48,13 +50,16 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
             }
         });
 
+        signUpLayout.setOnClickListener(keyboardClick);
+        signUpView.setOnClickListener(keyboardClick);
+        nextBtn.setOnClickListener(keyboardClick);
+
         mBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
         });
-
     }
 
     private void tryPostSignUp(){
@@ -78,6 +83,12 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
     }
 
     public void clickAge(View v){
+        hideKeyboard(mEditEmail);
+        hideKeyboard(mEditId);
+        hideKeyboard(mEditName);
+        hideKeyboard(mEditPhone);
+        hideKeyboard(mEditPw);
+        hideKeyboard(mEditPw2);
         clearAgeBtn();
         switch (v.getId()){
             case R.id.signUpAge0:
@@ -104,6 +115,12 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
     }
 
     public void clickGender(View v){
+        hideKeyboard(mEditEmail);
+        hideKeyboard(mEditId);
+        hideKeyboard(mEditName);
+        hideKeyboard(mEditPhone);
+        hideKeyboard(mEditPw);
+        hideKeyboard(mEditPw2);
         switch (v.getId()){
             case R.id.signUpGender0:
                 mGender1Btn.setBackgroundResource(R.drawable.round_border);
@@ -151,4 +168,16 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
         Log.d("메시지내용", message);
         showCustomToast(message);
     }
+
+    View.OnClickListener keyboardClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            hideKeyboard(mEditEmail);
+            hideKeyboard(mEditId);
+            hideKeyboard(mEditName);
+            hideKeyboard(mEditPhone);
+            hideKeyboard(mEditPw);
+            hideKeyboard(mEditPw2);
+        }
+    };
 }

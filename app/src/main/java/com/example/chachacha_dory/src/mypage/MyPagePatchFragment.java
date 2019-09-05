@@ -1,6 +1,5 @@
 package com.example.chachacha_dory.src.mypage;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.Scroller;
 import android.widget.TextView;
 
 import com.example.chachacha_dory.R;
@@ -31,6 +33,11 @@ public class MyPagePatchFragment extends BaseFragment implements MyPageActivityV
         mEmailView = rootView.findViewById(R.id.profileEmail);
         mPhoneView = rootView.findViewById(R.id.profilePhone);
         mFinishBtn = rootView.findViewById(R.id.finishBtn);
+        LinearLayout profile = rootView.findViewById(R.id.profileLayout);
+        LinearLayout scrollView = rootView.findViewById(R.id.profileScroll);
+        scrollView.setOnClickListener(keyboardClickListener);
+        profile.setOnClickListener(keyboardClickListener);
+        mFinishBtn.setOnClickListener(keyboardClickListener);
 
         tryGetMyPage();
 
@@ -102,4 +109,13 @@ public class MyPagePatchFragment extends BaseFragment implements MyPageActivityV
         Log.d("메시지내용", message);
         showCustomToast(message);
     }
+
+    View.OnClickListener keyboardClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            ((MainActivity)getActivity()).hideKeyboard(mWritingView);
+            ((MainActivity)getActivity()).hideKeyboard(mEmailView);
+            ((MainActivity)getActivity()).hideKeyboard(mPhoneView);
+        }
+    };
 }

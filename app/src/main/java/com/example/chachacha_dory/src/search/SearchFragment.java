@@ -6,12 +6,16 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.chachacha_dory.R;
+import com.example.chachacha_dory.src.mypage.MainActivity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,7 +25,8 @@ public class SearchFragment extends Fragment implements TextWatcher{
     EditText mSearchEdit;
     ListView mSearchList;
     ArrayAdapter<String> mArrayAdapter;
-    LinearLayout mNoSearch;
+    RelativeLayout mNoSearch;
+    TextView mSearchBtn;
 
     @Nullable
     @Override
@@ -30,6 +35,23 @@ public class SearchFragment extends Fragment implements TextWatcher{
         mSearchEdit = rootView.findViewById(R.id.searchName);
         mSearchList = rootView.findViewById(R.id.searchList);
         mNoSearch = rootView.findViewById(R.id.noSearch);
+        mSearchBtn = rootView.findViewById(R.id.searchOkBtn);
+
+        LinearLayout searchLayout = rootView.findViewById(R.id.searchLayout);
+        RelativeLayout searchView = rootView.findViewById(R.id.searchView);
+
+        searchLayout.setOnClickListener(keyboardClick);
+        searchView.setOnClickListener(keyboardClick);
+        mSearchBtn.setOnClickListener(keyboardClick);
+        mNoSearch.setOnClickListener(keyboardClick);
+        mSearchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ((MainActivity)getActivity()).hideKeyboard(mSearchEdit);
+
+
+            }
+        });
 
         mArrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1);
         return rootView;
@@ -42,8 +64,6 @@ public class SearchFragment extends Fragment implements TextWatcher{
         mSearchList.setAdapter(mArrayAdapter);
         mSearchEdit.addTextChangedListener(this);
         mSearchList.setTextFilterEnabled(true);
-
-
     }
 
     @Override
@@ -67,4 +87,11 @@ public class SearchFragment extends Fragment implements TextWatcher{
             mSearchList.clearTextFilter();
         }
     }
+
+    View.OnClickListener keyboardClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            ((MainActivity)getActivity()).hideKeyboard(mSearchEdit);
+        }
+    };
 }

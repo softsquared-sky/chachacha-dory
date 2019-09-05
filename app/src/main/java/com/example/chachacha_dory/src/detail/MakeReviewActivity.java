@@ -1,17 +1,17 @@
 package com.example.chachacha_dory.src.detail;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.chachacha_dory.R;
+import com.example.chachacha_dory.config.BaseActivity;
 
-public class MakeReviewActivity extends AppCompatActivity {
+public class MakeReviewActivity extends BaseActivity {
     ImageView mBackBtn;
     EditText mEditReview;
     RatingBar mStar;
@@ -28,15 +28,23 @@ public class MakeReviewActivity extends AppCompatActivity {
         mEditReview = findViewById(R.id.makeReviewInput);
         mStar = findViewById(R.id.makeReviewStar);
         mOkText = findViewById(R.id.makeReviewOk);
+        LinearLayout makeReview = findViewById(R.id.makeReivew);
+        LinearLayout makeReviewLayout = findViewById(R.id.makeReviewLayout);
+        LinearLayout makeReviewView = findViewById(R.id.makeReivewView);
 
         mOkText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mReview = mEditReview.getText().toString();
                 mStarNum = mStar.getNumStars();
-
             }
         });
+
+        makeReview.setOnClickListener(keyboardClick);
+        makeReviewLayout.setOnClickListener(keyboardClick);
+        makeReviewView.setOnClickListener(keyboardClick);
+        mOkText.setOnClickListener(keyboardClick);
+        mStar.setOnClickListener(keyboardClick);
 
         mBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,4 +53,11 @@ public class MakeReviewActivity extends AppCompatActivity {
             }
         });
     }
+
+    View.OnClickListener keyboardClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            hideKeyboard(mEditReview);
+        }
+    };
 }

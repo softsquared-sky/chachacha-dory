@@ -1,8 +1,8 @@
-package com.example.chachacha_dory.src.login;
+package com.example.chachacha_dory.src.mychachacha;
 
 import com.google.gson.annotations.SerializedName;
 
-public class LoginResponse {
+public class DeleteMyChaResponse {
     @SerializedName("code")
     private int code;
 
@@ -11,18 +11,6 @@ public class LoginResponse {
 
     @SerializedName("isSuccess")
     private boolean isSuccess;
-
-    @SerializedName("result")
-    LoginResult result;
-
-    public static class LoginResult {
-        @SerializedName("jwt")
-        String jwt;
-
-        public String getJwt() {
-            return jwt;
-        }
-    }
 
     public int getCode() {
         return code;
@@ -34,9 +22,5 @@ public class LoginResponse {
 
     public boolean isSuccess() {
         return isSuccess;
-    }
-
-    public LoginResult getResult() {
-        return result;
     }
 }

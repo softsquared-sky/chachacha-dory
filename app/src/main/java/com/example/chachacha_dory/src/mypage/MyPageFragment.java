@@ -2,12 +2,15 @@ package com.example.chachacha_dory.src.mypage;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 
 import static com.example.chachacha_dory.config.ApplicationClass.sSharedPreferences;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.TestLooperManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +44,31 @@ public class MyPageFragment extends BaseFragment implements MyPageActivityView {
         mSignUpView = mRootView.findViewById(R.id.myPageJoinDate);
         mReplaceBtn = mRootView.findViewById(R.id.replaceBtn);
         mLogOutBtn = mRootView.findViewById(R.id.logOutBtn);
+
+        TextView aboutCha = mRootView.findViewById(R.id.aboutCha);
+        TextView notice = mRootView.findViewById(R.id.notice);
+        TextView advertisement = mRootView.findViewById(R.id.advertisement);
+
+        aboutCha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCustomToast("아직 준비중이애오");
+            }
+        });
+
+        notice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCustomToast("아직 준비중이애오");
+            }
+        });
+
+        advertisement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCustomToast("아직 준비중이애오");
+            }
+        });
 
         myPageReviewFragment = new MyPageReviewFragment();
         tryGetMyPage();
@@ -88,7 +116,6 @@ public class MyPageFragment extends BaseFragment implements MyPageActivityView {
         mReplaceBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 MyPagePatchFragment myPagePatchFragment = new MyPagePatchFragment();
                 ((MainActivity)getActivity()).replaceFragment(myPagePatchFragment);
             }
@@ -112,13 +139,43 @@ public class MyPageFragment extends BaseFragment implements MyPageActivityView {
         mLogOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor editor = sSharedPreferences.edit();
-                editor.putBoolean("isSaved", false);
-                editor.commit();
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
 
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                // 제목셋팅
+                alertDialogBuilder.setTitle("로그아웃");
+
+                // AlertDialog 셋팅
+                alertDialogBuilder
+                        .setMessage("정말 로그아웃 하시겠습니까?")
+                        .setCancelable(false)
+                        .setPositiveButton("네",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        SharedPreferences.Editor editor = sSharedPreferences.edit();
+                                        editor.putBoolean("isSaved", false);
+                                        editor.commit();
+
+                                        Intent intent = new Intent(getActivity(), LoginActivity.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                                        startActivity(intent);
+                                    }
+                                })
+                        .setNegativeButton("아니요",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(
+                                            DialogInterface dialog, int id) {
+                                        // 다이얼로그를 취소한다
+                                        dialog.cancel();
+                                    }
+                                });
+
+                // 다이얼로그 생성
+                AlertDialog alertDialog = alertDialogBuilder.create();
+
+                // 다이얼로그 보여주기
+                alertDialog.show();
+
             }
         });
     }

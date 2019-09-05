@@ -21,8 +21,7 @@ public class XAccessTokenInterceptor implements Interceptor {
         if (jwtToken != null) {
             builder.addHeader("x-access-token", jwtToken);
         }
-//        final String jwtToken = X_ACCESS_TOKEN;
-//        builder.addHeader("x-access-token", jwtToken);
+//        builder.addHeader("Content-Type", "application/json");
 
         return chain.proceed(builder.build());
     }

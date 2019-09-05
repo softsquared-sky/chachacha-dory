@@ -40,7 +40,7 @@ public class LoginService {
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
-                mLoginActivityView.validateFailure("연결실패");
+                mLoginActivityView.validateFailure(t.toString()+"");
             }
         });
     }

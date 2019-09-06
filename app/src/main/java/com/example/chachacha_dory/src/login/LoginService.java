@@ -35,7 +35,12 @@ public class LoginService {
                     return;
                 }
                 Log.d("결과 발표", String.valueOf(loginResponse.getMessage()));
-                mLoginActivityView.validateSuccess(loginResponse.getMessage(), loginResponse.isSuccess(), loginResponse.getResult().getJwt());
+                if(loginResponse.isSuccess()){
+                    mLoginActivityView.validateSuccess(loginResponse.getMessage(), loginResponse.isSuccess(), loginResponse.getResult().getJwt());
+                }else {
+                    mLoginActivityView.validateSuccess(loginResponse.getMessage(), loginResponse.isSuccess(), ".");
+                }
+
             }
 
             @Override

@@ -120,4 +120,9 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
             hideKeyboard(mPwEdit);
         }
     };
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+    }
 }

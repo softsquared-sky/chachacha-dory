@@ -6,4 +6,6 @@
     <color name="btncolor">#9B9B9B</color>
     <color name="black">#000000</color>
     <color name="appbarColor">#222b45</color>
+    <color name="validationNo">#FF0000</color>
+    <color name="validationOk">#fff1f3</color>
 </resources>

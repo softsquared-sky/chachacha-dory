@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">차차차</string>
-    <string name="loading">로딩중입니다.</string>
-    <string name="network_error">네트워크 연결이 원활하지 않습니다.</string>
-    <!---->
+    <string name="loading">로딩중이애오</string>
+    <string name="network_error">네트워크 연결이 원활하지 않아오</string>
+    <!--유효성 검사-->
+    <string name="validation">입력해주새오</string>
+    <string name="validationOk">완벽해오!</string>
+    <string name="validationId">영대/소문자, 숫자 조합 4~10자리로 입력해주새오</string>
+    <string name="validationPw">영대/소문자, 숫자 및 특수문자 조합 8~15자리로 입력해주새오</string>
+    <string name="validationPw2">비밀번호가 일치하지 않아오</string>
+    <string name="validationName">한글만 입력 가능해오</string>
+    <string name="validationEmail">이메일 형식에 맞추어 입력해주새오</string>
+    <string name="validationPhone">전화번호 형식에 맞추어 입력해주새오</string>
 </resources>

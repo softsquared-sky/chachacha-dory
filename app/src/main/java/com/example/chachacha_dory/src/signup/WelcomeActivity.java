@@ -28,8 +28,8 @@ public class WelcomeActivity extends AppCompatActivity {
         });
     }
 
-    public void onClickLogIn(){
-        Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
-        startActivity(intent);
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
     }
 }

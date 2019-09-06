@@ -56,17 +56,36 @@
                 android:textColor="@android:color/black"
                 android:textSize="12sp" />
 
-            <EditText
-                android:id="@+id/signUpId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/round_border"
-                android:ems="10"
-                android:hint="아이디 입력"
-                android:inputType="textPersonName"
-                android:padding="14dp"
-                android:textSize="12sp" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/signUpId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/round_border"
+                    android:ems="10"
+                    android:hint="아이디 입력"
+                    android:inputType="text"
+                    android:padding="14dp"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/validationId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="false"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="@string/validation"
+                    android:textColor="@color/validationNo"
+                    android:textSize="8sp" />
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/texView25"
@@ -79,30 +98,62 @@
                 android:textColor="@android:color/black"
                 android:textSize="12sp" />
 
-            <EditText
-                android:id="@+id/signUpPw"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/round_border"
-                android:ems="10"
-                android:hint="비밀번호 입력"
-                android:inputType="textPassword"
-                android:padding="14dp"
-                android:textSize="12sp" />
+                android:layout_height="match_parent">
 
-            <EditText
-                android:id="@+id/signUpPw2"
+                <EditText
+                    android:id="@+id/signUpPw"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/round_border"
+                    android:ems="10"
+                    android:hint="비밀번호 입력"
+                    android:inputType="textPassword"
+                    android:padding="14dp"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/validationPw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:text="@string/validation"
+                    android:textColor="@color/validationNo"
+                    android:textSize="8sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/round_border"
-                android:ems="10"
-                android:hint="비밀번호 재입력"
-                android:inputType="textPassword"
-                android:padding="14dp"
-                android:textSize="12sp" />
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:id="@+id/signUpPw2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/round_border"
+                    android:ems="10"
+                    android:hint="비밀번호 재입력"
+                    android:inputType="textPassword"
+                    android:padding="14dp"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/validationPw2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="10dp"
+                    android:text="@string/validation"
+                    android:textColor="@color/validationNo"
+                    android:textSize="8sp" />
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/textView32"
@@ -115,17 +166,34 @@
                 android:textColor="@android:color/black"
                 android:textSize="12sp" />
 
-            <EditText
-                android:id="@+id/signUpName"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/round_border"
-                android:ems="10"
-                android:hint="이름 입력"
-                android:inputType="textPersonName"
-                android:padding="14dp"
-                android:textSize="12sp" />
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/signUpName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/round_border"
+                    android:ems="10"
+                    android:hint="이름 입력"
+                    android:inputType="textPersonName"
+                    android:padding="14dp"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/validationName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="@string/validation"
+                    android:textColor="@color/validationNo"
+                    android:textSize="8sp" />
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/textView"
@@ -138,16 +206,33 @@
                 android:textColor="@android:color/black"
                 android:textSize="12sp" />
 
-            <EditText
-                android:id="@+id/signUpPhone"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/round_border"
-                android:ems="10"
-                android:hint="'-'구분없이 입력"
-                android:inputType="phone"
-                android:padding="14dp"
-                android:textSize="12sp" />
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/signUpPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_border"
+                    android:ems="10"
+                    android:hint="'-'구분없이 입력"
+                    android:inputType="phone"
+                    android:padding="14dp"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/validationPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="@string/validation"
+                    android:textColor="@color/validationNo"
+                    android:textSize="8sp" />
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/textView25"
@@ -160,16 +245,33 @@
                 android:textColor="@android:color/black"
                 android:textSize="12sp" />
 
-            <EditText
-                android:id="@+id/signUpEmail"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/round_border"
-                android:ems="10"
-                android:hint="email형식에 맞추어 입력"
-                android:inputType="textEmailAddress"
-                android:padding="14dp"
-                android:textSize="12sp" />
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/signUpEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_border"
+                    android:ems="10"
+                    android:hint="email형식에 맞추어 입력"
+                    android:inputType="textEmailAddress"
+                    android:padding="14dp"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/validationEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="@string/validation"
+                    android:textColor="@color/validationNo"
+                    android:textSize="8sp" />
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/textView33"
@@ -263,7 +365,7 @@
                     android:id="@+id/signUpGender0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginRight="3dp"
                     android:layout_weight="1"
                     android:background="@drawable/round_border"
                     android:minHeight="0dp"

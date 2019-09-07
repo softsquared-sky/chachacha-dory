@@ -15,9 +15,9 @@ class ReviewService {
         this.mReviewActivityView = reviewActivityView;
     }
 
-    void getReview(){
+    void getReview(int storeNum){
         final ReviewRetrofitInterface reviewRetrofitInterface = getRetrofit().create(ReviewRetrofitInterface.class);
-        reviewRetrofitInterface.getStoreReview(1).enqueue(new Callback<ReviewResponse>() {
+        reviewRetrofitInterface.getStoreReview(storeNum).enqueue(new Callback<ReviewResponse>() {
             @Override
             public void onResponse(Call<ReviewResponse> call, Response<ReviewResponse> response) {
                 final ReviewResponse reviewResponse = response.body();

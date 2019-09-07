@@ -163,6 +163,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:layout_marginRight="37dp"
+                    android:onClick="onClickBtn"
                     app:srcCompat="@drawable/calling2" />
 
             </FrameLayout>
@@ -176,6 +177,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="25dp"
                 android:background="@drawable/round_white"
+                android:onClick="onClickBtn"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp">
 
@@ -214,6 +216,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="40dp"
             android:background="@drawable/roundback_border"
+            android:onClick="onClickBtn"
             android:paddingLeft="40dp"
             android:paddingRight="40dp"
             android:text="리뷰 쓰러가기"

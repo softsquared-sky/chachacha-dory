@@ -49,4 +49,31 @@ public class SignUpService {
         });
     }
 
+    //  2. 사장 회원가입
+    void postBossSignUp(String id, String pw, String name, String phone){
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("userid", id);
+        hashMap.put("userpw", pw);
+        hashMap.put("name", name);
+        hashMap.put("phone", phone);
+
+        final SignUpRetrofitInterface signUpRetrofitInterface = getRetrofit().create(SignUpRetrofitInterface.class);
+        signUpRetrofitInterface.postBossSignUp(hashMap).enqueue(new Callback<SignUpResponse>() {
+            @Override
+            public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
+                final SignUpResponse signUpResponse = response.body();
+                if (signUpResponse == null) {
+                    mSignUpActivityView.validateFailure("못가져옴");
+                    return;
+                }
+                Log.d("결과 발표", String.valueOf(signUpResponse.getMessage()));
+                mSignUpActivityView.validateSuccess(signUpResponse.getMessage(), signUpResponse.isSuccess());
+            }
+
+            @Override
+            public void onFailure(Call<SignUpResponse> call, Throwable t) {
+                mSignUpActivityView.validateFailure("연결 실패");
+            }
+        });
+    }
 }

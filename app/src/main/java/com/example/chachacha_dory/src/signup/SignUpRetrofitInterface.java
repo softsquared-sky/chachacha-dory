@@ -12,4 +12,9 @@ public interface SignUpRetrofitInterface {
     Call<SignUpResponse> postSignUp(
             @Body HashMap<String, Object> params
     );
+
+    @POST("/boss")
+    Call<SignUpResponse> postBossSignUp(
+            @Body HashMap<String, Object> params
+    );
 }

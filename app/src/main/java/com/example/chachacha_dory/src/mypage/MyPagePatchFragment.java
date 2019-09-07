@@ -1,11 +1,11 @@
 package com.example.chachacha_dory.src.mypage;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Patterns;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public class MyPagePatchFragment extends BaseFragment implements MyPageActivityView, MyPagePatchActivityView {
+public class MyPagePatchFragment extends BaseFragment implements MyPageActivityView, MyPagePatchActivityView{
     TextView mNameView, mFinishBtn;
     EditText mWritingView, mEditEmail, mEditPhone;
     String mName, mWriting, mEmail, mPhone;
@@ -30,7 +30,7 @@ public class MyPagePatchFragment extends BaseFragment implements MyPageActivityV
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.activity_profile, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.activity_my_page_patch, container, false);
 
         mNameView = rootView.findViewById(R.id.profileName);
         mWritingView = rootView.findViewById(R.id.profileWriting);
@@ -49,8 +49,12 @@ public class MyPagePatchFragment extends BaseFragment implements MyPageActivityV
             @Override
             public void onClick(View v) {
                 tryPatchMyPage();
+                ((MainActivity) getActivity()).hideKeyboard(mWritingView);
+                ((MainActivity) getActivity()).hideKeyboard(mEditEmail);
+                ((MainActivity) getActivity()).hideKeyboard(mEditPhone);
             }
         });
+
         ImageView backBtn = rootView.findViewById(R.id.backBtn);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,6 +127,16 @@ public class MyPagePatchFragment extends BaseFragment implements MyPageActivityV
             }
         });
 
+        rootView.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(keyCode==KeyEvent.KEYCODE_BACK){
+                    return true;
+                }
+                return false;
+            }
+        });
+
         return rootView;
     }
 
@@ -186,4 +200,6 @@ public class MyPagePatchFragment extends BaseFragment implements MyPageActivityV
             ((MainActivity) getActivity()).hideKeyboard(mEditPhone);
         }
     };
+
+
 }

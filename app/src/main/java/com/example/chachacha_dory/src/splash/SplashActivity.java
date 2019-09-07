@@ -14,7 +14,7 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         Handler handler = new Handler();
-        handler.postDelayed(new splashHandler(), 1500);
+        handler.postDelayed(new splashHandler(), 1000);
     }
 
     private class splashHandler implements Runnable{

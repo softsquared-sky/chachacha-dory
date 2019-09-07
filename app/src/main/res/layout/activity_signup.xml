@@ -301,6 +301,7 @@
                     android:paddingTop="14dp"
                     android:paddingBottom="14dp"
                     android:text="20대"
+                    android:textColor="@color/moodTextColor"
                     android:textSize="12sp" />
 
                 <Button
@@ -315,6 +316,7 @@
                     android:paddingTop="14dp"
                     android:paddingBottom="14dp"
                     android:text="30대"
+                    android:textColor="@color/moodTextColor"
                     android:textSize="12sp" />
 
                 <Button
@@ -329,6 +331,7 @@
                     android:paddingTop="14dp"
                     android:paddingBottom="14dp"
                     android:text="40대"
+                    android:textColor="@color/moodTextColor"
                     android:textSize="12sp" />
 
                 <Button
@@ -342,6 +345,7 @@
                     android:paddingTop="14dp"
                     android:paddingBottom="14dp"
                     android:text="50대 이상"
+                    android:textColor="@color/moodTextColor"
                     android:textSize="12sp" />
             </LinearLayout>
 
@@ -373,6 +377,7 @@
                     android:paddingTop="14dp"
                     android:paddingBottom="14dp"
                     android:text="여"
+                    android:textColor="@color/moodTextColor"
                     android:textSize="12sp" />
 
                 <Button
@@ -387,6 +392,7 @@
                     android:paddingTop="14dp"
                     android:paddingBottom="14dp"
                     android:text="남"
+                    android:textColor="@color/moodTextColor"
                     android:textSize="12sp" />
             </LinearLayout>
 

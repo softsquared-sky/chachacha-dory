@@ -9,10 +9,10 @@ import android.widget.TextView;
 
 import com.example.chachacha_dory.R;
 import com.example.chachacha_dory.config.BaseActivity;
-import com.example.chachacha_dory.src.review.ReviewActivity;
+import com.example.chachacha_dory.src.mypage.MainActivity;
+import com.example.chachacha_dory.src.review.MoreInfoActivity;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class DetailActivity extends BaseActivity implements DetailActivityView, MyChaSaveActivityView {
     TextView mStoreName, mStoreNameMain, mStoreMood, mStoreAddr, mStoreTime, mStoreDesc;
@@ -21,11 +21,15 @@ public class DetailActivity extends BaseActivity implements DetailActivityView, 
     String mStorePhone;
     ImageView mSelectStar;
     boolean mSelected;
+    int mStoreNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        Intent intent = getIntent();
+        mStoreNum = intent.getIntExtra("storeNum", 1);
 
         mStoreNameMain = findViewById(R.id.detailStoreName);
         mStoreName = findViewById(R.id.detailName);
@@ -43,15 +47,14 @@ public class DetailActivity extends BaseActivity implements DetailActivityView, 
         showProgressDialog();
 
         final DetailService detailService = new DetailService(DetailActivity.this);
-        detailService.getStoreDetail();
+        detailService.getStoreDetail(mStoreNum);
     }
 
     public void trySaveMyCha(){
         showProgressDialog();
 
-//                mHashMap.put("storename", mStoreName.getText().toString());
         MyChaSaveService myChaService = new MyChaSaveService(this);
-        myChaService.postMyCha(1);
+        myChaService.postMyCha(mStoreNum);
     }
 
     @Override
@@ -75,9 +78,14 @@ public class DetailActivity extends BaseActivity implements DetailActivityView, 
     @Override
     public void validateSuccess(String text, boolean isSuccess) {
         hideProgressDialog();
-//        if(isSuccess){
-            showCustomToast(text);
-//        }
+        showCustomToast(text);
+        if(isSuccess){
+            Intent intent = new Intent(DetailActivity.this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+
+        }
     }
 
     @Override
@@ -89,7 +97,9 @@ public class DetailActivity extends BaseActivity implements DetailActivityView, 
     public void onClickBtn(View v){
         switch (v.getId()) {
             case R.id.detailMoreInfo:
-                Intent intent = new Intent(DetailActivity.this, ReviewActivity.class);
+                Intent intent = new Intent(DetailActivity.this, MoreInfoActivity.class);
+                intent.putExtra("storeNum", mStoreNum);
+                intent.putExtra("myCha", false);
                 startActivity(intent);
                 break;
             case R.id.detailPhone:

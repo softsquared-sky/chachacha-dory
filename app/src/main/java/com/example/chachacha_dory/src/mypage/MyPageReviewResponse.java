@@ -19,8 +19,6 @@ public class MyPageReviewResponse {
     ArrayList<MyPageReviewResult> reviews;
 
     public static class MyPageReviewResult {
-        @SerializedName("name")
-        String name;
         @SerializedName("text")
         String text;
         @SerializedName("star")
@@ -29,10 +27,6 @@ public class MyPageReviewResponse {
         String storename;
         @SerializedName("address")
         String address;
-
-        public String getName() {
-            return name;
-        }
 
         public String getText() {
             return text;
@@ -48,10 +42,6 @@ public class MyPageReviewResponse {
 
         public String getAddress() {
             return address;
-        }
-
-        public void setName(String name) {
-            this.name = name;
         }
 
         public void setText(String text) {

@@ -1,4 +1,4 @@
-package com.example.chachacha_dory.src;
+package com.example.chachacha_dory.src.map;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

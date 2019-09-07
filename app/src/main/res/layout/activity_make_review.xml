@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
     android:orientation="vertical"
-    tools:context=".src.detail.MakeReviewActivity">
+    tools:context=".src.mychachacha.MakeReviewActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -75,7 +75,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
-                android:numStars="5" />
+                android:numStars="5"
+                android:stepSize="1" />
 
             <EditText
                 android:id="@+id/makeReviewInput"

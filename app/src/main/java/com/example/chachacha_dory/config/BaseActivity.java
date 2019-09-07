@@ -1,6 +1,7 @@
 package com.example.chachacha_dory.config;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
@@ -35,13 +36,34 @@ public class BaseActivity extends AppCompatActivity {
         return null;
     }
 
-    @SuppressLint("ResourceAsColor")
+    public class BackPressCloseHandler {
+        private long backKeyPressedTime = 0;
+        private Toast toast;
+        private Activity activity;
+
+        public BackPressCloseHandler(Activity context) {
+            this.activity = context;
+        }
+
+        public void onBackPressed() {
+            if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
+                backKeyPressedTime = System.currentTimeMillis();
+                showCustomToast("\'뒤로\'버튼을 한번 더 누르시면 종료됩니다.");
+                return;
+            }
+            if (System.currentTimeMillis() <= backKeyPressedTime + 2000) {
+                activity.finish();
+            }
+        }
+
+    }
+
     public void showCustomToast(final String message) {
         TextView tvToastMsg = new TextView(this);
         tvToastMsg.setText(message);
         tvToastMsg.setBackgroundResource(R.color.colorPrimaryDark);
-        tvToastMsg.setTextColor(R.color.colorAccent);
-        tvToastMsg.setTextSize(16);
+        tvToastMsg.setTextColor(Color.rgb(255, 120, 137));
+        tvToastMsg.setTextSize(14);
         tvToastMsg.setPadding(20, 10, 20, 10);
         final Toast toastMsg = Toast.makeText(this, "", Toast.LENGTH_SHORT);
         toastMsg.setView(tvToastMsg);
@@ -51,7 +73,7 @@ public class BaseActivity extends AppCompatActivity {
             public void run() {
                 toastMsg.cancel();
             }
-        }, 1000);
+        }, 800);
     }
 
     public void hideKeyboard(EditText et)

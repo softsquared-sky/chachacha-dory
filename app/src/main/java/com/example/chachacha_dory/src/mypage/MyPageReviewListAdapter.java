@@ -10,7 +10,6 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.chachacha_dory.R;
-import com.example.chachacha_dory.src.review.ReviewResponse;
 
 import java.util.ArrayList;
 
@@ -42,7 +41,7 @@ public class MyPageReviewListAdapter extends BaseAdapter {
 
         if(convertView==null){
             LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.item_review, parent,false);
+            convertView = inflater.inflate(R.layout.item_my_review, parent,false);
         }
         ImageView image = convertView.findViewById(R.id.reviewImage);
         TextView name = convertView.findViewById(R.id.reviewName);
@@ -55,17 +54,18 @@ public class MyPageReviewListAdapter extends BaseAdapter {
 //        image.setImageResource(reviewClass.getImage());
 //        image.setBackground(new ShapeDrawable(new OvalShape()));
 //        image.setClipToOutline(true);
-        name.setText(reviewClass.getName());
+        name.setText(reviewClass.getStorename());
         addr.setText(reviewClass.getAddress());
         review.setText(reviewClass.getText());
         ratingBar.setRating(reviewClass.getStar());
+
         return convertView;
     }
 
     public void addMyReview(int icon, String name, String addr, String review, int star){
          MyPageReviewResponse.MyPageReviewResult item = new MyPageReviewResponse.MyPageReviewResult();
 //        item.setImage(icon);
-        item.setName(name);
+        item.setStorename(name);
         item.setAddress(addr);
         item.setText(review);
         item.setStar(star);

@@ -3,6 +3,7 @@ package com.example.chachacha_dory.config;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.view.inputmethod.InputMethodManager;
@@ -33,13 +34,12 @@ public class BaseFragment extends Fragment {
         return null;
     }
 
-    @SuppressLint("ResourceAsColor")
     public void showCustomToast(final String message) {
         TextView tvToastMsg = new TextView(getActivity());
         tvToastMsg.setText(message);
         tvToastMsg.setBackgroundResource(R.color.colorPrimaryDark);
-        tvToastMsg.setTextColor(R.color.colorAccent);
-        tvToastMsg.setTextSize(16);
+        tvToastMsg.setTextColor(Color.rgb(255, 120, 137));
+        tvToastMsg.setTextSize(14);
         tvToastMsg.setPadding(20, 10, 20, 10);
         final Toast toastMsg = Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT);
         toastMsg.setView(tvToastMsg);
@@ -59,7 +59,6 @@ public class BaseFragment extends Fragment {
             mProgressDialog.setMessage(getString(R.string.loading));
             mProgressDialog.setIndeterminate(true);
         }
-
         mProgressDialog.show();
     }
 

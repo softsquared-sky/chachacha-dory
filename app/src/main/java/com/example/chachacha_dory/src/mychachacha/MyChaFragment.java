@@ -26,13 +26,7 @@ import androidx.annotation.Nullable;
 public class MyChaFragment extends BaseFragment implements MyChaActivityView, DeleteMyChaActivityView {
     GridView mListView;
     MyChaListAdapter mAdapter;
-    ArrayList<MyChaResponse.MyChaResult> mMyChaList;
     LinearLayout mNoMyCha;
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Nullable
     @Override
@@ -41,12 +35,10 @@ public class MyChaFragment extends BaseFragment implements MyChaActivityView, De
 
         mNoMyCha = rootView.findViewById(R.id.noMyCha);
         mListView = rootView.findViewById(R.id.mychaList);
-        mMyChaList = new ArrayList<>();
 
         mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-                final long deleteId = id;
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("마이 차차차 삭제");
                 builder.setMessage("삭제하시겠습니까?");
@@ -66,7 +58,9 @@ public class MyChaFragment extends BaseFragment implements MyChaActivityView, De
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getActivity(), DetailActivity.class);
+                Intent intent = new Intent(getActivity(), MyChaDetailActivity.class);
+                intent.putExtra("chaNum", mAdapter.getItem(position).getChaNum());
+                intent.putExtra("storeNum", mAdapter.getItem(position).getStoreNum());
                 startActivity(intent);
             }
         });
@@ -95,12 +89,21 @@ public class MyChaFragment extends BaseFragment implements MyChaActivityView, De
     public void validateSuccess(String text, boolean isSuccess, ArrayList<MyChaResponse.MyChaResult> stores) {
         hideProgressDialog();
         if (isSuccess) {
-            mMyChaList = stores;
-            mAdapter = new MyChaListAdapter(mMyChaList);
+            mAdapter = new MyChaListAdapter(stores);
             mListView.setAdapter(mAdapter);
             if (mAdapter.getCount() == 0) {
                 mNoMyCha.setVisibility(View.VISIBLE);
             }
+            if(mAdapter.getCount()<=4){
+                mListView.setNumColumns(2);
+            }else if(mAdapter.getCount()>4){
+                mListView.setNumColumns(3);
+            }else if(mAdapter.getCount()>9){
+                mListView.setNumColumns(4);
+            }else{
+                mListView.setNumColumns(8);
+            }
+
         } else {
             showCustomToast(text);
         }

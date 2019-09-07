@@ -16,9 +16,9 @@ public class MenuService {
         mMenuActivityView = menuActivityView;
     }
 
-    void getStoreMenu() {
+    void getStoreMenu(int storeNum) {
         final MenuRetrofitInterface menuRetrofitInterface = getRetrofit().create(MenuRetrofitInterface.class);
-        menuRetrofitInterface.getStoreMenu(2).enqueue(new Callback<MenuResponse>() {
+        menuRetrofitInterface.getStoreMenu(storeNum).enqueue(new Callback<MenuResponse>() {
             @Override
             public void onResponse(Call<MenuResponse> call, Response<MenuResponse> response) {
                 final MenuResponse menuResponse = response.body();

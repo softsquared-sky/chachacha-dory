@@ -17,7 +17,7 @@ public class MyChaService {
         mMyChaActivityView = myChaActivityView;
     }
 
-    //  16. 마이차차차 조회
+    //  15. 마이차차차 조회
     void getMyCha() {
         final MyChaRetrofitInterface myChaRetrofitInterface = getRetrofit().create(MyChaRetrofitInterface.class);
         myChaRetrofitInterface.getMyCha(sSharedPreferences.getString(USER_ID, "")).enqueue(new Callback<MyChaResponse>() {

@@ -30,6 +30,7 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
     TextView mSignUpText;
     Switch mSaveLoginSwitch;
     boolean mSaveLogin;
+    BackPressCloseHandler mBackPressCloseHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,8 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
 
         if (mSaveLogin) {
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
         }
@@ -73,6 +75,7 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
             }
         });
 
+        mBackPressCloseHandler = new BackPressCloseHandler(this);
     }
 
     private void tryGetLogin() {
@@ -124,5 +127,6 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
     @Override
     public void onBackPressed() {
 //        super.onBackPressed();
+        mBackPressCloseHandler.onBackPressed();
     }
 }

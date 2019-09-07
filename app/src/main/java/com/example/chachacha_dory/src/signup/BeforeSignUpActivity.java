@@ -22,6 +22,9 @@ public class BeforeSignUpActivity extends AppCompatActivity {
                 onBackPressed();
                 break;
             case R.id.signUpBoss:
+                Intent intent2 = new Intent(BeforeSignUpActivity.this, BossSignUpActivity.class);
+                startActivity(intent2);
+                break;
             case R.id.signUpGuest:
                 Intent intent = new Intent(BeforeSignUpActivity.this, SignUpActivity.class);
                 startActivity(intent);

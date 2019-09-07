@@ -26,7 +26,6 @@ public class DetailResponse {
         @SerializedName("closstime") String close;
         @SerializedName("imageurl") String img;
         @SerializedName("phone") String phone;
-        @SerializedName("chanum") int num;
 
         public String getStorename() {
             return storename;
@@ -92,13 +91,6 @@ public class DetailResponse {
             this.phone = phone;
         }
 
-        public int getNum() {
-            return num;
-        }
-
-        public void setNum(int num) {
-            this.num = num;
-        }
     }
 
     public ArrayList<DetailResult> getStores() {

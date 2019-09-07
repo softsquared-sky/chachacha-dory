@@ -105,7 +105,7 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
                     mValidationPw2.setTextColor(Color.RED);
                 }else{
                     mValidationPw2.setText(R.string.validationOk);
-                    mValidationPw2.setTextColor(Color.BLACK);
+                    mValidationPw2.setTextColor(Color.rgb(47, 157, 39));
                 }
             }
 
@@ -308,14 +308,14 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
         switch (v.getId()) {
             case R.id.signUpGender0:
                 mGender1Btn.setBackgroundResource(R.drawable.round_border);
-                mGender1Btn.setTextColor(Color.BLACK);
+                mGender1Btn.setTextColor(Color.rgb(74, 74, 74));
                 mGender0Btn.setBackgroundResource(R.drawable.roundback_border);
                 mGender0Btn.setTextColor(Color.WHITE);
                 mSelectedGender = 0;
                 break;
             case R.id.signUpGender1:
                 mGender0Btn.setBackgroundResource(R.drawable.round_border);
-                mGender0Btn.setTextColor(Color.BLACK);
+                mGender0Btn.setTextColor(Color.rgb(74, 74, 74));
                 mGender1Btn.setBackgroundResource(R.drawable.roundback_border);
                 mGender1Btn.setTextColor(Color.WHITE);
                 mSelectedGender = 1;
@@ -328,10 +328,10 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
         mAge1Btn.setBackgroundResource(R.drawable.round_border);
         mAge2Btn.setBackgroundResource(R.drawable.round_border);
         mAge3Btn.setBackgroundResource(R.drawable.round_border);
-        mAge0Btn.setTextColor(Color.BLACK);
-        mAge1Btn.setTextColor(Color.BLACK);
-        mAge2Btn.setTextColor(Color.BLACK);
-        mAge3Btn.setTextColor(Color.BLACK);
+        mAge0Btn.setTextColor(Color.rgb(74, 74, 74));
+        mAge1Btn.setTextColor(Color.rgb(74, 74, 74));
+        mAge2Btn.setTextColor(Color.rgb(74, 74, 74));
+        mAge3Btn.setTextColor(Color.rgb(74, 74, 74));
     }
 
     @Override
@@ -339,7 +339,8 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
         hideProgressDialog();
         if (isSuccess) {
             Intent intent = new Intent(SignUpActivity.this, WelcomeActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         } else {
             showCustomToast(text);

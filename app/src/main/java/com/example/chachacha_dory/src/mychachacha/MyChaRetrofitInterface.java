@@ -11,4 +11,5 @@ public interface MyChaRetrofitInterface {
     Call<MyChaResponse> getMyCha(
             @Path("userid") String userid
     );
+
 }

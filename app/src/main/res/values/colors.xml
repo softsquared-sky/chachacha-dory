@@ -3,9 +3,16 @@
     <color name="colorPrimary">#ffff</color>
     <color name="colorPrimaryDark">#ffff</color>
     <color name="colorAccent">#FF7889</color>
+    <!--디테일 사진없을 때 색-->
+    <color name="detailBackground">#d8d8d8</color>
+    <!--여러 버튼들의 색-->
     <color name="btncolor">#9B9B9B</color>
+    <!--앱바의 배경색과 글씨색깔-->
     <color name="black">#000000</color>
     <color name="appbarColor">#222b45</color>
+    <!--유효성검사 색-->
     <color name="validationNo">#FF0000</color>
-    <color name="validationOk">#fff1f3</color>
+    <color name="validationOk">#00ff00</color>
+    <!--차차차스타트, 회원가입 버튼색-->
+    <color name="moodSignUpTextColor">#4a4a4a</color>
 </resources>

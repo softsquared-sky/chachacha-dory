@@ -15,11 +15,10 @@ public class DetailService {
         mDetailActivityView = detailActivityView;
     }
 
-
-    //      상세조회
-    void getStoreDetail() {
+    //      9. 스토어 상세조회
+    void getStoreDetail(int storeNum) {
         final DetailRetrofitInterface detailRetrofitInterface = getRetrofit().create(DetailRetrofitInterface.class);
-        detailRetrofitInterface.getStoreDetail(2).enqueue(new Callback<DetailResponse>() {
+        detailRetrofitInterface.getStoreDetail(storeNum).enqueue(new Callback<DetailResponse>() {
             @Override
             public void onResponse(Call<DetailResponse> call, Response<DetailResponse> response) {
                 final DetailResponse detailResponse = response.body();

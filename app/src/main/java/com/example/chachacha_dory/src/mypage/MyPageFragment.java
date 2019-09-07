@@ -156,9 +156,10 @@ public class MyPageFragment extends BaseFragment implements MyPageActivityView {
                                         editor.commit();
 
                                         Intent intent = new Intent(getActivity(), LoginActivity.class);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                         startActivity(intent);
+
                                     }
                                 })
                         .setNegativeButton("아니요",

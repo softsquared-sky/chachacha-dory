@@ -1,8 +1,10 @@
 package com.example.chachacha_dory.src.review;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TabHost;
@@ -10,24 +12,36 @@ import android.widget.TextView;
 
 import com.example.chachacha_dory.config.BaseActivity;
 import com.example.chachacha_dory.R;
+import com.example.chachacha_dory.src.detail.MyChaSaveActivityView;
+import com.example.chachacha_dory.src.detail.MyChaSaveService;
+import com.example.chachacha_dory.src.mychachacha.MakeReviewActivity;
 
 import java.util.ArrayList;
 
-public class ReviewActivity extends BaseActivity implements ReviewActivityView, MenuActivityView {
+public class MoreInfoActivity extends BaseActivity implements ReviewActivityView, MenuActivityView, MyChaSaveActivityView {
     private ListView mReviewList, mMenuList;
     private ReviewListAdapter mAdapter;
     private MenuListAdapter mMenuAdapter;
     TextView mReviewCount;
     ImageView mSelectImage;
-    boolean mSelected;
+    boolean mSelected, mIsMyCha;
+    Button mChaBtn;
+    int mStoreNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_review);
+        setContentView(R.layout.activity_more_info);
 
-        final MenuService menuService = new MenuService(this);
-        menuService.getStoreMenu();
+        Intent intent = getIntent();
+        mStoreNum = intent.getIntExtra("storeNum", 1);
+        mIsMyCha = intent.getBooleanExtra("myCha", false);
+
+        mChaBtn = findViewById(R.id.chachachaBtn);
+
+        if(mIsMyCha){
+            mChaBtn.setText("리뷰 쓰러가기");
+        }
 
         TabHost host = findViewById(R.id.host);
         host.setup();
@@ -46,14 +60,29 @@ public class ReviewActivity extends BaseActivity implements ReviewActivityView, 
         mReviewCount = findViewById(R.id.reviewCount);
         mSelectImage = findViewById(R.id.reviewSelected);
 
-        tryGetReview();
+        tryGetReview(mStoreNum);
+        tryGetMenu(mStoreNum);
     }
 
-    public void tryGetReview(){
+    public void tryGetReview(int storeNum){
         showProgressDialog();
 
         final ReviewService reviewService = new ReviewService(this);
-        reviewService.getReview();
+        reviewService.getReview(storeNum);
+    }
+
+    public void tryGetMenu(int storeNum){
+        showProgressDialog();
+
+        final MenuService menuService = new MenuService(this);
+        menuService.getStoreMenu(storeNum);
+    }
+
+    public void tryPostMyCha(int storeNum){
+        showProgressDialog();
+
+        final MyChaSaveService myChaSaveService = new MyChaSaveService(this);
+        myChaSaveService.postMyCha(storeNum);
     }
 
     @Override
@@ -66,6 +95,17 @@ public class ReviewActivity extends BaseActivity implements ReviewActivityView, 
             mReviewCount.setText("리뷰 " + mAdapter.getCount());
         } else
             showCustomToast(text);
+    }
+
+    @Override
+    public void validateSuccess(String text, boolean isSuccess) {
+        hideProgressDialog();
+
+        if(isSuccess){
+            showCustomToast(text);
+        }else {
+            showCustomToast(text);
+        }
     }
 
     @Override
@@ -105,6 +145,13 @@ public class ReviewActivity extends BaseActivity implements ReviewActivityView, 
                 }
                 break;
             case R.id.chachachaBtn:
+                if(mIsMyCha){
+                    Intent intent = new Intent(MoreInfoActivity.this, MakeReviewActivity.class);
+
+                    startActivity(intent);
+                }else {
+                    tryPostMyCha(mStoreNum);
+                }
                 break;
         }
     }

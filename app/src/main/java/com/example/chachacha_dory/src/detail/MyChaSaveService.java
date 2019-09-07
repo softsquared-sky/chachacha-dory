@@ -12,14 +12,14 @@ import static com.example.chachacha_dory.config.ApplicationClass.USER_ID;
 import static com.example.chachacha_dory.config.ApplicationClass.getRetrofit;
 import static com.example.chachacha_dory.config.ApplicationClass.sSharedPreferences;
 
-class MyChaSaveService {
+public class MyChaSaveService {
     private final MyChaSaveActivityView mMyChaSaveActivityView;
 
-    MyChaSaveService(final MyChaSaveActivityView myChaSaveActivityView) {
+    public MyChaSaveService(final MyChaSaveActivityView myChaSaveActivityView) {
         this.mMyChaSaveActivityView = myChaSaveActivityView;
     }
 
-    void postMyCha(int storeNum){
+    public void postMyCha(int storeNum){
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("storenum", storeNum);
 

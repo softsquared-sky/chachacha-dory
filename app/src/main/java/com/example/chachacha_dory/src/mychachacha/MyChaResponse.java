@@ -21,6 +21,7 @@ public class MyChaResponse {
         @SerializedName("storename") String storename;
         @SerializedName("imageurl") String img;
         @SerializedName("chanum") int chaNum;
+        @SerializedName("storenum") int storeNum;
 
         public String getStorename() {
             return storename;
@@ -46,6 +47,13 @@ public class MyChaResponse {
             this.chaNum = chaNum;
         }
 
+        public int getStoreNum() {
+            return storeNum;
+        }
+
+        public void setStoreNum(int storeNum) {
+            this.storeNum = storeNum;
+        }
     }
 
     public ArrayList<MyChaResult> getStores() {

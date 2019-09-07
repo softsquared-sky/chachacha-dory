@@ -21,7 +21,7 @@ public class MyPageReviewFragment extends BaseFragment implements MyPageReviewAc
     private ListView myReviewList;
     private MyPageReviewListAdapter mAdapter;
     ViewGroup mRootView;
-    ImageView backBtn;
+    ImageView mBackBtn;
     LinearLayout mNoReviewLayout;
 
     @Nullable
@@ -29,10 +29,10 @@ public class MyPageReviewFragment extends BaseFragment implements MyPageReviewAc
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mRootView = (ViewGroup)inflater.inflate(R.layout.fragment_my_review, container, false);
         myReviewList = mRootView.findViewById(R.id.myReviewList);
-        backBtn = mRootView.findViewById(R.id.backBtn2);
+        mBackBtn = mRootView.findViewById(R.id.backBtn2);
         mNoReviewLayout = mRootView.findViewById(R.id.noReview);
 
-        backBtn.setOnClickListener(new View.OnClickListener() {
+        mBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MyPageFragment myPageFragment = new MyPageFragment();
@@ -71,5 +71,6 @@ public class MyPageReviewFragment extends BaseFragment implements MyPageReviewAc
         showCustomToast(message);
         Log.d("결과", message);
     }
+
 
 }

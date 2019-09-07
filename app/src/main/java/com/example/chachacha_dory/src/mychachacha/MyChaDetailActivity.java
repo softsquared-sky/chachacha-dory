@@ -1,4 +1,4 @@
-package com.example.chachacha_dory.src.detail;
+package com.example.chachacha_dory.src.mychachacha;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -9,22 +9,25 @@ import android.widget.TextView;
 
 import com.example.chachacha_dory.R;
 import com.example.chachacha_dory.config.BaseActivity;
-import com.example.chachacha_dory.src.review.ReviewActivity;
+import com.example.chachacha_dory.src.detail.DetailResponse;
+import com.example.chachacha_dory.src.review.MoreInfoActivity;
 
-import java.util.ArrayList;
-
-public class Detail2Activity extends BaseActivity implements DetailActivityView {
+public class MyChaDetailActivity extends BaseActivity implements MyChaDetailActivityView {
     TextView mStoreName, mStoreNameMain, mStoreMood, mStoreAddr, mStoreTime, mStoreDesc;
-    DetailResponse.DetailResult detailStore;
     View mStoreImage;
     String mStorePhone;
     boolean mSelected;
     ImageView mSelectStar;
+    int mChaNum, mStoreNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail2);
+        setContentView(R.layout.activity_my_cha_detail);
+
+        Intent intent = getIntent();
+        mChaNum = intent.getIntExtra("chaNum", 35);
+        mStoreNum = intent.getIntExtra("storeNum", 1);
 
         mStoreNameMain = findViewById(R.id.detail2StoreName);
         mStoreName = findViewById(R.id.detail2Name);
@@ -40,23 +43,23 @@ public class Detail2Activity extends BaseActivity implements DetailActivityView 
 
     public void tryGetDetail2(){
         showProgressDialog();
-        final DetailService detailService = new DetailService(Detail2Activity.this);
-        detailService.getStoreDetail();
+
+        final MyChaDetailService detailService = new MyChaDetailService(MyChaDetailActivity.this);
+        detailService.getDetailMyCha(mChaNum);
     }
 
     @Override
-    public void validateSuccess(String text, boolean isSuccess, ArrayList<DetailResponse.DetailResult> stores) {
+    public void validateSuccess(String text, boolean isSuccess, DetailResponse.DetailResult store) {
         hideProgressDialog();
         if(isSuccess){
-            detailStore = stores.get(0);
-            mStoreNameMain.setText(detailStore.getStorename());
-            mStoreName.setText(detailStore.getStorename());
-            mStoreMood.setText(detailStore.getMood());
-            mStoreAddr.setText(detailStore.getAddr());
-            mStoreDesc.setText(detailStore.getWriting());
-            mStoreTime.setText(detailStore.getOpen()+ " ~ " +detailStore.getClose());
-            mStoreImage.setBackground(LoadImageFromWebOperations(detailStore.getImg()));
-            mStorePhone = detailStore.getPhone();
+            mStoreNameMain.setText(store.getStorename());
+            mStoreName.setText(store.getStorename());
+            mStoreMood.setText(store.getMood());
+            mStoreAddr.setText(store.getAddr());
+            mStoreDesc.setText(store.getWriting());
+            mStoreTime.setText(store.getOpen()+ " ~ " +store.getClose());
+//            mStoreImage.setBackground(LoadImageFromWebOperations(store.getImg()));
+            mStorePhone = store.getPhone();
         }else
             showCustomToast(text);
     }
@@ -70,7 +73,8 @@ public class Detail2Activity extends BaseActivity implements DetailActivityView 
     public void onClickBtn(View v){
         switch (v.getId()) {
             case R.id.detail2MoreInfo:
-                Intent intent = new Intent(Detail2Activity.this, ReviewActivity.class);
+                Intent intent = new Intent(MyChaDetailActivity.this, MoreInfoActivity.class);
+                intent.putExtra("storeNum", mStoreNum);
                 startActivity(intent);
                 break;
             case R.id.detail2Phone:
@@ -79,6 +83,12 @@ public class Detail2Activity extends BaseActivity implements DetailActivityView 
                 break;
             case R.id.detail2Back:
                 onBackPressed();
+                break;
+            case R.id.detail2ReviewBtn:
+                Intent intent1 = new Intent(MyChaDetailActivity.this, MakeReviewActivity.class);
+                intent1.putExtra("chaNum", mChaNum);
+                intent1.putExtra("myCha", true);
+                startActivity(intent1);
                 break;
             case R.id.detail2SaveBtn:
                 if(mSelected) {

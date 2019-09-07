@@ -41,7 +41,7 @@ public class ReviewListAdapter extends BaseAdapter {
 
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.item_review2, parent, false);
+            convertView = inflater.inflate(R.layout.item_review, parent, false);
         }
         TextView pName = convertView.findViewById(R.id.review2Name);
         TextView review = convertView.findViewById(R.id.review2Text);

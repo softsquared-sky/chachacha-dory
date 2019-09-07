@@ -19,8 +19,9 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="n">
+        <activity android:name=".src.signup.BossSignUpActivity"></activity>
         <activity android:name=".src.signup.BeforeSignUpActivity" />
-        <activity android:name=".src.detail.MakeReviewActivity" />
+        <activity android:name=".src.mychachacha.MakeReviewActivity" />
         <activity android:name=".src.signup.WelcomeActivity" />
         <activity
             android:name=".src.splash.SplashActivity"
@@ -31,10 +32,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".src.review.ReviewActivity" />
+        <activity android:name=".src.review.MoreInfoActivity" />
         <activity android:name=".src.chachacha.StartChaActivity" />
         <activity android:name=".src.signup.SignUpActivity" />
-        <activity android:name=".src.detail.Detail2Activity" />
+        <activity android:name=".src.mychachacha.MyChaDetailActivity" />
         <activity android:name=".src.detail.DetailActivity" />
         <activity android:name=".src.login.LoginActivity" />
         <activity android:name=".src.chachacha.ChaChaActivity" />

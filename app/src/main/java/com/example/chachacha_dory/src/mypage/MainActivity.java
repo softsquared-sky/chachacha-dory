@@ -11,7 +11,7 @@ import android.widget.ImageView;
 
 import com.example.chachacha_dory.R;
 import com.example.chachacha_dory.config.BaseActivity;
-import com.example.chachacha_dory.src.MapFragment;
+import com.example.chachacha_dory.src.map.MapFragment;
 import com.example.chachacha_dory.src.mychachacha.MyChaFragment;
 import com.example.chachacha_dory.src.chachacha.StartChaActivity;
 import com.example.chachacha_dory.src.search.SearchFragment;
@@ -30,6 +30,7 @@ public class MainActivity extends BaseActivity {
     Context mContext;
     TabLayout mTabs;
     Fragment mSelected;
+    private BackPressCloseHandler mBackPressCloseHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +43,8 @@ public class MainActivity extends BaseActivity {
         mSearchFragment = new SearchFragment();
         mMyChaFragment = new MyChaFragment();
         mMyPageReviewFragment = new MyPageReviewFragment();
-//        getSupportFragmentManager().beginTransaction().replace(R.id.contaner, mMyPageFragment).commit();
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-//        fragmentTransaction.add(R.id.contaner, mMyPageFragment).commit();
         fragmentTransaction.replace(R.id.container, mMyPageFragment).commit();
 
         mTabs = findViewById(R.id.tabLayout);
@@ -102,8 +101,6 @@ public class MainActivity extends BaseActivity {
                         mTabs.getTabAt(1).setIcon(R.drawable.tab_heart);
                         break;
                     case 2:
-                        Intent intent = new Intent(MainActivity.this, StartChaActivity.class);
-                        startActivity(intent);
                         break;
                     case 3:
                         mTabs.getTabAt(3).setIcon(R.drawable.tab_message);
@@ -118,22 +115,22 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
+                int position = tab.getPosition();
+                switch (position) {
+                    case 4:
+                        MainActivity.this.getSupportFragmentManager().beginTransaction().replace(R.id.container, mMyPageFragment).commit();
+                        break;
+                }
             }
         });
+
+        mBackPressCloseHandler = new BackPressCloseHandler(this);
     }
 
     public void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.container, fragment).commit();
-    }
-
-    private View createTabView(int tabImage) {
-        View tabView = LayoutInflater.from(mContext).inflate(R.layout.custom_tab, null);
-        ImageView iconImage = tabView.findViewById(R.id.iconImage);
-        iconImage.setImageResource(tabImage);
-        return tabView;
     }
 
     public void hideKeyboard(EditText et)
@@ -145,5 +142,6 @@ public class MainActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
 //        super.onBackPressed();
+        mBackPressCloseHandler.onBackPressed();
     }
 }

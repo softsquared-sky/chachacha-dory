@@ -7,14 +7,17 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.chachacha_dory.R;
 import com.example.chachacha_dory.config.BaseActivity;
+import com.example.chachacha_dory.src.bookmark.SaveMyBarActivityView;
+import com.example.chachacha_dory.src.bookmark.SaveMyBarService;
 import com.example.chachacha_dory.src.detail.DetailResponse;
 import com.example.chachacha_dory.src.review.MoreInfoActivity;
 
-public class MyChaDetailActivity extends BaseActivity implements MyChaDetailActivityView {
+public class MyChaDetailActivity extends BaseActivity implements MyChaDetailActivityView, SaveMyBarActivityView {
     TextView mStoreName, mStoreNameMain, mStoreMood, mStoreAddr, mStoreTime, mStoreDesc;
-    View mStoreImage;
+    ImageView mStoreImage;
     String mStorePhone;
     boolean mSelected;
     ImageView mSelectStar;
@@ -48,6 +51,13 @@ public class MyChaDetailActivity extends BaseActivity implements MyChaDetailActi
         detailService.getDetailMyCha(mChaNum);
     }
 
+    private void trySaveBookmark(){
+        showProgressDialog();
+
+        final SaveMyBarService saveMyBarService = new SaveMyBarService(MyChaDetailActivity.this);
+        saveMyBarService.saveBookMark(mStoreNum);
+    }
+
     @Override
     public void validateSuccess(String text, boolean isSuccess, DetailResponse.DetailResult store) {
         hideProgressDialog();
@@ -58,10 +68,25 @@ public class MyChaDetailActivity extends BaseActivity implements MyChaDetailActi
             mStoreAddr.setText(store.getAddr());
             mStoreDesc.setText(store.getWriting());
             mStoreTime.setText(store.getOpen()+ " ~ " +store.getClose());
-//            mStoreImage.setBackground(LoadImageFromWebOperations(store.getImg()));
+            Glide.with(this).load(store.getImg()).into(mStoreImage);
             mStorePhone = store.getPhone();
         }else
             showCustomToast(text);
+    }
+
+    @Override
+    public void validateSuccess(String text, boolean isSuccess) {
+        hideProgressDialog();
+        showCustomToast(text);
+        if(isSuccess){
+            if(mSelected) {
+                mSelectStar.setImageResource(R.drawable.star2);
+                mSelected = false;
+            }else {
+                mSelectStar.setImageResource(R.drawable.ic_select_star);
+                mSelected = true;
+            }
+        }
     }
 
     @Override
@@ -91,13 +116,7 @@ public class MyChaDetailActivity extends BaseActivity implements MyChaDetailActi
                 startActivity(intent1);
                 break;
             case R.id.detail2SaveBtn:
-                if(mSelected) {
-                    mSelectStar.setImageResource(R.drawable.star2);
-                    mSelected = false;
-                }else {
-                    mSelectStar.setImageResource(R.drawable.ic_select_star);
-                    mSelected = true;
-                }
+                trySaveBookmark();
                 break;
         }
     }

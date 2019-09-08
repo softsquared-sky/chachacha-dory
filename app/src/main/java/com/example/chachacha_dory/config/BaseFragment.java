@@ -21,19 +21,6 @@ import androidx.fragment.app.Fragment;
 public class BaseFragment extends Fragment {
     public ProgressDialog mProgressDialog;
 
-    public Drawable LoadImageFromWebOperations(String url) {
-        try {
-            URL url1 = new URL(url);
-            InputStream is = (InputStream) url1.getContent();
-            // InputStream에서 Drawable 작성
-            Drawable drawable = Drawable.createFromStream(is, "");
-            return drawable;
-        } catch (Exception e) {
-//            e.printStackTrace();
-        }
-        return null;
-    }
-
     public void showCustomToast(final String message) {
         TextView tvToastMsg = new TextView(getActivity());
         tvToastMsg.setText(message);

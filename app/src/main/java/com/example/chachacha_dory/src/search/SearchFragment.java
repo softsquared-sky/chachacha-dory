@@ -119,7 +119,7 @@ public class SearchFragment extends BaseFragment implements TextWatcher, SearchF
             mAdapter = new SearchListAdapter(arrayList);
             mSearchList.setAdapter(mAdapter);
         }else{
-            showCustomToast(text);
+//            showCustomToast(text);
         }
     }
 

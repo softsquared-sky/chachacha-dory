@@ -1,4 +1,4 @@
-package com.example.chachacha_dory.src.chachacha;
+package com.example.chachacha_dory.src.bookmark;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

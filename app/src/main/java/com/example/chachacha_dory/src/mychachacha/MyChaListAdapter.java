@@ -1,7 +1,6 @@
 package com.example.chachacha_dory.src.mychachacha;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,14 +8,14 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.chachacha_dory.R;
 
-import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 
 public class MyChaListAdapter extends BaseAdapter {
     private ArrayList<MyChaResponse.MyChaResult> mChaList;
+
     MyChaListAdapter(ArrayList<MyChaResponse.MyChaResult> stores){
         mChaList = stores;
     }
@@ -51,18 +50,8 @@ public class MyChaListAdapter extends BaseAdapter {
 
         MyChaResponse.MyChaResult myChaClass = mChaList.get(position);
 
-        URL url = null;
-        try {
-            url = new URL(myChaClass.getImg());
-            InputStream is = (InputStream) url.getContent();
-            // InputStream에서 Drawable 작성
-            Drawable drawable = Drawable.createFromStream(is, "");
-            image.setImageDrawable(drawable);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Glide.with(context).load(myChaClass.getImg()).into(image);
 
-//        image.setImageDrawable(LoadImageFromWebOperations(myChaClass.getImg()));
         name.setText(myChaClass.getStorename());
 
         return convertView;

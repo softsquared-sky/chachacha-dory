@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.annotation.GlideModule;
 import com.example.chachacha_dory.R;
 import com.example.chachacha_dory.config.BaseActivity;
 import com.example.chachacha_dory.src.mypage.MainActivity;
@@ -17,7 +19,7 @@ import java.util.ArrayList;
 public class DetailActivity extends BaseActivity implements DetailActivityView, MyChaSaveActivityView {
     TextView mStoreName, mStoreNameMain, mStoreMood, mStoreAddr, mStoreTime, mStoreDesc;
     DetailResponse.DetailResult detailStore;
-    View mStoreImage;
+    ImageView mStoreImage;
     String mStorePhone;
     ImageView mSelectStar;
     boolean mSelected;
@@ -68,12 +70,15 @@ public class DetailActivity extends BaseActivity implements DetailActivityView, 
             mStoreAddr.setText(detailStore.getAddr());
             mStoreDesc.setText(detailStore.getWriting());
             mStoreTime.setText(detailStore.getOpen()+ " ~ " +detailStore.getClose());
-//            mStoreImage.setBackground(LoadImageFromWebOperations(detailStore.getImg()));
+            Glide.with(this).load(detailStore.getImg()).into(mStoreImage);
             mStorePhone = detailStore.getPhone();
         }else
             showCustomToast(text);
     }
 
+    private void trySaveBookmark(){
+
+    }
 
     @Override
     public void validateSuccess(String text, boolean isSuccess) {
@@ -84,7 +89,6 @@ public class DetailActivity extends BaseActivity implements DetailActivityView, 
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-
         }
     }
 

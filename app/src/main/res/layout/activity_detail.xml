@@ -11,10 +11,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
         android:background="@color/colorPrimaryDark">
 
         <ImageView
@@ -22,13 +18,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onClickBtn"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
             app:srcCompat="@drawable/leftbtn" />
 
         <TextView
             android:id="@+id/detailStoreName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
             android:text="가게 이름"
             android:textColor="@color/appbarColor" />
 
@@ -38,6 +39,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:onClick="onClickBtn"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
             app:srcCompat="@drawable/star2" />
     </RelativeLayout>
 
@@ -50,12 +55,13 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <View
+            <ImageView
                 android:id="@+id/detailStoreImg"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="3"
-                android:background="#d8d8d8" />
+                android:scaleType="centerCrop"
+                app:srcCompat="@color/detailBackground" />
 
             <View
                 android:id="@+id/imageView23"

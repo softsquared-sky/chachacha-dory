@@ -37,6 +37,9 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent intent = getIntent();
+        int what = intent.getIntExtra("what", 4);
+
         mContext = getApplicationContext();
         mMapFragment = new MapFragment();
         mMyPageFragment = new MyPageFragment();
@@ -55,13 +58,27 @@ public class MainActivity extends BaseActivity {
         mTabs.addTab(mTabs.newTab().setIcon(R.drawable.tab_message));
         mTabs.addTab(mTabs.newTab().setIcon(R.drawable.tab_mypage));
 
-        mSelected = mMyPageFragment;
-        mTabs.getTabAt(4).setIcon(R.drawable.tab_mypage_selected);
+        switch (what){
+            case 1:
+                mTabs.getTabAt(1).setIcon(R.drawable.tab_heart_select);
+                mSelected = mMyChaFragment;
+                break;
+            case 3:
+                mTabs.getTabAt(3).setIcon(R.drawable.tab_search_selected);
+                mSelected = mSearchFragment;
+                break;
+            case 4:
+                mTabs.getTabAt(4).setIcon(R.drawable.tab_mypage_selected);
+                mSelected = mMyPageFragment;
+                break;
+        }
 
         mTabs.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 mTabs.getTabAt(4).setIcon(R.drawable.tab_mypage);
+                mTabs.getTabAt(1).setIcon(R.drawable.tab_heart);
+                mTabs.getTabAt(3).setIcon(R.drawable.tab_message);
                 int position = tab.getPosition();
                 switch (position) {
                     case 0:
@@ -117,6 +134,10 @@ public class MainActivity extends BaseActivity {
             public void onTabReselected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
                 switch (position) {
+                    case 2:
+                        Intent intent = new Intent(MainActivity.this, StartChaActivity.class);
+                        startActivity(intent);
+                        break;
                     case 4:
                         MainActivity.this.getSupportFragmentManager().beginTransaction().replace(R.id.container, mMyPageFragment).commit();
                         break;

@@ -152,7 +152,7 @@ public class StartChaActivity extends AppCompatActivity {
                    mBar.setBackgroundResource(0);
                    mCheckKind[0] = false;
                 }else {
-                    mBar.setBackgroundResource(R.drawable.roundback_border);
+                    mBar.setBackgroundResource(R.drawable.border_up_down);
                     mCheckKind[0] = true;
                 }
                 break;
@@ -161,7 +161,7 @@ public class StartChaActivity extends AppCompatActivity {
                     mChicken.setBackgroundResource(0);
                     mCheckKind[1] = false;
                 }else {
-                    mChicken.setBackgroundResource(R.drawable.roundback_border);
+                    mChicken.setBackgroundResource(R.drawable.border_up_down);
                     mCheckKind[1] = true;
                 }
                 break;
@@ -170,7 +170,7 @@ public class StartChaActivity extends AppCompatActivity {
                     mPizza.setBackgroundResource(0);
                     mCheckKind[2] = false;
                 }else {
-                    mPizza.setBackgroundResource(R.drawable.roundback_border);
+                    mPizza.setBackgroundResource(R.drawable.border_up_down);
                     mCheckKind[2] = true;
                 }
                 break;
@@ -179,7 +179,7 @@ public class StartChaActivity extends AppCompatActivity {
                     mIzakaya.setBackgroundResource(0);
                     mCheckKind[3] = false;
                 }else {
-                    mIzakaya.setBackgroundResource(R.drawable.roundback_border);
+                    mIzakaya.setBackgroundResource(R.drawable.border_up_down);
                     mCheckKind[3] = true;
                 }
                 break;
@@ -188,7 +188,7 @@ public class StartChaActivity extends AppCompatActivity {
                     mMeat.setBackgroundResource(0);
                     mCheckKind[4] = false;
                 }else {
-                    mMeat.setBackgroundResource(R.drawable.roundback_border);
+                    mMeat.setBackgroundResource(R.drawable.border_up_down);
                     mCheckKind[4] = true;
                 }
                 break;
@@ -197,7 +197,7 @@ public class StartChaActivity extends AppCompatActivity {
                     mChinese.setBackgroundResource(0);
                     mCheckKind[5] = false;
                 }else {
-                    mChinese.setBackgroundResource(R.drawable.roundback_border);
+                    mChinese.setBackgroundResource(R.drawable.border_up_down);
                     mCheckKind[5] = true;
                 }
                 break;
@@ -206,7 +206,7 @@ public class StartChaActivity extends AppCompatActivity {
                     mFish.setBackgroundResource(0);
                     mCheckKind[6] = false;
                 }else {
-                    mFish.setBackgroundResource(R.drawable.roundback_border);
+                    mFish.setBackgroundResource(R.drawable.border_up_down);
                     mCheckKind[6] = true;
                 }
                 break;
@@ -215,7 +215,7 @@ public class StartChaActivity extends AppCompatActivity {
                     mPojangMacha.setBackgroundResource(0);
                     mCheckKind[7] = false;
                 }else {
-                    mPojangMacha.setBackgroundResource(R.drawable.roundback_border);
+                    mPojangMacha.setBackgroundResource(R.drawable.border_up_down);
                     mCheckKind[7] = true;
                 }
                 break;
@@ -224,7 +224,7 @@ public class StartChaActivity extends AppCompatActivity {
                     mKoreanPancake.setBackgroundResource(0);
                     mCheckKind[8] = false;
                 }else {
-                    mKoreanPancake.setBackgroundResource(R.drawable.roundback_border);
+                    mKoreanPancake.setBackgroundResource(R.drawable.border_up_down);
                     mCheckKind[8] = true;
                 }
                 break;
@@ -233,7 +233,7 @@ public class StartChaActivity extends AppCompatActivity {
                     mPorkLeg.setBackgroundResource(0);
                     mCheckKind[9] = false;
                 }else {
-                    mPorkLeg.setBackgroundResource(R.drawable.roundback_border);
+                    mPorkLeg.setBackgroundResource(R.drawable.border_up_down);
                     mCheckKind[9] = true;
                 }
                 break;
@@ -242,7 +242,7 @@ public class StartChaActivity extends AppCompatActivity {
                     mHope.setBackgroundResource(0);
                     mCheckKind[10] = false;
                 }else {
-                    mHope.setBackgroundResource(R.drawable.roundback_border);
+                    mHope.setBackgroundResource(R.drawable.border_up_down);
                     mCheckKind[10] = true;
                 }
                 break;
@@ -251,7 +251,7 @@ public class StartChaActivity extends AppCompatActivity {
                     mFusionMeal.setBackgroundResource(0);
                     mCheckKind[11] = false;
                 }else {
-                    mFusionMeal.setBackgroundResource(R.drawable.roundback_border);
+                    mFusionMeal.setBackgroundResource(R.drawable.border_up_down);
                     mCheckKind[11] = true;
                 }
                 break;

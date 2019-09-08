@@ -1,4 +1,4 @@
-package com.example.chachacha_dory.src.chachacha;
+package com.example.chachacha_dory.src.bookmark;
 
 import com.google.gson.annotations.SerializedName;
 

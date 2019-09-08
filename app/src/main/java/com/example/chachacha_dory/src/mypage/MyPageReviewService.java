@@ -20,7 +20,7 @@ public class MyPageReviewService {
     //6. 마이페이지 리뷰
     void getMyReview(){
         final MyPageReviewRetrofitInterface myPageReviewRetrofitInterface = getRetrofit().create(MyPageReviewRetrofitInterface.class);
-        myPageReviewRetrofitInterface.getMyReview(sSharedPreferences.getString(USER_ID, "")).enqueue(new Callback<MyPageReviewResponse>() {
+        myPageReviewRetrofitInterface.getMyReview(sSharedPreferences.getString(USER_ID, ""), 0, 5).enqueue(new Callback<MyPageReviewResponse>() {
             @Override
             public void onResponse(Call<MyPageReviewResponse> call, Response<MyPageReviewResponse> response) {
                 final MyPageReviewResponse reviewResponse = response.body();

@@ -1,6 +1,5 @@
 package com.example.chachacha_dory.src.mypage;
 
-import com.example.chachacha_dory.src.review.ReviewResponse;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -11,6 +12,7 @@ import android.widget.RelativeLayout;
 import com.example.chachacha_dory.R;
 import com.example.chachacha_dory.config.BaseActivity;
 import com.example.chachacha_dory.src.detail.DetailActivity;
+import com.example.chachacha_dory.src.mypage.MainActivity;
 
 import java.util.ArrayList;
 
@@ -19,6 +21,7 @@ public class ChaChaActivity extends BaseActivity implements RecommendActivityVie
     private ChaListAdapter mAdapter;
     ImageView mBackBtn;
     RelativeLayout mZeroLayout;
+    Button mSearchBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +36,24 @@ public class ChaChaActivity extends BaseActivity implements RecommendActivityVie
         mListview = findViewById(R.id.chachaList);
         mBackBtn = findViewById(R.id.chachaBackBtn);
         mZeroLayout = findViewById(R.id.chachaZero);
+        mSearchBtn = findViewById(R.id.searchBtnCha);
 
         mListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent1 = new Intent(ChaChaActivity.this, DetailActivity.class);
                 intent1.putExtra("storeNum", mAdapter.getItem(position).getStoreNum());
+                startActivity(intent1);
+            }
+        });
+
+        mSearchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(ChaChaActivity.this, MainActivity.class);
+                intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent1.putExtra("what", 3);
                 startActivity(intent1);
             }
         });

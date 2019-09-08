@@ -10,11 +10,7 @@
     <RelativeLayout
         android:id="@+id/relativlaout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/chachaBackBtn"
@@ -22,6 +18,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
             app:srcCompat="@drawable/leftbtn" />
 
         <TextView
@@ -38,14 +38,14 @@
         android:id="@+id/chachaList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button7"
+        android:layout_above="@+id/searchBtnCha"
         android:layout_below="@+id/relativlaout"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/searchBtnCha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

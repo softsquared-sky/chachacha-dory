@@ -10,7 +10,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.TestLooperManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +18,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.chachacha_dory.config.BaseFragment;
-import com.example.chachacha_dory.src.chachacha.MyBarFragment;
+import com.example.chachacha_dory.src.bookmark.MyBarFragment;
 import com.example.chachacha_dory.R;
 import com.example.chachacha_dory.src.login.LoginActivity;
 

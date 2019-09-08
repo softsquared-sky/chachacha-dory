@@ -2,6 +2,7 @@ package com.example.chachacha_dory.src.mychachacha;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -51,7 +52,6 @@ public class MakeReviewActivity extends BaseActivity implements MakeReviewActivi
         makeReview.setOnClickListener(keyboardClick);
         makeReviewLayout.setOnClickListener(keyboardClick);
         makeReviewView.setOnClickListener(keyboardClick);
-        mStar.setOnClickListener(keyboardClick);
 
         mBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,8 +64,8 @@ public class MakeReviewActivity extends BaseActivity implements MakeReviewActivi
     private void tryPostReview(int chaNum){
         showProgressDialog();
         mReview = mEditReview.getText().toString();
-        mStarNum = mStar.getNumStars();
-
+        mStarNum = (int) mStar.getRating();
+        Log.d("별 개수 결과", String.valueOf(mStarNum));
         final MakeReviewService makeReviewService = new MakeReviewService(this);
         makeReviewService.postReview(chaNum, mReview, mStarNum);
     }
@@ -78,13 +78,18 @@ public class MakeReviewActivity extends BaseActivity implements MakeReviewActivi
     };
 
     @Override
-    public void validateSuccess(String text, boolean isSuccess) {
+    public void validateSuccess(String text, boolean isSuccess, int code) {
         hideProgressDialog();
-        showCustomToast(text);
+        if(code==240){
+            showCustomToast("이메일 인증을 해주새오");
+        }else {
+            showCustomToast(text);
+        }
         if(isSuccess){
             Intent intent = new Intent(MakeReviewActivity.this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("what", 1);
             startActivity(intent);
         }
     }

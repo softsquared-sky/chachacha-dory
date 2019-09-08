@@ -10,24 +10,25 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/backBtn4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onStartChaClick"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
             app:srcCompat="@drawable/leftbtn" />
 
         <TextView
             android:id="@+id/textView13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
             android:text="차차차 START"
             android:textColor="@color/appbarColor" />
     </RelativeLayout>
@@ -173,6 +174,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="25dp"
+                android:layout_marginBottom="8dp"
                 android:text="어떤 술집 가고싶어?"
                 android:textColor="#4a4a4a  " />
 
@@ -187,7 +189,8 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp">
 
                     <ImageView
                         android:id="@+id/bar"
@@ -210,7 +213,8 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp">
 
                     <ImageView
                         android:id="@+id/pizza"
@@ -232,7 +236,8 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp">
 
                     <ImageView
                         android:id="@+id/meat"
@@ -254,7 +259,8 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp">
 
                     <ImageView
                         android:id="@+id/fish"
@@ -276,7 +282,8 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp">
 
                     <ImageView
                         android:id="@+id/koreanPancake"
@@ -468,7 +475,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="30dp"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="50dp"
                 android:background="@drawable/roundback_border"
                 android:onClick="onStartChaClick"
                 android:paddingLeft="60dp"

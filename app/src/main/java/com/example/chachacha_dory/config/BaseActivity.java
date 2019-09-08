@@ -23,19 +23,6 @@ import androidx.appcompat.app.AppCompatActivity;
 public class BaseActivity extends AppCompatActivity {
     public ProgressDialog mProgressDialog;
 
-    public Drawable LoadImageFromWebOperations(String url) {
-        try {
-            URL url1 = new URL(url);
-            InputStream is = (InputStream) url1.getContent();
-            // InputStream에서 Drawable 작성
-            Drawable drawable = Drawable.createFromStream(is, "");
-            return drawable;
-        } catch (Exception e) {
-//            e.printStackTrace();
-        }
-        return null;
-    }
-
     public class BackPressCloseHandler {
         private long backKeyPressedTime = 0;
         private Toast toast;

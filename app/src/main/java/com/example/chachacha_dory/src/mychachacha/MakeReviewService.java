@@ -31,7 +31,7 @@ public class MakeReviewService {
                     mMakeReviewActivityView.validateFailure("실패");
                     return;
                 }
-                mMakeReviewActivityView.validateSuccess(makeReviewResponse.getMessage(), makeReviewResponse.isSuccess);
+                mMakeReviewActivityView.validateSuccess(makeReviewResponse.getMessage(), makeReviewResponse.isSuccess, makeReviewResponse.getCode());
                 Log.d("결과", makeReviewResponse.getMessage());
             }
 

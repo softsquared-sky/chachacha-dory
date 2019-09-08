@@ -1,22 +1,22 @@
-package com.example.chachacha_dory.src.chachacha;
+package com.example.chachacha_dory.src.bookmark;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.chachacha_dory.R;
 
 import java.util.ArrayList;
 
 public class MyBarListAdapter extends BaseAdapter {
     private ArrayList<MyBarResponse.MyBarResult> barList;
-    MyBarListAdapter(ArrayList<MyBarResponse.MyBarResult> arrayList){
+
+    MyBarListAdapter(ArrayList<MyBarResponse.MyBarResult> arrayList) {
         barList = arrayList;
     }
 
@@ -40,26 +40,28 @@ public class MyBarListAdapter extends BaseAdapter {
         final int pos = position;
         final Context context = parent.getContext();
 
-        if(convertView==null){
-            LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.item_chacha, parent,false);
+        if (convertView == null) {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.item_chacha, parent, false);
         }
+
         TextView name = convertView.findViewById(R.id.nameCha);
         TextView mood = convertView.findViewById(R.id.moodCha);
-        TextView desc =  convertView.findViewById(R.id.descCha);
-        RelativeLayout layout = convertView.findViewById(R.id.chaLayout);
+        TextView desc = convertView.findViewById(R.id.descCha);
+        ImageView chaBackground = convertView.findViewById(R.id.chaImageBack);
         ImageView imageView = convertView.findViewById(R.id.myBarStar);
         MyBarResponse.MyBarResult chaClass = barList.get(position);
 
         name.setText(chaClass.getStorename());
         mood.setText(chaClass.getMood());
         desc.setText(chaClass.getWriting());
-        layout.setBackground(Drawable.createFromPath(chaClass.getImg()));
+        imageView.setImageResource(R.drawable.ic_select_star);
+        Glide.with(context).load(chaClass.getImg()).into(chaBackground);
 
         return convertView;
     }
 
-    public void addBar(String name, String mood, String desc, String back){
+    public void addBar(String name, String mood, String desc, String back) {
         MyBarResponse.MyBarResult item = new MyBarResponse.MyBarResult();
         item.setStorename(name);
         item.setMood(mood);

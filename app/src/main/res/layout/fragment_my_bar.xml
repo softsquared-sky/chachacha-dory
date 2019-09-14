@@ -22,7 +22,7 @@
             android:paddingTop="10dp"
             android:paddingRight="20dp"
             android:paddingBottom="10dp"
-            app:srcCompat="@drawable/leftbtn" />
+            app:srcCompat="@drawable/ic_left" />
 
         <TextView
             android:id="@+id/textView12"

@@ -18,6 +18,8 @@ public class MyPageReviewResponse {
     ArrayList<MyPageReviewResult> reviews;
 
     public static class MyPageReviewResult {
+        @SerializedName("reviewnum")
+        int reviewNum;
         @SerializedName("text")
         String text;
         @SerializedName("star")
@@ -26,6 +28,14 @@ public class MyPageReviewResponse {
         String storename;
         @SerializedName("address")
         String address;
+
+        public int getReviewNum() {
+            return reviewNum;
+        }
+
+        public void setReviewNum(int reviewNum) {
+            this.reviewNum = reviewNum;
+        }
 
         public String getText() {
             return text;

@@ -47,9 +47,6 @@ public class MainActivity extends BaseActivity {
         mMyChaFragment = new MyChaFragment();
         mMyPageReviewFragment = new MyPageReviewFragment();
 
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.container, mMyPageFragment).commit();
-
         mTabs = findViewById(R.id.tabLayout);
 
         mTabs.addTab(mTabs.newTab().setIcon(R.drawable.tab_map));
@@ -72,6 +69,9 @@ public class MainActivity extends BaseActivity {
                 mSelected = mMyPageFragment;
                 break;
         }
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.container, mSelected).commit();
 
         mTabs.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
             @Override

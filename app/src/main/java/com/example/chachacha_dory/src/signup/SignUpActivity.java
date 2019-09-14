@@ -276,22 +276,22 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
         clearAgeBtn();
         switch (v.getId()) {
             case R.id.signUpAge0:
-                mAge0Btn.setBackgroundResource(R.drawable.roundback_border);
+                mAge0Btn.setBackgroundResource(R.drawable.btn_roundback_border);
                 mAge0Btn.setTextColor(Color.WHITE);
                 mSelectedAge = 0;
                 break;
             case R.id.signUpAge1:
-                mAge1Btn.setBackgroundResource(R.drawable.roundback_border);
+                mAge1Btn.setBackgroundResource(R.drawable.btn_roundback_border);
                 mAge1Btn.setTextColor(Color.WHITE);
                 mSelectedAge = 1;
                 break;
             case R.id.signUpAge2:
-                mAge2Btn.setBackgroundResource(R.drawable.roundback_border);
+                mAge2Btn.setBackgroundResource(R.drawable.btn_roundback_border);
                 mAge2Btn.setTextColor(Color.WHITE);
                 mSelectedAge = 2;
                 break;
             case R.id.signUpAge3:
-                mAge3Btn.setBackgroundResource(R.drawable.roundback_border);
+                mAge3Btn.setBackgroundResource(R.drawable.btn_roundback_border);
                 mAge3Btn.setTextColor(Color.WHITE);
                 mSelectedAge = 3;
                 break;
@@ -307,16 +307,16 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
         hideKeyboard(mEditPw2);
         switch (v.getId()) {
             case R.id.signUpGender0:
-                mGender1Btn.setBackgroundResource(R.drawable.round_border);
+                mGender1Btn.setBackgroundResource(R.drawable.btn_round_border);
                 mGender1Btn.setTextColor(Color.rgb(74, 74, 74));
-                mGender0Btn.setBackgroundResource(R.drawable.roundback_border);
+                mGender0Btn.setBackgroundResource(R.drawable.btn_roundback_border);
                 mGender0Btn.setTextColor(Color.WHITE);
                 mSelectedGender = 0;
                 break;
             case R.id.signUpGender1:
-                mGender0Btn.setBackgroundResource(R.drawable.round_border);
+                mGender0Btn.setBackgroundResource(R.drawable.btn_round_border);
                 mGender0Btn.setTextColor(Color.rgb(74, 74, 74));
-                mGender1Btn.setBackgroundResource(R.drawable.roundback_border);
+                mGender1Btn.setBackgroundResource(R.drawable.btn_roundback_border);
                 mGender1Btn.setTextColor(Color.WHITE);
                 mSelectedGender = 1;
                 break;
@@ -324,10 +324,10 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
     }
 
     public void clearAgeBtn() {
-        mAge0Btn.setBackgroundResource(R.drawable.round_border);
-        mAge1Btn.setBackgroundResource(R.drawable.round_border);
-        mAge2Btn.setBackgroundResource(R.drawable.round_border);
-        mAge3Btn.setBackgroundResource(R.drawable.round_border);
+        mAge0Btn.setBackgroundResource(R.drawable.btn_round_border);
+        mAge1Btn.setBackgroundResource(R.drawable.btn_round_border);
+        mAge2Btn.setBackgroundResource(R.drawable.btn_round_border);
+        mAge3Btn.setBackgroundResource(R.drawable.btn_round_border);
         mAge0Btn.setTextColor(Color.rgb(74, 74, 74));
         mAge1Btn.setTextColor(Color.rgb(74, 74, 74));
         mAge2Btn.setTextColor(Color.rgb(74, 74, 74));

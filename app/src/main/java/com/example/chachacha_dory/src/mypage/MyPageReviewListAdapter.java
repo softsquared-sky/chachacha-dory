@@ -26,7 +26,7 @@ public class MyPageReviewListAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public MyPageReviewResponse.MyPageReviewResult getItem(int position) {
         return reviewList.get(position);
     }
 
@@ -52,9 +52,6 @@ public class MyPageReviewListAdapter extends BaseAdapter {
 
         MyPageReviewResponse.MyPageReviewResult reviewClass = reviewList.get(position);
 
-//        image.setImageResource(reviewClass.getImage());
-//        image.setBackground(new ShapeDrawable(new OvalShape()));
-//        image.setClipToOutline(true);
         name.setText(reviewClass.getStorename());
         addr.setText(reviewClass.getAddress());
         review.setText(reviewClass.getText());

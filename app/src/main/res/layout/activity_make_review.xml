@@ -21,7 +21,7 @@
             android:paddingTop="10dp"
             android:paddingRight="20dp"
             android:paddingBottom="10dp"
-            app:srcCompat="@drawable/leftbtn" />
+            app:srcCompat="@drawable/ic_left" />
 
         <TextView
             android:id="@+id/textView21"
@@ -71,7 +71,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginBottom="15dp"
-            android:background="@drawable/round_whitegrey"
+            android:background="@drawable/btn_round_whitegrey"
             android:orientation="vertical">
 
             <RatingBar

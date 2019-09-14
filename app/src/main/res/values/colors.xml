@@ -14,5 +14,5 @@
     <color name="validationNo">#FF0000</color>
     <color name="validationOk">#00ff00</color>
     <!--차차차스타트, 회원가입 버튼색-->
-    <color name="moodTextColor">#4a4a4a</color>
+    <color name="moodTextColor">#8C8C8C</color>
 </resources>

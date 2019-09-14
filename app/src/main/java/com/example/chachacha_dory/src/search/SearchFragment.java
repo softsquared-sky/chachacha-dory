@@ -4,13 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -20,7 +21,6 @@ import android.widget.TextView;
 
 import com.example.chachacha_dory.R;
 import com.example.chachacha_dory.config.BaseFragment;
-import com.example.chachacha_dory.src.chachacha.ChaListAdapter;
 import com.example.chachacha_dory.src.detail.DetailActivity;
 import com.example.chachacha_dory.src.mypage.MainActivity;
 
@@ -28,7 +28,6 @@ import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 public class SearchFragment extends BaseFragment implements TextWatcher, SearchFragmentView, TextView.OnEditorActionListener {
     EditText mSearchEdit;
@@ -36,6 +35,9 @@ public class SearchFragment extends BaseFragment implements TextWatcher, SearchF
     RelativeLayout mNoSearch;
     ImageView mSearchBtn;
     SearchListAdapter mAdapter;
+    ArrayList<SearchResponse.SearchResult> mArrayListSearch = new ArrayList<>();
+    int mArrayListSearchSize = 0;
+    String mStoreSearch;
 
     @Nullable
     @Override
@@ -65,6 +67,35 @@ public class SearchFragment extends BaseFragment implements TextWatcher, SearchF
 
         mSearchEdit.setOnEditorActionListener(this);
 
+        mSearchList.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView absListView, int i) {
+                if (!mSearchList.canScrollVertically(-1)) {
+                    //최상단
+//                    Log.v("알림", "home list 최상단. ImageView 띄우기");
+                } else if (!mSearchList.canScrollVertically(1)) {
+                    Log.v("결과", "home list 최하단. ImageView 없애기");
+                    mArrayListSearchSize+=5;
+                    trySearch(mArrayListSearchSize, mSearchEdit.getText().toString());
+                    mStoreSearch = mSearchEdit.getText().toString();
+                } else {
+                    //idle
+                }
+            }
+
+            @Override
+            public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                int position = firstVisibleItem + visibleItemCount;
+                int limit = totalItemCount;
+
+                // Check if bottom has been reached
+                if (position >= limit && totalItemCount > 0) {
+
+                }
+            }
+
+        });
+
         return rootView;
     }
 
@@ -73,7 +104,10 @@ public class SearchFragment extends BaseFragment implements TextWatcher, SearchF
         super.onResume();
         mSearchEdit.setText("");
         mSearchEdit.addTextChangedListener(this);
-//        mSearchList.setTextFilterEnabled(true);
+        mArrayListSearch = new ArrayList<>();
+        mAdapter = new SearchListAdapter(mArrayListSearch);
+        mSearchList.setAdapter(mAdapter);
+        mArrayListSearchSize = 0;
     }
 
     @Override
@@ -83,20 +117,24 @@ public class SearchFragment extends BaseFragment implements TextWatcher, SearchF
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
+        mArrayListSearchSize = 0;
+        mArrayListSearch.clear();
         if (s == null || s.length() == 0 || s.equals("")) {
+            mSearchList.clearTextFilter();
             mNoSearch.setVisibility(View.VISIBLE);
         } else {
             mNoSearch.setVisibility(View.INVISIBLE);
-            trySearch(s.toString());
         }
     }
 
     @Override
     public void afterTextChanged(Editable s) {
+        mArrayListSearchSize = 0;
+        mArrayListSearch.clear();
         if (mSearchEdit.getText().length() == 0) {
             mSearchList.clearTextFilter();
         }
-        trySearch(s.toString());
+        trySearch(0, s.toString());
     }
 
     View.OnClickListener keyboardClick = new View.OnClickListener() {
@@ -106,19 +144,19 @@ public class SearchFragment extends BaseFragment implements TextWatcher, SearchF
         }
     };
 
-    private void trySearch(String storeName) {
+    private void trySearch(int size, String storeName) {
         showProgressDialog();
         final SearchService searchService = new SearchService(this);
-        searchService.postSearch(storeName);
+        searchService.postSearch(size, storeName);
     }
 
     @Override
     public void validateSuccess(String text, boolean isSuccess, ArrayList<SearchResponse.SearchResult> arrayList) {
         hideProgressDialog();
-        if(isSuccess){
-            mAdapter = new SearchListAdapter(arrayList);
-            mSearchList.setAdapter(mAdapter);
-        }else{
+        if (isSuccess) {
+            mArrayListSearch.addAll(arrayList);
+            mAdapter.notifyDataSetChanged();
+        } else {
 //            showCustomToast(text);
         }
     }
@@ -131,10 +169,9 @@ public class SearchFragment extends BaseFragment implements TextWatcher, SearchF
 
     @Override
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-        if(v.getId()==R.id.searchName && actionId== EditorInfo.IME_ACTION_DONE){ // 뷰의 id를 식별, 키보드의 완료 키 입력 검출
+        if (v.getId() == R.id.searchName && actionId == EditorInfo.IME_ACTION_DONE) { // 뷰의 id를 식별, 키보드의 완료 키 입력 검출
             ((MainActivity) getActivity()).hideKeyboard(mSearchEdit);
         }
-
         return false;
     }
 }

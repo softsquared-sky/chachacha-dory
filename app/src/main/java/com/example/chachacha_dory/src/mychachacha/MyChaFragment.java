@@ -94,15 +94,15 @@ public class MyChaFragment extends BaseFragment implements MyChaActivityView, De
             if (mAdapter.getCount() == 0) {
                 mNoMyCha.setVisibility(View.VISIBLE);
             }
-            if(mAdapter.getCount()<=4){
-                mListView.setNumColumns(2);
-            }else if(mAdapter.getCount()>4){
-                mListView.setNumColumns(3);
-            }else if(mAdapter.getCount()>9){
-                mListView.setNumColumns(4);
-            }else{
-                mListView.setNumColumns(8);
-            }
+//            if(mAdapter.getCount()<=4){
+//                mListView.setNumColumns(2);
+//            }else if(mAdapter.getCount()>4){
+//                mListView.setNumColumns(3);
+//            }else if(mAdapter.getCount()>9){
+//                mListView.setNumColumns(4);
+//            }else{
+//                mListView.setNumColumns(8);
+//            }
 
         } else {
             showCustomToast(text);

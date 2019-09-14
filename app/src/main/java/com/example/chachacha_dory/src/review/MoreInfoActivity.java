@@ -12,13 +12,15 @@ import android.widget.TextView;
 
 import com.example.chachacha_dory.config.BaseActivity;
 import com.example.chachacha_dory.R;
+import com.example.chachacha_dory.src.bookmark.SaveMyBarActivityView;
+import com.example.chachacha_dory.src.bookmark.SaveMyBarService;
 import com.example.chachacha_dory.src.detail.MyChaSaveActivityView;
 import com.example.chachacha_dory.src.detail.MyChaSaveService;
 import com.example.chachacha_dory.src.mychachacha.MakeReviewActivity;
 
 import java.util.ArrayList;
 
-public class MoreInfoActivity extends BaseActivity implements ReviewActivityView, MenuActivityView, MyChaSaveActivityView {
+public class MoreInfoActivity extends BaseActivity implements ReviewActivityView, MenuActivityView, MyChaSaveActivityView, SaveMyBarActivityView {
     private ListView mReviewList, mMenuList;
     private ReviewListAdapter mAdapter;
     private MenuListAdapter mMenuAdapter;
@@ -36,6 +38,7 @@ public class MoreInfoActivity extends BaseActivity implements ReviewActivityView
         Intent intent = getIntent();
         mStoreNum = intent.getIntExtra("storeNum", 1);
         mIsMyCha = intent.getBooleanExtra("myCha", false);
+        mSelected = intent.getBooleanExtra("isExistbook", false);
 
         mChaBtn = findViewById(R.id.chachachaBtn);
 
@@ -59,6 +62,10 @@ public class MoreInfoActivity extends BaseActivity implements ReviewActivityView
         mReviewList = findViewById(R.id.reviewList);
         mReviewCount = findViewById(R.id.reviewCount);
         mSelectImage = findViewById(R.id.reviewSelected);
+
+        if (mSelected){
+            mSelectImage.setImageResource(R.drawable.select);
+        }
 
         tryGetReview(mStoreNum);
         tryGetMenu(mStoreNum);
@@ -103,8 +110,31 @@ public class MoreInfoActivity extends BaseActivity implements ReviewActivityView
 
         if(isSuccess){
             showCustomToast(text);
+            finish();
         }else {
             showCustomToast(text);
+        }
+    }
+
+    private void trySaveBookmark() {
+        showProgressDialog();
+
+        final SaveMyBarService saveMyBarService = new SaveMyBarService(this);
+        saveMyBarService.saveBookMark(mStoreNum);
+    }
+
+    @Override
+    public void validateSuccessSave(String text, boolean isSuccess) {
+        hideProgressDialog();
+        showCustomToast(text);
+        if (isSuccess) {
+            if (mSelected) {
+                mSelectImage.setImageResource(R.drawable.star2);
+                mSelected = false;
+            } else {
+                mSelectImage.setImageResource(R.drawable.select);
+                mSelected = true;
+            }
         }
     }
 
@@ -136,13 +166,7 @@ public class MoreInfoActivity extends BaseActivity implements ReviewActivityView
                 onBackPressed();
                 break;
             case R.id.reviewSelected:
-                if (mSelected) {
-                    mSelectImage.setImageResource(R.drawable.star2);
-                    mSelected = false;
-                } else {
-                    mSelectImage.setImageResource(R.drawable.ic_select_star);
-                    mSelected = true;
-                }
+                trySaveBookmark();
                 break;
             case R.id.chachachaBtn:
                 if(mIsMyCha){

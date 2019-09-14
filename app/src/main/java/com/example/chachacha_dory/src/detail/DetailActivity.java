@@ -8,17 +8,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.annotation.GlideModule;
 import com.example.chachacha_dory.R;
 import com.example.chachacha_dory.config.BaseActivity;
-import com.example.chachacha_dory.src.mypage.MainActivity;
+import com.example.chachacha_dory.src.bookmark.SaveMyBarActivityView;
+import com.example.chachacha_dory.src.bookmark.SaveMyBarService;
 import com.example.chachacha_dory.src.review.MoreInfoActivity;
 
 import java.util.ArrayList;
 
-public class DetailActivity extends BaseActivity implements DetailActivityView, MyChaSaveActivityView {
+public class DetailActivity extends BaseActivity implements DetailActivityView, MyChaSaveActivityView, SaveMyBarActivityView {
     TextView mStoreName, mStoreNameMain, mStoreMood, mStoreAddr, mStoreTime, mStoreDesc;
-    DetailResponse.DetailResult detailStore;
+    DetailResponse.DetailRes.DetailResult detailStore;
     ImageView mStoreImage;
     String mStorePhone;
     ImageView mSelectStar;
@@ -41,18 +41,23 @@ public class DetailActivity extends BaseActivity implements DetailActivityView, 
         mStoreImage = findViewById(R.id.detailStoreImg);
         mSelectStar = findViewById(R.id.detailSaveStoreBtn);
         mStoreDesc = findViewById(R.id.detailDesc);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         tryGetDetail();
     }
 
-    public void tryGetDetail(){
+    public void tryGetDetail() {
         showProgressDialog();
 
         final DetailService detailService = new DetailService(DetailActivity.this);
         detailService.getStoreDetail(mStoreNum);
     }
 
-    public void trySaveMyCha(){
+    public void trySaveMyCha() {
         showProgressDialog();
 
         MyChaSaveService myChaService = new MyChaSaveService(this);
@@ -60,35 +65,54 @@ public class DetailActivity extends BaseActivity implements DetailActivityView, 
     }
 
     @Override
-    public void validateSuccess(String text, boolean isSuccess, ArrayList<DetailResponse.DetailResult> stores) {
+    public void validateSuccess(String text, boolean isSuccess, int isBook, ArrayList<DetailResponse.DetailRes.DetailResult> stores) {
         hideProgressDialog();
-        if(isSuccess){
+        if (isSuccess) {
             detailStore = stores.get(0);
             mStoreNameMain.setText(detailStore.getStorename());
             mStoreName.setText(detailStore.getStorename());
             mStoreMood.setText(detailStore.getMood());
             mStoreAddr.setText(detailStore.getAddr());
             mStoreDesc.setText(detailStore.getWriting());
-            mStoreTime.setText(detailStore.getOpen()+ " ~ " +detailStore.getClose());
+            mStoreTime.setText(detailStore.getOpen() + " ~ " + detailStore.getClose());
             Glide.with(this).load(detailStore.getImg()).into(mStoreImage);
             mStorePhone = detailStore.getPhone();
-        }else
+            if(isBook==1){
+                mSelected = true;
+                mSelectStar.setImageResource(R.drawable.select);
+            }
+        } else
             showCustomToast(text);
     }
 
-    private void trySaveBookmark(){
+    private void trySaveBookmark() {
+        showProgressDialog();
 
+        final SaveMyBarService saveMyBarService = new SaveMyBarService(this);
+        saveMyBarService.saveBookMark(mStoreNum);
+    }
+
+    @Override
+    public void validateSuccessSave(String text, boolean isSuccess) {
+        hideProgressDialog();
+        showCustomToast(text);
+        if (isSuccess) {
+            if (mSelected) {
+                mSelectStar.setImageResource(R.drawable.star2);
+                mSelected = false;
+            } else {
+                mSelectStar.setImageResource(R.drawable.select);
+                mSelected = true;
+            }
+        }
     }
 
     @Override
     public void validateSuccess(String text, boolean isSuccess) {
         hideProgressDialog();
         showCustomToast(text);
-        if(isSuccess){
-            Intent intent = new Intent(DetailActivity.this, MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
+        if (isSuccess) {
+            finish();
         }
     }
 
@@ -98,29 +122,24 @@ public class DetailActivity extends BaseActivity implements DetailActivityView, 
         showCustomToast(message);
     }
 
-    public void onClickBtn(View v){
+    public void onClickBtn(View v) {
         switch (v.getId()) {
             case R.id.detailMoreInfo:
                 Intent intent = new Intent(DetailActivity.this, MoreInfoActivity.class);
                 intent.putExtra("storeNum", mStoreNum);
                 intent.putExtra("myCha", false);
+                intent.putExtra("isExistbook", mSelected);
                 startActivity(intent);
                 break;
             case R.id.detailPhone:
-                Intent intent2 = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+mStorePhone));
+                Intent intent2 = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + mStorePhone));
                 startActivity(intent2);
                 break;
             case R.id.detailBackBtn:
                 onBackPressed();
                 break;
             case R.id.detailSaveStoreBtn:
-                if(mSelected) {
-                    mSelectStar.setImageResource(R.drawable.star2);
-                    mSelected = false;
-                }else {
-                    mSelectStar.setImageResource(R.drawable.ic_select_star);
-                    mSelected = true;
-                }
+                trySaveBookmark();
                 break;
             case R.id.chaBtn:
                 trySaveMyCha();

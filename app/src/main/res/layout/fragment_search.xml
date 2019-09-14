@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="15dp"
-        android:background="@drawable/round_whitegrey"
+        android:background="@drawable/btn_round_white_thin"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingRight="20dp"
@@ -44,7 +44,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
             android:background="@null"
-            android:ems="10"
+            android:ems="15"
             android:inputType="textPersonName"
             android:textSize="14sp" />
 

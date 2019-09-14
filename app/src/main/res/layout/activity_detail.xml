@@ -22,7 +22,7 @@
             android:paddingTop="10dp"
             android:paddingRight="20dp"
             android:paddingBottom="10dp"
-            app:srcCompat="@drawable/leftbtn" />
+            app:srcCompat="@drawable/ic_left" />
 
         <TextView
             android:id="@+id/detailStoreName"
@@ -88,7 +88,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="20dp"
-                    android:background="@drawable/round_white"
+                    android:background="@drawable/btn_round_white"
                     android:paddingLeft="20dp"
                     android:paddingTop="10dp"
                     android:paddingRight="20dp"
@@ -184,7 +184,7 @@
                 android:layout_marginTop="7dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
-                android:background="@drawable/round_white"
+                android:background="@drawable/btn_round_white"
                 android:onClick="onClickBtn"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp">
@@ -223,7 +223,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="40dp"
-            android:background="@drawable/roundback_border"
+            android:background="@drawable/btn_roundback_border"
             android:onClick="onClickBtn"
             android:paddingLeft="40dp"
             android:paddingRight="40dp"

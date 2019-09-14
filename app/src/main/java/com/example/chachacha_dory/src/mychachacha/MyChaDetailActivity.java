@@ -59,7 +59,7 @@ public class MyChaDetailActivity extends BaseActivity implements MyChaDetailActi
     }
 
     @Override
-    public void validateSuccess(String text, boolean isSuccess, DetailResponse.DetailResult store) {
+    public void validateSuccess(String text, boolean isSuccess, MyChaDetailResponse.MyChaDetail store) {
         hideProgressDialog();
         if(isSuccess){
             mStoreNameMain.setText(store.getStorename());
@@ -75,7 +75,7 @@ public class MyChaDetailActivity extends BaseActivity implements MyChaDetailActi
     }
 
     @Override
-    public void validateSuccess(String text, boolean isSuccess) {
+    public void validateSuccessSave(String text, boolean isSuccess) {
         hideProgressDialog();
         showCustomToast(text);
         if(isSuccess){
@@ -83,7 +83,7 @@ public class MyChaDetailActivity extends BaseActivity implements MyChaDetailActi
                 mSelectStar.setImageResource(R.drawable.star2);
                 mSelected = false;
             }else {
-                mSelectStar.setImageResource(R.drawable.ic_select_star);
+                mSelectStar.setImageResource(R.drawable.select);
                 mSelected = true;
             }
         }

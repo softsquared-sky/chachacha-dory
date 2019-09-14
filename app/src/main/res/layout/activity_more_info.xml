@@ -23,7 +23,7 @@
             android:paddingTop="10dp"
             android:paddingRight="20dp"
             android:paddingBottom="10dp"
-            app:srcCompat="@drawable/leftbtn" />
+            app:srcCompat="@drawable/ic_left" />
 
         <TextView
             android:id="@+id/textView29"
@@ -79,8 +79,10 @@
                     android:id="@+id/menuTab"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="20dp"
-                    android:background="@drawable/round_whitegrey"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/btn_round_whitegrey"
                     android:orientation="vertical">
 
                     <TextView
@@ -103,13 +105,15 @@
                     android:id="@+id/reviewTab"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_margin="20dp"
-                        android:background="@drawable/round_whitegrey"
+                        android:background="@drawable/btn_round_whitegrey"
                         android:orientation="vertical">
 
                         <TextView
@@ -143,7 +147,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="30dp"
-        android:background="@drawable/roundback_border"
+        android:background="@drawable/btn_roundback_border"
         android:onClick="onClickReview"
         android:paddingLeft="30dp"
         android:paddingTop="15dp"

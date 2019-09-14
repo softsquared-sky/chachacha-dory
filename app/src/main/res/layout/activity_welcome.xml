@@ -49,7 +49,7 @@
             android:layout_alignParentBottom="false"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="120dp"
-            android:background="@drawable/round_border"
+            android:background="@drawable/btn_round_border2"
             android:paddingLeft="50dp"
             android:paddingTop="10dp"
             android:paddingRight="50dp"

@@ -1,6 +1,7 @@
 package com.example.chachacha_dory.src.review;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +50,7 @@ public class MenuListAdapter extends BaseAdapter {
         MenuResponse.MenuClass.FoodClass foods = foodList.get(position);
 
         menuName.setText(foods.getMenuName());
+        Log.d("메뉴이름", foods.getMenuName());
         menuPrice.setText(foods.getMenuPrice());
 
         return convertView;

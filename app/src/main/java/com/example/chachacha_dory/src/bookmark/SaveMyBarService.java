@@ -28,7 +28,7 @@ public class SaveMyBarService {
                     return;
                 }
                 Log.d("결과 발표", String.valueOf(myBarResponse.getMessage()));
-                mMyBarFragmentView.validateSuccess(myBarResponse.getMessage(), myBarResponse.isSuccess());
+                mMyBarFragmentView.validateSuccessSave(myBarResponse.getMessage(), myBarResponse.isSuccess());
             }
 
             @Override

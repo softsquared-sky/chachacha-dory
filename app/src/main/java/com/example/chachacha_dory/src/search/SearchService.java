@@ -15,9 +15,9 @@ public class SearchService {
         mSearchFragmentView = searchFragmentView;
     }
 
-    void postSearch(String storeName){
+    void postSearch(int startPage, String storeName){
         final SearchRetrofitInterface searchRetrofitInterface = getRetrofit().create(SearchRetrofitInterface.class);
-        searchRetrofitInterface.postSearch(storeName, 0, 5).enqueue(new Callback<SearchResponse>() {
+        searchRetrofitInterface.postSearch(storeName, startPage, 5).enqueue(new Callback<SearchResponse>() {
             @Override
             public void onResponse(Call<SearchResponse> call, Response<SearchResponse> response) {
                 final SearchResponse searchResponse = response.body();

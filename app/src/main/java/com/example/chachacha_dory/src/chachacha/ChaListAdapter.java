@@ -1,6 +1,7 @@
 package com.example.chachacha_dory.src.chachacha;
 
 import android.content.Context;
+import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,19 +42,23 @@ public class ChaListAdapter extends BaseAdapter {
 
         if(convertView==null){
             LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.item_chacha, parent,false);
+            convertView = inflater.inflate(R.layout.item_chacha_nostar, parent,false);
         }
-        TextView name = convertView.findViewById(R.id.nameCha);
-        TextView mood = convertView.findViewById(R.id.moodCha);
-        TextView desc = convertView.findViewById(R.id.descCha);
+        TextView name = convertView.findViewById(R.id.nameCha2);
+        TextView mood = convertView.findViewById(R.id.moodCha2);
+        TextView desc = convertView.findViewById(R.id.descCha2);
 //        RelativeLayout layout = convertView.findViewById(R.id.chaLayout);
-        ImageView chaBackground = convertView.findViewById(R.id.chaImageBack);
+        ImageView chaBackground = convertView.findViewById(R.id.chaImageBack2);
         RecommendResponse.RecommendResult recommendResult = recommendResults.get(position);
 
         name.setText(recommendResult.getStorename());
         mood.setText(recommendResult.getMood());
         desc.setText(recommendResult.getWriting());
         Glide.with(context).load(recommendResult.getImg()).into(chaBackground);
+
+        GradientDrawable drawable = (GradientDrawable)context.getDrawable(R.drawable.border_round);
+        chaBackground.setBackground(drawable);
+        chaBackground.setClipToOutline(true);
 
         return convertView;
     }

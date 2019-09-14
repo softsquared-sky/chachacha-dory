@@ -11,8 +11,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.chachacha_dory.R;
+import com.example.chachacha_dory.config.BaseActivity;
 
-public class StartChaActivity extends AppCompatActivity {
+public class StartChaActivity extends BaseActivity {
     int mPeopleNum;
     String mMood;
     StringBuilder mKind = new StringBuilder();
@@ -69,32 +70,32 @@ public class StartChaActivity extends AppCompatActivity {
             case R.id.people1:
                 mPeopleNum=1;
                 mPeople1.setTextColor(Color.WHITE);
-                mPeople1.setBackgroundResource(R.drawable.roundback_border);
+                mPeople1.setBackgroundResource(R.drawable.btn_roundback_border);
                 break;
             case R.id.people2:
                 mPeopleNum =2;
                 mPeople2.setTextColor(Color.WHITE);
-                mPeople2.setBackgroundResource(R.drawable.roundback_border);
+                mPeople2.setBackgroundResource(R.drawable.btn_roundback_border);
                 break;
             case R.id.people3:
                 mPeopleNum=3;
                 mPeople3.setTextColor(Color.WHITE);
-                mPeople3.setBackgroundResource(R.drawable.roundback_border);
+                mPeople3.setBackgroundResource(R.drawable.btn_roundback_border);
                 break;
             case R.id.people4:
                 mPeopleNum=4;
                 mPeople4.setTextColor(Color.WHITE);
-                mPeople4.setBackgroundResource(R.drawable.roundback_border);
+                mPeople4.setBackgroundResource(R.drawable.btn_roundback_border);
                 break;
             case R.id.people5:
                 mPeopleNum=5;
                 mPeople5.setTextColor(Color.WHITE);
-                mPeople5.setBackgroundResource(R.drawable.roundback_border);
+                mPeople5.setBackgroundResource(R.drawable.btn_roundback_border);
                 break;
             case R.id.people6:
                 mPeopleNum=6;
                 mPeople6.setTextColor(Color.WHITE);
-                mPeople6.setBackgroundResource(R.drawable.roundback_border);
+                mPeople6.setBackgroundResource(R.drawable.btn_roundback_border);
                 break;
         }
     }
@@ -104,42 +105,42 @@ public class StartChaActivity extends AppCompatActivity {
         switch (v.getId()) {
             case R.id.moodFree:
                 mMood = "#자유로운";
-                mMoodFree.setBackgroundResource(R.drawable.round_whitegrey);
+                mMoodFree.setBackgroundResource(R.drawable.btn_round_whitegrey);
                 mMoodFree.setTextColor(Color.rgb(140, 140, 140));
                 break;
             case R.id.moodComfort:
                 mMood = "#편안한";
-                mMoodComfort.setBackgroundResource(R.drawable.round_whitegrey);
+                mMoodComfort.setBackgroundResource(R.drawable.btn_round_whitegrey);
                 mMoodComfort.setTextColor(Color.rgb(140, 140, 140));
                 break;
             case R.id.moodDark:
                 mMood = "#어두운";
-                mMoodDark.setBackgroundResource(R.drawable.round_whitegrey);
+                mMoodDark.setBackgroundResource(R.drawable.btn_round_whitegrey);
                 mMoodDark.setTextColor(Color.rgb(140, 140, 140));
                 break;
             case R.id.moodCozy:
                 mMood = "#아늑한";
-                mMoodCozy.setBackgroundResource(R.drawable.round_whitegrey);
+                mMoodCozy.setBackgroundResource(R.drawable.btn_round_whitegrey);
                 mMoodCozy.setTextColor(Color.rgb(140, 140, 140));
                 break;
             case R.id.moodActive:
                 mMood = "#활기찬";
-                mMoodActive.setBackgroundResource(R.drawable.round_whitegrey);
+                mMoodActive.setBackgroundResource(R.drawable.btn_round_whitegrey);
                 mMoodActive.setTextColor(Color.rgb(140, 140, 140));
                 break;
             case R.id.moodQuiet:
                 mMood = "#조용한";
-                mMoodQuiet.setBackgroundResource(R.drawable.round_whitegrey);
+                mMoodQuiet.setBackgroundResource(R.drawable.btn_round_whitegrey);
                 mMoodQuiet.setTextColor(Color.rgb(140, 140, 140));
                 break;
             case R.id.moodDating:
                 mMood = "#데이트하기 좋은";
-                mMoodDating.setBackgroundResource(R.drawable.round_whitegrey);
+                mMoodDating.setBackgroundResource(R.drawable.btn_round_whitegrey);
                 mMoodDating.setTextColor(Color.rgb(140, 140, 140));
                 break;
             case R.id.moodAnything:
                 mMood = "상관없음";
-                mMoodAnything.setBackgroundResource(R.drawable.round_whitegrey);
+                mMoodAnything.setBackgroundResource(R.drawable.btn_round_whitegrey);
                 mMoodAnything.setTextColor(Color.rgb(140, 140, 140));
                 break;
         }
@@ -269,23 +270,28 @@ public class StartChaActivity extends AppCompatActivity {
                         mKind.append(mKindName[i]).append(" ");
                     }
                 }
-                Log.d("결과 종류", String.valueOf(mKind));
-                Intent intent = new Intent(StartChaActivity.this, ChaChaActivity.class);
-                intent.putExtra("mood", mMood);
-                intent.putExtra("people", mPeopleNum);
-                intent.putExtra("kind", String.valueOf(mKind));
-                startActivity(intent);
+
+                if(mKind.equals("")||mKind==null||mMood==null||mMood.equals("")||mPeopleNum==0){
+                    showCustomToast("모든 항목을 입력하새오");
+                }else {
+                    Log.d("결과 종류", String.valueOf(mKind));
+                    Intent intent = new Intent(StartChaActivity.this, ChaChaActivity.class);
+                    intent.putExtra("mood", mMood);
+                    intent.putExtra("people", mPeopleNum);
+                    intent.putExtra("kind", String.valueOf(mKind));
+                    startActivity(intent);
+                }
                 break;
         }
     }
 
     private void onClearPeople(){
-        mPeople1.setBackgroundResource(R.drawable.round_border);
-        mPeople2.setBackgroundResource(R.drawable.round_border);
-        mPeople3.setBackgroundResource(R.drawable.round_border);
-        mPeople4.setBackgroundResource(R.drawable.round_border);
-        mPeople5.setBackgroundResource(R.drawable.round_border);
-        mPeople6.setBackgroundResource(R.drawable.round_border);
+        mPeople1.setBackgroundResource(R.drawable.btn_round_border2);
+        mPeople2.setBackgroundResource(R.drawable.btn_round_border2);
+        mPeople3.setBackgroundResource(R.drawable.btn_round_border2);
+        mPeople4.setBackgroundResource(R.drawable.btn_round_border2);
+        mPeople5.setBackgroundResource(R.drawable.btn_round_border2);
+        mPeople6.setBackgroundResource(R.drawable.btn_round_border2);
 
         mPeople1.setTextColor(Color.rgb(140, 140, 140));
         mPeople2.setTextColor(Color.rgb(140, 140, 140));

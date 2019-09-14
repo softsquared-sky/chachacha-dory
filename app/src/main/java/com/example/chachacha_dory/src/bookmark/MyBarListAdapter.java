@@ -1,6 +1,7 @@
 package com.example.chachacha_dory.src.bookmark;
 
 import android.content.Context;
+import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +58,10 @@ public class MyBarListAdapter extends BaseAdapter {
         desc.setText(chaClass.getWriting());
         imageView.setImageResource(R.drawable.ic_select_star);
         Glide.with(context).load(chaClass.getImg()).into(chaBackground);
+
+        GradientDrawable drawable = (GradientDrawable)context.getDrawable(R.drawable.border_round);
+        chaBackground.setBackground(drawable);
+        chaBackground.setClipToOutline(true);
 
         return convertView;
     }

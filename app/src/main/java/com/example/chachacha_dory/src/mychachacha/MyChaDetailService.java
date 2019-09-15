@@ -35,7 +35,7 @@ public class MyChaDetailService {
                     return;
                 }
                 Log.d("결과", String.valueOf(detailResponse.getMessage()));
-                mDetailActivityView.validateSuccess(detailResponse.getMessage(), detailResponse.isSuccess(), detailResponse.getStore());
+                mDetailActivityView.validateSuccess(detailResponse.getMessage(), detailResponse.isSuccess(), detailResponse.getResult());
             }
 
             @Override

@@ -80,6 +80,9 @@ public class DetailActivity extends BaseActivity implements DetailActivityView, 
             if(isBook==1){
                 mSelected = true;
                 mSelectStar.setImageResource(R.drawable.select);
+            }else {
+                mSelected=false;
+                mSelectStar.setImageResource(R.drawable.star2);
             }
         } else
             showCustomToast(text);

@@ -307,15 +307,15 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
         hideKeyboard(mEditPw2);
         switch (v.getId()) {
             case R.id.signUpGender0:
-                mGender1Btn.setBackgroundResource(R.drawable.btn_round_border);
-                mGender1Btn.setTextColor(Color.rgb(74, 74, 74));
+                mGender1Btn.setBackgroundResource(R.drawable.btn_round_border2);
+                mGender1Btn.setTextColor(Color.rgb(140, 140, 140));
                 mGender0Btn.setBackgroundResource(R.drawable.btn_roundback_border);
                 mGender0Btn.setTextColor(Color.WHITE);
                 mSelectedGender = 0;
                 break;
             case R.id.signUpGender1:
-                mGender0Btn.setBackgroundResource(R.drawable.btn_round_border);
-                mGender0Btn.setTextColor(Color.rgb(74, 74, 74));
+                mGender0Btn.setBackgroundResource(R.drawable.btn_round_border2);
+                mGender0Btn.setTextColor(Color.rgb(140, 140, 140));
                 mGender1Btn.setBackgroundResource(R.drawable.btn_roundback_border);
                 mGender1Btn.setTextColor(Color.WHITE);
                 mSelectedGender = 1;
@@ -324,14 +324,14 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
     }
 
     public void clearAgeBtn() {
-        mAge0Btn.setBackgroundResource(R.drawable.btn_round_border);
-        mAge1Btn.setBackgroundResource(R.drawable.btn_round_border);
-        mAge2Btn.setBackgroundResource(R.drawable.btn_round_border);
-        mAge3Btn.setBackgroundResource(R.drawable.btn_round_border);
-        mAge0Btn.setTextColor(Color.rgb(74, 74, 74));
-        mAge1Btn.setTextColor(Color.rgb(74, 74, 74));
-        mAge2Btn.setTextColor(Color.rgb(74, 74, 74));
-        mAge3Btn.setTextColor(Color.rgb(74, 74, 74));
+        mAge0Btn.setBackgroundResource(R.drawable.btn_round_border2);
+        mAge1Btn.setBackgroundResource(R.drawable.btn_round_border2);
+        mAge2Btn.setBackgroundResource(R.drawable.btn_round_border2);
+        mAge3Btn.setBackgroundResource(R.drawable.btn_round_border2);
+        mAge0Btn.setTextColor(Color.rgb(140, 140, 140));
+        mAge1Btn.setTextColor(Color.rgb(140, 140, 140));
+        mAge2Btn.setTextColor(Color.rgb(140, 140, 140));
+        mAge3Btn.setTextColor(Color.rgb(140, 140, 140));
     }
 
     @Override

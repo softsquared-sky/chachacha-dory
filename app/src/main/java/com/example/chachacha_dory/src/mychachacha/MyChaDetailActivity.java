@@ -3,6 +3,7 @@ package com.example.chachacha_dory.src.mychachacha;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -40,6 +41,11 @@ public class MyChaDetailActivity extends BaseActivity implements MyChaDetailActi
         mStoreImage = findViewById(R.id.detail2Image);
         mSelectStar = findViewById(R.id.detail2SaveBtn);
         mStoreDesc = findViewById(R.id.detail2Desc);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         tryGetDetail2();
     }
@@ -59,17 +65,25 @@ public class MyChaDetailActivity extends BaseActivity implements MyChaDetailActi
     }
 
     @Override
-    public void validateSuccess(String text, boolean isSuccess, MyChaDetailResponse.MyChaDetail store) {
+    public void validateSuccess(String text, boolean isSuccess, MyChaDetailResponse.MyChaDetailResult store) {
         hideProgressDialog();
         if(isSuccess){
-            mStoreNameMain.setText(store.getStorename());
-            mStoreName.setText(store.getStorename());
-            mStoreMood.setText(store.getMood());
-            mStoreAddr.setText(store.getAddr());
-            mStoreDesc.setText(store.getWriting());
-            mStoreTime.setText(store.getOpen()+ " ~ " +store.getClose());
-            Glide.with(this).load(store.getImg()).into(mStoreImage);
-            mStorePhone = store.getPhone();
+            mStoreNameMain.setText(store.getStore().getStorename());
+            mStoreName.setText(store.getStore().getStorename());
+            mStoreMood.setText(store.getStore().getMood());
+            mStoreAddr.setText(store.getStore().getAddr());
+            mStoreDesc.setText(store.getStore().getWriting());
+            mStoreTime.setText(store.getStore().getOpen()+ " ~ " +store.getStore().getClose());
+            Glide.with(this).load(store.getStore().getImg()).into(mStoreImage);
+            mStorePhone = store.getStore().getPhone();
+
+            if(store.getIsBookmark()==1){
+                mSelected=true;
+                mSelectStar.setImageResource(R.drawable.select);
+            }else {
+                mSelected=false;
+                mSelectStar.setImageResource(R.drawable.star2);
+            }
         }else
             showCustomToast(text);
     }
@@ -100,6 +114,7 @@ public class MyChaDetailActivity extends BaseActivity implements MyChaDetailActi
             case R.id.detail2MoreInfo:
                 Intent intent = new Intent(MyChaDetailActivity.this, MoreInfoActivity.class);
                 intent.putExtra("storeNum", mStoreNum);
+                intent.putExtra("isExistbook", mSelected);
                 startActivity(intent);
                 break;
             case R.id.detail2Phone:

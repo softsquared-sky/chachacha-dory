@@ -57,6 +57,7 @@ public class MyPageReviewFragment extends BaseFragment implements MyPageReviewAc
                     public void onClick(DialogInterface dialog, int which) {
                         MyPageReviewResponse.MyPageReviewResult myReview = mAdapter.getItem(position);
                         tryDeleteMyReview(myReview.getReviewNum());
+                        mArrayList.remove(position);
                     }
                 });
                 builder.setNegativeButton("취소", null);
@@ -139,7 +140,7 @@ public class MyPageReviewFragment extends BaseFragment implements MyPageReviewAc
         hideProgressDialog();
         showCustomToast(text);
         if (isSuccess) {
-            tryGetMyPageReview(mArrayListSize);
+            mAdapter.notifyDataSetChanged();
         }
     }
 

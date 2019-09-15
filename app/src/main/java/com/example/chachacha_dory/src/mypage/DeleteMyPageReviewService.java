@@ -1,5 +1,7 @@
 package com.example.chachacha_dory.src.mypage;
 
+import android.util.Log;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -25,6 +27,7 @@ public class DeleteMyPageReviewService {
                     mDeleteMyReview.validateFailure("못가져옴");
                     return;
                 }
+                Log.d("결과", deleteMyPageReviewResponse.getMessage());
                 mDeleteMyReview.validateSuccessDeleteReview(deleteMyPageReviewResponse.getMessage(), deleteMyPageReviewResponse.isSuccess());
             }
 
